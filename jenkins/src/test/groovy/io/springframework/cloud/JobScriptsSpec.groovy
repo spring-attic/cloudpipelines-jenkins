@@ -17,16 +17,19 @@ class JobScriptsSpec extends Specification {
 		given:
 
 		MemoryJobManagement jm = new MemoryJobManagement()
-		jm.availableFiles['src/main/bash/pipeline.sh'] = JobScriptsSpec.getResource('/pipeline.sh').text
-		jm.availableFiles['src/main/bash/build_and_upload.sh'] = JobScriptsSpec.getResource('/build_and_upload.sh').text
-		jm.availableFiles['src/main/bash/test_deploy.sh'] = JobScriptsSpec.getResource('/test_deploy.sh').text
-		jm.availableFiles['src/main/bash/test_smoke.sh'] = JobScriptsSpec.getResource('/test_smoke.sh').text
-		jm.availableFiles['src/main/bash/test_rollback_deploy.sh'] = JobScriptsSpec.getResource('/test_rollback_deploy.sh').text
-		jm.availableFiles['src/main/bash/test_rollback_smoke.sh'] = JobScriptsSpec.getResource('/test_rollback_smoke.sh').text
-		jm.availableFiles['src/main/bash/stage_deploy.sh'] = JobScriptsSpec.getResource('/stage_deploy.sh').text
-		jm.availableFiles['src/main/bash/stage_e2e.sh'] = JobScriptsSpec.getResource('/stage_e2e.sh').text
-		jm.availableFiles['src/main/bash/prod_deploy.sh'] = JobScriptsSpec.getResource('/prod_deploy.sh').text
-		jm.availableFiles['src/main/bash/prod_complete.sh'] = JobScriptsSpec.getResource('/prod_complete.sh').text
+		jm.availableFiles['foo/pipeline.sh'] = JobScriptsSpec.getResource('/pipeline.sh').text
+		jm.availableFiles['foo/build_and_upload.sh'] = JobScriptsSpec.getResource('/build_and_upload.sh').text
+		jm.availableFiles['foo/test_deploy.sh'] = JobScriptsSpec.getResource('/test_deploy.sh').text
+		jm.availableFiles['foo/test_smoke.sh'] = JobScriptsSpec.getResource('/test_smoke.sh').text
+		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobScriptsSpec.getResource('/test_rollback_deploy.sh').text
+		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobScriptsSpec.getResource('/test_rollback_smoke.sh').text
+		jm.availableFiles['foo/stage_deploy.sh'] = JobScriptsSpec.getResource('/stage_deploy.sh').text
+		jm.availableFiles['foo/stage_e2e.sh'] = JobScriptsSpec.getResource('/stage_e2e.sh').text
+		jm.availableFiles['foo/prod_deploy.sh'] = JobScriptsSpec.getResource('/prod_deploy.sh').text
+		jm.availableFiles['foo/prod_complete.sh'] = JobScriptsSpec.getResource('/prod_complete.sh').text
+		jm.parameters << [
+				SCRIPTS_DIR: 'foo'
+		]
 		DslScriptLoader loader = new DslScriptLoader(jm)
 
 		when:

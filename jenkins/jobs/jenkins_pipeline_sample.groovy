@@ -24,12 +24,13 @@ String cfStageCredentialId = binding.variables['CF_STAGE_CREDENTIAL_ID'] ?: 'cf-
 String cfProdCredentialId = binding.variables['CF_PROD_CREDENTIAL_ID'] ?: 'cf-prod'
 String gitEmail = binding.variables['GIT_EMAIL'] ?: 'pivo@tal.com'
 String gitName = binding.variables['GIT_NAME'] ?: 'Pivo Tal'
-boolean autoStage = binding.variables['AUTO_DEPLOY_TO_STAGE'] ?:  false
-boolean autoProd = binding.variables['AUTO_DEPLOY_TO_PROD'] ?:  true
+boolean autoStage = Boolean.parseBoolean(binding.variables['AUTO_DEPLOY_TO_STAGE'] as String)
+boolean autoProd = Boolean.parseBoolean(binding.variables['AUTO_DEPLOY_TO_PROD'] as String)
+String scriptsDir = binding.variables['SCRIPTS_DIR'] ?: "${WORKSPACE}/common/src/main/bash"
 
 // we're parsing the REPOS parameter to retrieve list of repos to build
 String repos = binding.variables['REPOS'] ?:
-		['https://github.com/dsyer/github-analytics',
+		['https://github.com/marcingrzejszczak/github-analytics',
 		 'github-webhook$https://github.com/marcingrzejszczak/atom-feed'].join(',')
 List<String> parsedRepos = repos.split(',')
 parsedRepos.each {
@@ -90,8 +91,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/build_and_upload.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/build_and_upload.sh')}
 		""")
 		}
 		publishers {
@@ -144,8 +145,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/test_deploy.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/test_deploy.sh')}
 		""")
 		}
 		publishers {
@@ -189,8 +190,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/test_smoke.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/test_smoke.sh')}
 		""")
 		}
 		publishers {
@@ -236,8 +237,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/test_rollback_deploy.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/test_rollback_deploy.sh')}
 		""")
 		}
 		publishers {
@@ -283,8 +284,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/test_rollback_smoke.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/test_rollback_smoke.sh')}
 		""")
 		}
 		publishers {
@@ -341,8 +342,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/stage_deploy.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/stage_deploy.sh')}
 		""")
 		}
 		publishers {
@@ -383,8 +384,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/stage_e2e.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/stage_e2e.sh')}
 		""")
 		}
 		publishers {
@@ -441,8 +442,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 		set -e
 
-		${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh')}
-		${dsl.readFileFromWorkspace('src/main/bash/prod_deploy.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh')}
+		${dsl.readFileFromWorkspace(scriptsDir + '/prod_deploy.sh')}
 		""")
 		}
 		publishers {
@@ -480,8 +481,8 @@ parsedRepos.each {
 			shell("""#!/bin/bash
 			set - e
 
-			${dsl.readFileFromWorkspace('src/main/bash/pipeline.sh') }
-			${dsl.readFileFromWorkspace('src/main/bash/prod_complete.sh') }
+			${dsl.readFileFromWorkspace(scriptsDir + '/pipeline.sh') }
+			${dsl.readFileFromWorkspace(scriptsDir + '/prod_complete.sh') }
 		""")
 		}
 	}
@@ -530,7 +531,7 @@ class PipelineDefaults {
 	static Closure defaultParams() {
 		return context {
 			booleanParam('REDOWNLOAD_INFRA', false, "If Eureka & StubRunner & CF binaries should be redownloaded if already present")
-			booleanParam('REDEPLOY_INFRA', false, "If Eureka & StubRunner binaries should be redeployed if already present")
+			booleanParam('REDEPLOY_INFRA', true, "If Eureka & StubRunner binaries should be redeployed if already present")
 			stringParam('EUREKA_GROUP_ID', 'com.example.eureka', "Group Id for Eureka used by tests")
 			stringParam('EUREKA_ARTIFACT_ID', 'github-eureka', "Artifact Id for Eureka used by tests")
 			stringParam('EUREKA_VERSION', '0.0.1.M1', "Artifact Version for Eureka used by tests")

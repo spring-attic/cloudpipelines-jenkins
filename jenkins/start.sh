@@ -9,9 +9,9 @@ if [[ $# < 3 ]] ; then
     exit 0
 fi
 
-PIPELINE_GIT_USERNAME=${1}
-PIPELINE_GIT_PASSWORD=${2}
-export FORKED_ORG=${3}
+PIPELINE_GIT_USERNAME="${1}"
+PIPELINE_GIT_PASSWORD="${2}"
+export FORKED_ORG="${3}"
 
 mkdir -p build
 rm -rf build/gituser
