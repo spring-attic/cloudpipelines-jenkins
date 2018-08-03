@@ -1,4 +1,4 @@
-package io.springframework.cloud
+package org.springframework.cloud.pipelines
 
 import groovy.io.FileType
 import javaposse.jobdsl.dsl.DslScriptLoader
@@ -10,53 +10,7 @@ import spock.lang.Unroll
 /**
  * Tests that all dsl scripts in the jobs directory will compile.
  */
-class JobScriptsSpec extends Specification {
-
-	@Unroll
-	def 'should compile script #file.name'() {
-		given:
-
-		MemoryJobManagement jm = new MemoryJobManagement()
-		defaultStubbing(jm)
-		jm.parameters << [
-				SCRIPTS_DIR: 'foo',
-				JENKINSFILE_DIR: 'foo'
-		]
-		DslScriptLoader loader = new DslScriptLoader(jm)
-
-		when:
-		GeneratedItems scripts = loader.runScripts([new ScriptRequest(file.text)])
-
-		then:
-		noExceptionThrown()
-
-		and:
-		if (file.name.endsWith('jenkins_pipeline_sample.groovy')) {
-			List<String> jobNames = scripts.jobs.collect { it.jobName }
-			assert jobNames.find { it == "github-analytics-pipeline-build" }
-			assert jobNames.find { it == "github-webhook-pipeline-build" }
-			assert jobNames.find { it.contains("stage") }
-			assert jobNames.find { it.contains("prod-env-deploy") }
-		}
-
-		where:
-		file << jobFiles
-	}
-
-	private void defaultStubbing(MemoryJobManagement jm) {
-		jm.availableFiles['foo/Jenkinsfile-sample'] = new File('declarative-pipeline/Jenkinsfile-sample').text
-		jm.availableFiles['foo/pipeline.sh'] = JobScriptsSpec.getResource('/pipeline.sh').text
-		jm.availableFiles['foo/build_and_upload.sh'] = JobScriptsSpec.getResource('/build_and_upload.sh').text
-		jm.availableFiles['foo/build_api_compatibility_check.sh'] = JobScriptsSpec.getResource('/build_api_compatibility_check.sh').text
-		jm.availableFiles['foo/test_deploy.sh'] = JobScriptsSpec.getResource('/test_deploy.sh').text
-		jm.availableFiles['foo/test_smoke.sh'] = JobScriptsSpec.getResource('/test_smoke.sh').text
-		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobScriptsSpec.getResource('/test_rollback_deploy.sh').text
-		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobScriptsSpec.getResource('/test_rollback_smoke.sh').text
-		jm.availableFiles['foo/stage_deploy.sh'] = JobScriptsSpec.getResource('/stage_deploy.sh').text
-		jm.availableFiles['foo/stage_e2e.sh'] = JobScriptsSpec.getResource('/stage_e2e.sh').text
-		jm.availableFiles['foo/prod_deploy.sh'] = JobScriptsSpec.getResource('/prod_deploy.sh').text
-		jm.availableFiles['foo/prod_complete.sh'] = JobScriptsSpec.getResource('/prod_complete.sh').text
-	}
+class SingleScriptPipelineSpec extends Specification {
 
 	//remove::start[CF]
 	def 'should create seed job for CF'() {
@@ -295,7 +249,8 @@ class JobScriptsSpec extends Specification {
 		and:
 		jm.savedConfigs.find { it.key == "github-webhook-pipeline-build" }.with {
 			assert it.value.contains("hudson.plugins.parameterizedtrigger.BuildTrigger")
-			assert it.value.contains("<projects>github-webhook-pipeline-build-api-check</projects>")
+			assert it.value.contains("build_api_compatibility_check.sh")
+			assert it.value.contains("<projects>github-webhook-pipeline-test-env-deploy</projects>")
 			assert !it.value.contains("au.com.centrumsystems.hudson.plugin.buildpipeline.trigger.BuildPipelineTrigger")
 			return it
 		}
@@ -321,8 +276,8 @@ class JobScriptsSpec extends Specification {
 		and:
 		jm.savedConfigs.find { it.key == "github-webhook-pipeline-build" }.with {
 			assert it.value.contains("hudson.plugins.parameterizedtrigger.BuildTrigger")
+			assert !it.value.contains("build_api_compatibility_check.sh")
 			assert it.value.contains("<projects>github-webhook-pipeline-test-env-deploy</projects>")
-			assert !it.value.contains("<projects>github-webhook-pipeline-build-api-check</projects>")
 			assert !it.value.contains("au.com.centrumsystems.hudson.plugin.buildpipeline.trigger.BuildPipelineTrigger")
 			return it
 		}
@@ -598,6 +553,21 @@ class JobScriptsSpec extends Specification {
 			files << it
 		}
 		return files
+	}
+
+	private void defaultStubbing(MemoryJobManagement jm) {
+		jm.availableFiles['foo/Jenkinsfile-sample'] = new File('declarative-pipeline/Jenkinsfile-sample').text
+		jm.availableFiles['foo/pipeline.sh'] = JobScriptsSpec.getResource('/pipeline.sh').text
+		jm.availableFiles['foo/build_and_upload.sh'] = JobScriptsSpec.getResource('/build_and_upload.sh').text
+		jm.availableFiles['foo/build_api_compatibility_check.sh'] = JobScriptsSpec.getResource('/build_api_compatibility_check.sh').text
+		jm.availableFiles['foo/test_deploy.sh'] = JobScriptsSpec.getResource('/test_deploy.sh').text
+		jm.availableFiles['foo/test_smoke.sh'] = JobScriptsSpec.getResource('/test_smoke.sh').text
+		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobScriptsSpec.getResource('/test_rollback_deploy.sh').text
+		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobScriptsSpec.getResource('/test_rollback_smoke.sh').text
+		jm.availableFiles['foo/stage_deploy.sh'] = JobScriptsSpec.getResource('/stage_deploy.sh').text
+		jm.availableFiles['foo/stage_e2e.sh'] = JobScriptsSpec.getResource('/stage_e2e.sh').text
+		jm.availableFiles['foo/prod_deploy.sh'] = JobScriptsSpec.getResource('/prod_deploy.sh').text
+		jm.availableFiles['foo/prod_complete.sh'] = JobScriptsSpec.getResource('/prod_complete.sh').text
 	}
 
 }
