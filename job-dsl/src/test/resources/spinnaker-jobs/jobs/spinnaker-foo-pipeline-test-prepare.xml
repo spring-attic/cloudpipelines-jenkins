@@ -6,7 +6,7 @@
         <EnvInjectJobProperty>
             <info>
                 <propertiesContent>PROJECT_NAME=foo
-PAAS_TEST_SPACE_PREFIX=sc-pipelines-test</propertiesContent>
+PAAS_TEST_SPACE_PREFIX=cloudpipelines-test</propertiesContent>
                 <loadFilesFromMaster>false</loadFilesFromMaster>
             </info>
             <on>true</on>
@@ -41,7 +41,7 @@ PAAS_TEST_SPACE_PREFIX=sc-pipelines-test</propertiesContent>
 				git config user.email "pivo@tal.com"
 				git config credential.helper "store --file=${tmpDir}/gitcredentials"
 				echo "https://$GIT_USERNAME:$GIT_PASSWORD@bar.com" &gt; ${tmpDir}/gitcredentials
-			rm -rf .git/tools &amp;&amp; mkdir -p .git/tools &amp;&amp; pushd .git/tools &amp;&amp; curl -Lk "https://github.com/spring-cloud/spring-cloud-pipelines/raw/master/dist/spring-cloud-pipelines.tar.gz" -o pipelines.tar.gz &amp;&amp; tar xf pipelines.tar.gz --strip-components 1 &amp;&amp; popd</command>
+			rm -rf .git/tools &amp;&amp; mkdir -p .git/tools &amp;&amp; pushd .git/tools &amp;&amp; curl -Lk "https://github.com/cloudpipelines/scripts/raw/master/dist/scripts.tar.gz" -o pipelines.tar.gz &amp;&amp; tar xf pipelines.tar.gz --strip-components 1 &amp;&amp; popd</command>
         </hudson.tasks.Shell>
         <hudson.tasks.Shell>
             <command>#!/bin/bash
@@ -53,7 +53,7 @@ export PAAS_TYPE=CF
 export ENVIRONMENT=TEST
 
 # shellcheck source=/dev/null
-source "${WORKSPACE}"/.git/tools/common/src/main/bash/pipeline.sh
+source "${WORKSPACE}"/.git/tools/src/main/bash/pipeline.sh
 
 # Log in to PaaS to start deployment
 logInToPaas

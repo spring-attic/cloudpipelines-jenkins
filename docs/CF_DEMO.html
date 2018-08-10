@@ -555,7 +555,7 @@ you deploy to production, you can provision the <code>pcfdev-prod</code> space b
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push sc-pipelines-prometheus -b binary_buildpack -c './prometheus -web.listen-address=:8080' -m 64m</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push cloudpipelines-prometheus -b binary_buildpack -c './prometheus -web.listen-address=:8080' -m 64m</code></pre>
 </div>
 </div>
 </div>
@@ -564,7 +564,7 @@ you deploy to production, you can provision the <code>pcfdev-prod</code> space b
 <p>Also, <code>localhost:9090</code> in <code>prometheus.yml</code> should be <code>localhost:8080</code>.</p>
 </div>
 <div class="paragraph">
-<p>The file should resemble the following listing to work with the demo setup (change <code>github-analytics-sc-pipelines.cfapps.io</code>
+<p>The file should resemble the following listing to work with the demo setup (change <code>github-analytics-cloud-pipelines.cfapps.io</code>
 to your <code>github-analytics</code> installation).</p>
 </div>
 <div class="exampleblock">
@@ -608,13 +608,13 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['github-analytics-sc-pipelines.cfapps.io']</code></pre>
+      - targets: ['github-analytics-cloud-pipelines.cfapps.io']</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>A deployed version for the Cloud Pipelines demo is available <a href="https://sc-pipelines-prometheus.cfapps.io/">here</a>.</p>
+<p>A deployed version for the Cloud Pipelines demo is available <a href="https://cloudpipelines-prometheus.cfapps.io/">here</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -630,7 +630,7 @@ and set <code>http_port = 8080</code> in <code>conf/default.ini</code>. Then run
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push sc-pipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -m 64m</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push cloudpipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -m 64m</code></pre>
 </div>
 </div>
 </div>
@@ -639,7 +639,7 @@ and set <code>http_port = 8080</code> in <code>conf/default.ini</code>. Then run
 <p>The demo uses Grafana Dashboard with an ID of <code>2471</code>.</p>
 </div>
 <div class="paragraph">
-<p>A deployed version for the Cloud Pipelines demo is available <a href="https://sc-pipelines-grafana.cfapps.io/">here</a></p>
+<p>A deployed version for the Cloud Pipelines demo is available <a href="https://cloudpipelines-grafana.cfapps.io/">here</a></p>
 </div>
 </div>
 </div>
@@ -647,7 +647,7 @@ and set <code>http_port = 8080</code> in <code>conf/default.ini</code>. Then run
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-10 13:05:24 CEST
+Last updated 2018-08-10 15:20:14 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

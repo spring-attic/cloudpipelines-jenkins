@@ -4,4 +4,4 @@ set -o errtrace
 set -o pipefail
 
 # shellcheck source=/dev/null
-"${WORKSPACE}"/.git/tools/common/src/main/bash/prod_rollback.sh
+"${WORKSPACE}"/.git/tools/src/main/bash/prod_rollback.sh

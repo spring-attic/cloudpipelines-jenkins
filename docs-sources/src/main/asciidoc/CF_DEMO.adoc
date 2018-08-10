@@ -39,13 +39,13 @@ Go to https://prometheus.io/download/ and download the Linux binary. Then run th
 ====
 [source,bash]
 ----
-cf push sc-pipelines-prometheus -b binary_buildpack -c './prometheus -web.listen-address=:8080' -m 64m
+cf push cloudpipelines-prometheus -b binary_buildpack -c './prometheus -web.listen-address=:8080' -m 64m
 ----
 ====
 
 Also, `localhost:9090` in `prometheus.yml` should be `localhost:8080`.
 
-The file should resemble the following listing to work with the demo setup (change `github-analytics-sc-pipelines.cfapps.io`
+The file should resemble the following listing to work with the demo setup (change `github-analytics-cloud-pipelines.cfapps.io`
 to your `github-analytics` installation).
 
 ====
@@ -88,11 +88,11 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['github-analytics-sc-pipelines.cfapps.io']
+      - targets: ['github-analytics-cloud-pipelines.cfapps.io']
 ----
 ====
 
-A deployed version for the Cloud Pipelines demo is available https://sc-pipelines-prometheus.cfapps.io/[here].
+A deployed version for the Cloud Pipelines demo is available https://cloudpipelines-prometheus.cfapps.io/[here].
 
 === Running Grafana on CF
 
@@ -104,10 +104,10 @@ and set `http_port = 8080` in `conf/default.ini`. Then run the following the com
 ====
 [source,bash]
 ----
-cf push sc-pipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -m 64m
+cf push cloudpipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -m 64m
 ----
 ====
 
 The demo uses Grafana Dashboard with an ID of `2471`.
 
-A deployed version for the Cloud Pipelines demo is available https://sc-pipelines-grafana.cfapps.io/[here]
+A deployed version for the Cloud Pipelines demo is available https://cloudpipelines-grafana.cfapps.io/[here]

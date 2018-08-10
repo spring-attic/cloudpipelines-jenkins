@@ -130,11 +130,11 @@ The environment variables that are used in all of the jobs are as follows:
 [frame="topbot",options="header,footer"]
 |======================
 |Property Name  | Property Description | Default value
-|`DOCKER_REGISTRY_ORGANIZATION` | Name of the docker organization to which Docker images should be deployed | `scpipelines`
+|`DOCKER_REGISTRY_ORGANIZATION` | Name of the docker organization to which Docker images should be deployed | `cloudpipelines`
 |`DOCKER_REGISTRY_CREDENTIAL_ID` | Credential ID used to push Docker images | `docker-registry`
 |`DOCKER_SERVER_ID` | Server ID in `settings.xml` and Maven builds | `docker-repo`
 |`DOCKER_EMAIL` | Email used to connect to Docker registry and Maven builds | `change@me.com`
-|`DOCKER_REGISTRY_ORGANIZATION` | URL of the Kubernetes cluster for the test environment | `scpipelines`
+|`DOCKER_REGISTRY_ORGANIZATION` | URL of the Kubernetes cluster for the test environment | `cloudpipelines`
 |`DOCKER_REGISTRY_URL` | URL of the docker registry | `https://index.docker.io/v1/`
 |`PAAS_TEST_API_URL` | URL of the API of the Kubernetes cluster for the test environment | `192.168.99.100:8443`
 |`PAAS_STAGE_API_URL` | URL of the API of the Kubernetes cluster for the stage environment  | `192.168.99.100:8443`
@@ -163,9 +163,9 @@ The environment variables that are used in all of the jobs are as follows:
 |`PAAS_TEST_SYSTEM_NAME` | Name of the system for the test environment | `minikube`
 |`PAAS_STAGE_SYSTEM_NAME` | Name of the system for the stage environment | `minikube`
 |`PAAS_PROD_SYSTEM_NAME` | Name of the system for the prod environment | `minikube`
-|`PAAS_TEST_NAMESPACE` | Namespace for the test environment | `sc-pipelines-test`
-|`PAAS_STAGE_NAMESPACE` | Namespace for the stage environment | `sc-pipelines-stage`
-|`PAAS_PROD_NAMESPACE` | Namespace for the prod environment | `sc-pipelines-prod`
+|`PAAS_TEST_NAMESPACE` | Namespace for the test environment | `cloudpipelines-test`
+|`PAAS_STAGE_NAMESPACE` | Namespace for the stage environment | `cloudpipelines-stage`
+|`PAAS_PROD_NAMESPACE` | Namespace for the prod environment | `cloudpipelines-prod`
 |`KUBERNETES_MINIKUBE` | Whether to connect to Minikube | `true`
 |`REPO_WITH_BINARIES_FOR_UPLOAD` | URL of the repository with the deployed jars | `http://artifactory:8081/artifactory/libs-release-local`
 |`REPO_WITH_BINARIES_CREDENTIAL_ID` | Credential ID used for the repository with jars | `repo-with-binaries`
@@ -224,7 +224,7 @@ We need a Persistent Disk for our Jenkins installation. Create it as follows:
 [source,bash]
 ----
 $ ZONE=us-east1-b
-$ gcloud compute disks create --size=200GB --zone=${ZONE} sc-pipelines-jenkins-disk
+$ gcloud compute disks create --size=200GB --zone=${ZONE} cloudpipelines-jenkins-disk
 ----
 ====
 

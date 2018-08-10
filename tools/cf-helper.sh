@@ -16,11 +16,11 @@ PAAS_STAGE_ORG="${PAAS_STAGE_ORG:-pcfdev-org}"
 export PAAS_PROD_ORG
 PAAS_PROD_ORG="${PAAS_PROD_ORG:-pcfdev-org}"
 export PAAS_TEST_SPACE_PREFIX
-PAAS_TEST_SPACE_PREFIX="${PAAS_TEST_SPACE_PREFIX:-sc-pipelines-test}"
+PAAS_TEST_SPACE_PREFIX="${PAAS_TEST_SPACE_PREFIX:-cloudpipelines-test}"
 export PAAS_STAGE_SPACE
-PAAS_STAGE_SPACE="${PAAS_STAGE_SPACE:-sc-pipelines-stage}"
+PAAS_STAGE_SPACE="${PAAS_STAGE_SPACE:-cloudpipelines-stage}"
 export PAAS_PROD_SPACE
-PAAS_PROD_SPACE="${PAAS_PROD_SPACE:-sc-pipelines-prod}"
+PAAS_PROD_SPACE="${PAAS_PROD_SPACE:-cloudpipelines-prod}"
 export APPLICATION_HOST
 APPLICATION_HOST="${APPLICATION_HOST:-local.pcfdev.io}"
 export CF_API_URL
@@ -32,7 +32,7 @@ CF_PASSWORD="${CF_PASSWORD:-admin}"
 export CF_DEFAULT_ORG
 CF_DEFAULT_ORG="${CF_DEFAULT_ORG:-pcfdev-org}"
 export CF_DEFAULT_SPACE
-CF_DEFAULT_SPACE="${CF_DEFAULT_SPACE:-sc-pipelines-test}"
+CF_DEFAULT_SPACE="${CF_DEFAULT_SPACE:-cloudpipelines-test}"
 export ARTIFACTORY_URL
 ARTIFACTORY_URL="${ARTIFACTORY_URL:-http://repo.spring.io/libs-milestone}"
 export EUREKA_MEMORY

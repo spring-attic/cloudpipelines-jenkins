@@ -48,10 +48,9 @@ boolean autoProd = binding.variables["AUTO_DEPLOY_TO_PROD"] == null ? false : Bo
 boolean apiCompatibilityStep = binding.variables["API_COMPATIBILITY_STEP_REQUIRED"] == null ? true : Boolean.parseBoolean(binding.variables["API_COMPATIBILITY_STEP_REQUIRED"])
 boolean rollbackStep = binding.variables["DB_ROLLBACK_STEP_REQUIRED"] == null ? true : Boolean.parseBoolean(binding.variables["DB_ROLLBACK_STEP_REQUIRED"])
 boolean stageStep = binding.variables["DEPLOY_TO_STAGE_STEP_REQUIRED"] == null ? true : Boolean.parseBoolean(binding.variables["DEPLOY_TO_STAGE_STEP_REQUIRED"])
-String scriptsDir = binding.variables["SCRIPTS_DIR"] ?: "${WORKSPACE}/common/src/main/bash"
 // TODO: Automate customization of this value
 String toolsBranch = binding.variables["TOOLS_BRANCH"] ?: "master"
-String toolsRepo = binding.variables["TOOLS_REPOSITORY"] ?: "https://github.com/spring-cloud/spring-cloud-pipelines/raw/${toolsBranch}/dist/spring-cloud-pipelines.tar.gz"
+String toolsRepo = binding.variables["TOOLS_REPOSITORY"] ?: "https://github.com/cloudpipelines/scripts/raw/${toolsBranch}/dist/scripts.tar.gz"
 RepoType repoType = RepoType.from(toolsRepo)
 // TODO: K8S - consider parametrization
 // remove::start[K8S]
@@ -82,7 +81,7 @@ Closure<String> downloadTools = { String repoUrl ->
 	if (repoType == RepoType.TARBALL) {
 		return script + """rm -rf .git/tools && mkdir -p .git/tools && pushd .git/tools && curl -Lk "${toolsRepo}" -o pipelines.tar.gz && tar xf pipelines.tar.gz --strip-components 1 && popd"""
 	}
-	return script + """rm -rf .git/tools && git clone -b ${toolsBranch} --single-branch ${toolsRepo} .git/tools"""
+	return script + """rm -rf .git/tools && git clone --recursive -b ${toolsBranch} --single-branch ${toolsRepo} .git/tools"""
 }
 
 // we're parsing the REPOS parameter to retrieve list of repos to build
@@ -169,13 +168,13 @@ parsedRepos.each {
 		${if (apiCompatibilityStep) {
 			return '''\
 				echo "First running api compatibility check, so that what we commit and upload at the end is just built project"
-				${WORKSPACE}/.git/tools/common/src/main/bash/build_api_compatibility_check.sh
+				${WORKSPACE}/.git/tools/src/main/bash/build_api_compatibility_check.sh
 				'''
 			}
 			return ''
 		}
 		echo "Running the build and upload script"
-		\${WORKSPACE}/.git/tools/common/src/main/bash/build_and_upload.sh
+		\${WORKSPACE}/.git/tools/src/main/bash/build_and_upload.sh
 		""")
 		}
 		publishers {
@@ -233,7 +232,7 @@ parsedRepos.each {
 		steps {
 			shell(downloadTools(fullGitRepo))
 			shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/test_deploy.sh
+		${WORKSPACE}/.git/tools/src/main/bash/test_deploy.sh
 		''')
 		}
 		publishers {
@@ -286,7 +285,7 @@ parsedRepos.each {
 		steps {
 			shell(downloadTools(fullGitRepo))
 			shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/test_smoke.sh
+		${WORKSPACE}/.git/tools/src/main/bash/test_smoke.sh
 		''')
 		}
 		publishers {
@@ -345,7 +344,7 @@ parsedRepos.each {
 			steps {
 				shell(downloadTools(fullGitRepo))
 				shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/test_rollback_deploy.sh
+		${WORKSPACE}/.git/tools/src/main/bash/test_rollback_deploy.sh
 		''')
 			}
 			publishers {
@@ -400,7 +399,7 @@ parsedRepos.each {
 			steps {
 				shell(downloadTools(fullGitRepo))
 				shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/test_rollback_smoke.sh
+		${WORKSPACE}/.git/tools/src/main/bash/test_rollback_smoke.sh
 		''')
 			}
 			publishers {
@@ -481,7 +480,7 @@ parsedRepos.each {
 			steps {
 				shell(downloadTools(fullGitRepo))
 				shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/stage_deploy.sh
+		${WORKSPACE}/.git/tools/src/main/bash/stage_deploy.sh
 		''')
 			}
 			publishers {
@@ -544,7 +543,7 @@ parsedRepos.each {
 			steps {
 				shell(downloadTools(fullGitRepo))
 				shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/stage_e2e.sh
+		${WORKSPACE}/.git/tools/src/main/bash/stage_e2e.sh
 		''')
 			}
 			publishers {
@@ -608,7 +607,7 @@ parsedRepos.each {
 		steps {
 			shell(downloadTools(fullGitRepo))
 			shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/prod_deploy.sh
+		${WORKSPACE}/.git/tools/src/main/bash/prod_deploy.sh
 		''')
 		}
 		publishers {
@@ -669,7 +668,7 @@ parsedRepos.each {
 			shell(downloadTools(fullGitRepo))
 			shell("""#!/bin/bash
 		${bashFunctions.setupGitCredentials(fullGitRepo)}
-		\${WORKSPACE}/.git/tools/common/src/main/bash/prod_rollback.sh
+		\${WORKSPACE}/.git/tools/src/main/bash/prod_rollback.sh
 		""")
 		}
 	}
@@ -704,7 +703,7 @@ parsedRepos.each {
 		steps {
 			shell(downloadTools(fullGitRepo))
 			shell('''#!/bin/bash
-		${WORKSPACE}/.git/tools/common/src/main/bash/prod_complete.sh
+		${WORKSPACE}/.git/tools/src/main/bash/prod_complete.sh
 		''')
 		}
 	}

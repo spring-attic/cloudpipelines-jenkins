@@ -7,4 +7,4 @@ applications:
     SPRING_PROFILES_ACTIVE: cloud
     DEBUG: "true"
     # TODO: Remove this from github eureka codebases
-    APPLICATION_DOMAIN: github-eureka-sc-pipelines-test.cfapps.io
+    APPLICATION_DOMAIN: github-eureka-cloudpipelines-test.cfapps.io

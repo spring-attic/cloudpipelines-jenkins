@@ -176,11 +176,11 @@ The environment variables that are used in all of the jobs are as follows:
 |`PAAS_STAGE_API_URL` | The URL to the CF API for the STAGE environment | `api.local.pcfdev.io`
 |`PAAS_PROD_API_URL` | The URL to the CF API for the PROD environment | `api.local.pcfdev.io`
 |`PAAS_TEST_ORG`    | Name of the org for the test env | `pcfdev-org`
-|`PAAS_TEST_SPACE_PREFIX`  | Prefix of the name of the CF space for the test environment to which the app name is appended | `sc-pipelines-test`
+|`PAAS_TEST_SPACE_PREFIX`  | Prefix of the name of the CF space for the test environment to which the app name is appended | `cloudpipelines-test`
 |`PAAS_STAGE_ORG`   | Name of the org for the stage environment | `pcfdev-org`
-|`PAAS_STAGE_SPACE` | Name of the space for the stage environment | `sc-pipelines-stage`
+|`PAAS_STAGE_SPACE` | Name of the space for the stage environment | `cloudpipelines-stage`
 |`PAAS_PROD_ORG`   | Name of the org for the prod environment | `pcfdev-org`
-|`PAAS_PROD_SPACE` | Name of the space for the prod environment | `sc-pipelines-prod`
+|`PAAS_PROD_SPACE` | Name of the space for the prod environment | `cloudpipelines-prod`
 |`REPO_WITH_BINARIES_FOR_UPLOAD` | URL of the repository with the deployed jars | `http://artifactory:8081/artifactory/libs-release-local`
 |`M2_SETTINGS_REPO_ID` | The ID of server from Maven `settings.xml` | `artifactory-local`
 |`JDK_VERSION` | The name of the JDK installation | `jdk8`

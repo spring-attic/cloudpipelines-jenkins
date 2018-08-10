@@ -19,7 +19,7 @@ String repos = binding.variables["REPOS"] ?: [
 		"https://github.com/spring-cloud-samples/github-webhook"
 	].join(",")
 List<String> parsedRepos = repos.split(",")
-String jenkinsfileDir = binding.variables["JENKINSFILE_DIR"] ?: "${WORKSPACE}/jenkins/declarative-pipeline"
+String jenkinsfileDir = binding.variables["JENKINSFILE_DIR"] ?: "${WORKSPACE}/declarative-pipeline/src/main/resources"
 
 Map<String, Object> envs = [:]
 envs['PIPELINE_VERSION_FORMAT'] = binding.variables["PIPELINE_VERSION_FORMAT"] ?: '''${BUILD_DATE_FORMATTED, \"yyMMdd_HHmmss\"}-VERSION'''
@@ -32,7 +32,7 @@ envs['JDK_VERSION'] = binding.variables["JDK_VERSION"] ?: "jdk8"
 envs['GIT_EMAIL'] = binding.variables["GIT_EMAIL"] ?: "pivo@tal.com"
 envs['GIT_NAME'] = binding.variables["GIT_NAME"] ?: "Pivo Tal"
 envs["PAAS_TYPE"] = binding.variables["PAAS_TYPE"] ?: "cf"
-envs['TOOLS_REPOSITORY'] = binding.variables["TOOLS_REPOSITORY"] ?: 'https://github.com/spring-cloud/spring-cloud-pipelines'
+envs['TOOLS_REPOSITORY'] = binding.variables["TOOLS_REPOSITORY"] ?: 'https://github.com/cloudpipelines/scripts'
 envs["TOOLS_BRANCH"] = binding.variables["TOOLS_BRANCH"] ?: "master"
 envs["M2_SETTINGS_REPO_ID"] = binding.variables["M2_SETTINGS_REPO_ID"] ?: "artifactory-local"
 envs["REPO_WITH_BINARIES_FOR_UPLOAD"] = binding.variables["REPO_WITH_BINARIES_FOR_UPLOAD"] ?: "http://artifactory:8081/artifactory/libs-release-local"
@@ -50,11 +50,11 @@ envs["PAAS_TEST_API_URL"] = binding.variables["PAAS_TEST_API_URL"] ?: "api.local
 envs["PAAS_STAGE_API_URL"] = binding.variables["PAAS_STAGE_API_URL"] ?: "api.local.pcfdev.io"
 envs["PAAS_PROD_API_URL"] = binding.variables["PAAS_PROD_API_URL"] ?: "api.local.pcfdev.io"
 envs["PAAS_TEST_ORG"] = binding.variables["PAAS_TEST_ORG"] ?: "pcfdev-org"
-envs["PAAS_TEST_SPACE_PREFIX"] = binding.variables["PAAS_TEST_SPACE_PREFIX"] ?: "sc-pipelines-test"
+envs["PAAS_TEST_SPACE_PREFIX"] = binding.variables["PAAS_TEST_SPACE_PREFIX"] ?: "cloudpipelines-test"
 envs["PAAS_STAGE_ORG"] = binding.variables["PAAS_STAGE_ORG"] ?: "pcfdev-org"
-envs["PAAS_STAGE_SPACE"] = binding.variables["PAAS_STAGE_SPACE"] ?: "sc-pipelines-stage"
+envs["PAAS_STAGE_SPACE"] = binding.variables["PAAS_STAGE_SPACE"] ?: "cloudpipelines-stage"
 envs["PAAS_PROD_ORG"] = binding.variables["PAAS_PROD_ORG"] ?: "pcfdev-org"
-envs["PAAS_PROD_SPACE"] = binding.variables["PAAS_PROD_SPACE"] ?: "sc-pipelines-prod"
+envs["PAAS_PROD_SPACE"] = binding.variables["PAAS_PROD_SPACE"] ?: "cloudpipelines-prod"
 envs["PAAS_HOSTNAME_UUID"] = binding.variables["PAAS_HOSTNAME_UUID"] ?: ""
 envs["PIPELINE_DESCRIPTOR"] = binding.variables["PIPELINE_DESCRIPTOR"] ?: ""
 // remove::end[CF]
@@ -86,9 +86,9 @@ envs["PAAS_PROD_CLUSTER_USERNAME"] = binding.variables["PAAS_PROD_CLUSTER_USERNA
 envs["PAAS_TEST_SYSTEM_NAME"] = binding.variables["PAAS_TEST_SYSTEM_NAME"] ?: "minikube"
 envs["PAAS_STAGE_SYSTEM_NAME"] = binding.variables["PAAS_STAGE_SYSTEM_NAME"] ?: "minikube"
 envs["PAAS_PROD_SYSTEM_NAME"] = binding.variables["PAAS_PROD_SYSTEM_NAME"] ?: "minikube"
-envs["PAAS_TEST_NAMESPACE"] = binding.variables["PAAS_TEST_NAMESPACE"] ?: "sc-pipelines-test"
-envs["PAAS_STAGE_NAMESPACE"] = binding.variables["PAAS_STAGE_NAMESPACE"] ?: "sc-pipelines-stage"
-envs["PAAS_PROD_NAMESPACE"] = binding.variables["PAAS_PROD_NAMESPACE"] ?: "sc-pipelines-prod"
+envs["PAAS_TEST_NAMESPACE"] = binding.variables["PAAS_TEST_NAMESPACE"] ?: "cloudpipelines-test"
+envs["PAAS_STAGE_NAMESPACE"] = binding.variables["PAAS_STAGE_NAMESPACE"] ?: "cloudpipelines-stage"
+envs["PAAS_PROD_NAMESPACE"] = binding.variables["PAAS_PROD_NAMESPACE"] ?: "cloudpipelines-prod"
 envs["KUBERNETES_MINIKUBE"] = binding.variables["KUBERNETES_MINIKUBE"] ?: "true"
 envs["MYSQL_ROOT_CREDENTIAL_ID"] = binding.variables["MYSQL_ROOT_CREDENTIAL_ID"] ?: ""
 envs["MYSQL_CREDENTIAL_ID"] = binding.variables["MYSQL_CREDENTIAL_ID"] ?: ""

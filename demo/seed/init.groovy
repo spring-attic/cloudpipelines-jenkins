@@ -165,7 +165,7 @@ if (mySqlCredsMissing) {
 
 println "Creating the seed job"
 modifiedSeedJob = modifiedSeedJob
-	.replace('scpipelines', "${System.getenv('DOCKER_REGISTRY_ORGANIZATION') ?: "scpipelines"}")
+	.replace('cloudpipelines', "${System.getenv('DOCKER_REGISTRY_ORGANIZATION') ?: "cloudpipelines"}")
 	.replace("change@me.com", dockerRegistryEmail)
 // remove::end[K8S]
 

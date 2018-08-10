@@ -11,7 +11,7 @@ include::DEMO_SETUP.adoc[]
 In a real-world scenario, we would not want to automatically provision services such as
 RabbitMQ, MySQL, or Eureka each time we deploy a new application to production. Typically,
 production is provisioned manually (often by using automated solutions). In our case, before
-you deploy to production, you can provision the `sc-pipelines-prod` namespace by using the
+you deploy to production, you can provision the `cloudpipelines-prod` namespace by using the
  `k8s-helper.sh`. To do so, call the following script:
 
 ====
@@ -625,7 +625,7 @@ serverFiles:
         metrics_path: '/prometheus'
         static_configs:
           - targets:
-            - github-analytics.sc-pipelines-prod.svc.cluster.local:8080
+            - github-analytics.cloudpipelines-prod.svc.cluster.local:8080
       - job_name: prometheus
         static_configs:
           - targets:
@@ -822,7 +822,7 @@ Next, create the prometheus installation with the predefined values. To do so, r
 ====
 [source,bash]
 ----
-$ helm install --name sc-pipelines-prometheus stable/prometheus -f values.yaml
+$ helm install --name cloudpipelines-prometheus stable/prometheus -f values.yaml
 ----
 ====
 
@@ -833,7 +833,7 @@ Then you should see the following output:
 ----
 NOTES:
 The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
-sc-pipelines-prometheus-prometheus-server.default.svc.cluster.local
+cloudpipelines-prometheus-prometheus-server.default.svc.cluster.local
 
 
 Get the Prometheus server URL by running these commands in the same shell:
@@ -842,7 +842,7 @@ Get the Prometheus server URL by running these commands in the same shell:
 
 
 The Prometheus alertmanager can be accessed via port 80 on the following DNS name from within your cluster:
-sc-pipelines-prometheus-prometheus-alertmanager.default.svc.cluster.local
+cloudpipelines-prometheus-prometheus-alertmanager.default.svc.cluster.local
 
 
 Get the Alertmanager URL by running these commands in the same shell:
@@ -851,7 +851,7 @@ Get the Alertmanager URL by running these commands in the same shell:
 
 
 The Prometheus PushGateway can be accessed via port 9091 on the following DNS name from within your cluster:
-sc-pipelines-prometheus-prometheus-pushgateway.default.svc.cluster.local
+cloudpipelines-prometheus-prometheus-pushgateway.default.svc.cluster.local
 
 
 Get the PushGateway URL by running these commands in the same shell:
@@ -870,7 +870,7 @@ Use Helm to install Grafana, by running the following command:
 ====
 [source,bash]
 ----
-$ helm install --name sc-pipelines-grafana stable/grafana
+$ helm install --name cloudpipelines-grafana stable/grafana
 ----
 ====
 
@@ -882,15 +882,15 @@ You should see the following output:
 NOTES:
 1. Get your 'admin' user password by running:
 
-   kubectl get secret --namespace default sc-pipelines-grafana-grafana -o jsonpath="{.data.grafana-admin-password}" | base64 --decode ; echo
+   kubectl get secret --namespace default cloudpipelines-grafana-grafana -o jsonpath="{.data.grafana-admin-password}" | base64 --decode ; echo
 
 2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
 
-   sc-pipelines-grafana-grafana.default.svc.cluster.local
+   cloudpipelines-grafana-grafana.default.svc.cluster.local
 
    Get the Grafana URL to visit by running these commands in the same shell:
 
-     export POD_NAME=$(kubectl get pods --namespace default -l "app=sc-pipelines-grafana-grafana,component=grafana" -o jsonpath="{.items[0].metadata.name}")
+     export POD_NAME=$(kubectl get pods --namespace default -l "app=cloudpipelines-grafana-grafana,component=grafana" -o jsonpath="{.items[0].metadata.name}")
      kubectl --namespace default port-forward $POD_NAME 3000
 
 3. Login with the password from step 1 and the username: admin
@@ -898,7 +898,7 @@ NOTES:
 ====
 
 Perform the steps listed in the preceding output and add the Grafana's datasource
-as Prometheus with the following URL: `http://sc-pipelines-prometheus-prometheus-server.default.svc.cluster.local`
+as Prometheus with the following URL: `http://cloudpipelines-prometheus-prometheus-server.default.svc.cluster.local`
 
 You can pick up the dashboard with the Grafana ID (2471). This is the
 default dashboard for the Cloud Pipelines demo apps.
@@ -912,7 +912,7 @@ locally to a port `9876`, as follows:
 ====
 [source,bash]
 ----
-$ kubectl port-forward --namespace=sc-pipelines-prod $( kubectl get pods --namespace=sc-pipelines-prod | grep github-webhook | head -1 | awk '{print $1}' ) 9876:8080
+$ kubectl port-forward --namespace=cloudpipelines-prod $( kubectl get pods --namespace=cloudpipelines-prod | grep github-webhook | head -1 | awk '{print $1}' ) 9876:8080
 ----
 ====
 

@@ -18,7 +18,7 @@ export PAAS_TYPE=CF
 export ENVIRONMENT=BUILD
 
 # shellcheck source=/dev/null
-source "${WORKSPACE}"/.git/tools/common/src/main/bash/pipeline.sh
+source "${WORKSPACE}"/.git/tools/src/main/bash/pipeline.sh
 
 # Find latest prod version
 readTestPropertiesFromFile "${OUTPUT_FOLDER}/trigger.properties"

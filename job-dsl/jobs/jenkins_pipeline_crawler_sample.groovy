@@ -1,14 +1,14 @@
 import javaposse.jobdsl.dsl.DslFactory
 
-import org.springframework.cloud.pipelines.common.GeneratedJobs
-import org.springframework.cloud.pipelines.common.PipelineDefaults
-import org.springframework.cloud.pipelines.common.PipelineDescriptor
-import org.springframework.cloud.pipelines.common.PipelineFactory
-import org.springframework.cloud.pipelines.common.PipelineJobsFactory
-import org.springframework.cloud.pipelines.common.PipelineJobsFactoryProvider
-import org.springframework.cloud.pipelines.default_pipeline.DefaultPipelineJobsFactory
-import org.springframework.cloud.pipelines.default_pipeline.DefaultView
-import org.springframework.cloud.pipelines.test.TestUtils
+import io.cloudpipelines.common.GeneratedJobs
+import io.cloudpipelines.common.PipelineDefaults
+import io.cloudpipelines.common.PipelineDescriptor
+import io.cloudpipelines.common.PipelineFactory
+import io.cloudpipelines.common.PipelineJobsFactory
+import io.cloudpipelines.common.PipelineJobsFactoryProvider
+import io.cloudpipelines.default_pipeline.DefaultPipelineJobsFactory
+import io.cloudpipelines.default_pipeline.DefaultView
+import io.cloudpipelines.test.TestUtils
 import org.springframework.cloud.projectcrawler.OptionsBuilder
 import org.springframework.cloud.projectcrawler.Repository
 import org.springframework.cloud.projectcrawler.ProjectCrawler
@@ -17,7 +17,7 @@ import org.springframework.cloud.projectcrawler.ProjectCrawler
  *  This script contains logic that
  *
  *  - uses the Project Crawler to crawl repos from an organization
- *  - for each repo picks the sc-pipelines.yml descriptor
+ *  - for each repo picks the cloud-pipelines.yml descriptor
  *  - basing on the contents of that repo generates proper deployment pipeline
  *  - generates views for all projects
  */

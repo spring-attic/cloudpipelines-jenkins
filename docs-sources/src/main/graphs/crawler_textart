@@ -1,5 +1,5 @@
-object Jenkins Seed SCPipelines Github
-Jenkins->SCPipelines: Copy the seed job from the repo
+object Jenkins Seed CloudPipes Github
+Jenkins->CloudPipes: Copy the seed job from the repo
 Jenkins->Seed: Run seed job to generate Spinnaker pipelines and jobs
 Seed->Github: Crawl org [foo] and fetch all repositories
 Github->Seed: In org [foo] there [a,b,c] repos

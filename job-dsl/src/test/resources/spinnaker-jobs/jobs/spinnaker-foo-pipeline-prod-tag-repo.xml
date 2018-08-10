@@ -10,7 +10,7 @@
         <EnvInjectJobProperty>
             <info>
                 <propertiesContent>PROJECT_NAME=foo
-PAAS_TEST_SPACE_PREFIX=sc-pipelines-test</propertiesContent>
+PAAS_TEST_SPACE_PREFIX=cloudpipelines-test</propertiesContent>
                 <loadFilesFromMaster>false</loadFilesFromMaster>
             </info>
             <on>true</on>

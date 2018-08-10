@@ -15,7 +15,7 @@ factory.job('meta-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -28,14 +28,11 @@ factory.job('meta-seed') {
 	steps {
 		gradle("clean build -x test")
 		dsl {
-			external('jenkins/seed/jenkins_pipeline.groovy')
+			external('demo/seed/jenkins_pipeline.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
-			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
-			].join("\n"))
 		}
 	}
 	wrappers {
@@ -54,7 +51,7 @@ factory.job('pipelines-ci') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -79,7 +76,7 @@ factory.job('jenkins-pipeline-cf-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -114,7 +111,7 @@ factory.job('jenkins-pipeline-cf-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
@@ -122,17 +119,17 @@ factory.job('jenkins-pipeline-cf-seed') {
 			booleanParam('DB_ROLLBACK_STEP_REQUIRED', true, 'Should DB rollback step be present')
 			booleanParam('DEPLOY_TO_STAGE_STEP_REQUIRED', true, 'Should deploy to stage step be present')
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 
 			stringParam('PAAS_TEST_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for test env')
 			stringParam('PAAS_STAGE_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for stage env')
 			stringParam('PAAS_PROD_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for prod env')
 			stringParam('PAAS_TEST_ORG', 'pcfdev-org', 'Name of the CF organization for test env')
-			stringParam('PAAS_TEST_SPACE_PREFIX', 'sc-pipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
+			stringParam('PAAS_TEST_SPACE_PREFIX', 'cloudpipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
 			stringParam('PAAS_STAGE_ORG', 'pcfdev-org', 'Name of the CF organization for stage env')
-			stringParam('PAAS_STAGE_SPACE', 'sc-pipelines-stage', 'Name of the CF space for stage env')
+			stringParam('PAAS_STAGE_SPACE', 'cloudpipelines-stage', 'Name of the CF space for stage env')
 			stringParam('PAAS_PROD_ORG', 'pcfdev-org', 'Name of the CF organization for prod env')
-			stringParam('PAAS_PROD_SPACE', 'sc-pipelines-prod', 'Name of the CF space for prod env')
+			stringParam('PAAS_PROD_SPACE', 'cloudpipelines-prod', 'Name of the CF space for prod env')
 			stringParam('PAAS_TEST_CREDENTIAL_ID', 'cf-test', 'ID of the CF credentials for test environment')
 			stringParam('PAAS_STAGE_CREDENTIAL_ID', 'cf-stage', 'ID of the CF credentials for stage environment')
 			stringParam('PAAS_PROD_CREDENTIAL_ID', 'cf-prod', 'ID of the CF credentials for prod environment')
@@ -142,7 +139,7 @@ factory.job('jenkins-pipeline-cf-seed') {
 	steps {
 		gradle("clean build -x test")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_sample*.groovy')
+			external('job-dsl/jobs/jenkins_pipeline_sample*.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
@@ -158,7 +155,7 @@ factory.job('jenkins-pipeline-cf-crawler-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -197,7 +194,7 @@ factory.job('jenkins-pipeline-cf-crawler-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', true, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', true, 'Should deployment to prod be automatic')
@@ -205,17 +202,17 @@ factory.job('jenkins-pipeline-cf-crawler-seed') {
 			booleanParam('DB_ROLLBACK_STEP_REQUIRED', true, 'Should DB rollback step be present')
 			booleanParam('DEPLOY_TO_STAGE_STEP_REQUIRED', true, 'Should deploy to stage step be present')
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 
 			stringParam('PAAS_TEST_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for test env')
 			stringParam('PAAS_STAGE_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for stage env')
 			stringParam('PAAS_PROD_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for prod env')
 			stringParam('PAAS_TEST_ORG', 'pcfdev-org', 'Name of the CF organization for test env')
-			stringParam('PAAS_TEST_SPACE_PREFIX', 'sc-pipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
+			stringParam('PAAS_TEST_SPACE_PREFIX', 'cloudpipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
 			stringParam('PAAS_STAGE_ORG', 'pcfdev-org', 'Name of the CF organization for stage env')
-			stringParam('PAAS_STAGE_SPACE', 'sc-pipelines-stage', 'Name of the CF space for stage env')
+			stringParam('PAAS_STAGE_SPACE', 'cloudpipelines-stage', 'Name of the CF space for stage env')
 			stringParam('PAAS_PROD_ORG', 'pcfdev-org', 'Name of the CF organization for prod env')
-			stringParam('PAAS_PROD_SPACE', 'sc-pipelines-prod', 'Name of the CF space for prod env')
+			stringParam('PAAS_PROD_SPACE', 'cloudpipelines-prod', 'Name of the CF space for prod env')
 			stringParam('PAAS_TEST_CREDENTIAL_ID', 'cf-test', 'ID of the CF credentials for test environment')
 			stringParam('PAAS_STAGE_CREDENTIAL_ID', 'cf-stage', 'ID of the CF credentials for stage environment')
 			stringParam('PAAS_PROD_CREDENTIAL_ID', 'cf-prod', 'ID of the CF credentials for prod environment')
@@ -225,13 +222,13 @@ factory.job('jenkins-pipeline-cf-crawler-seed') {
 	steps {
 		gradle("clean build -x test")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_crawler_sample.groovy')
+			external('job-dsl/jobs/jenkins_pipeline_crawler_sample.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
 			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/bash', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
+				'job-dsl/src/main/groovy', 'job-dsl/src/main/bash', 'job-dsl/src/main/resources', 'job-dsl/build/lib/*.*'
 			].join("\n"))
 		}
 	}
@@ -253,7 +250,7 @@ factory.job('jenkins-spinnaker-cf-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -290,10 +287,10 @@ factory.job('jenkins-spinnaker-cf-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 			// Spinnaker
 			stringParam('SPINNAKER_JENKINS_MASTER', '', "The name of Jenkins master used by Spinnaker")
 			stringParam('SPINNAKER_TEST_HOSTNAME', '', "The hostname appended to the test routes")
@@ -304,11 +301,11 @@ factory.job('jenkins-spinnaker-cf-seed') {
 			stringParam('SPINNAKER_PROD_DEPLOYMENT_ACCOUNT', '', "The name of account used by Spinnaker for deployment")
 			// PAAS
 			stringParam('PAAS_TEST_ORG', 'pcfdev-org', 'Name of the CF organization for test env')
-			stringParam('PAAS_TEST_SPACE_PREFIX', 'sc-pipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
+			stringParam('PAAS_TEST_SPACE_PREFIX', 'cloudpipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
 			stringParam('PAAS_STAGE_ORG', 'pcfdev-org', 'Name of the CF organization for stage env')
-			stringParam('PAAS_STAGE_SPACE', 'sc-pipelines-stage', 'Name of the CF space for stage env')
+			stringParam('PAAS_STAGE_SPACE', 'cloudpipelines-stage', 'Name of the CF space for stage env')
 			stringParam('PAAS_PROD_ORG', 'pcfdev-org', 'Name of the CF organization for prod env')
-			stringParam('PAAS_PROD_SPACE', 'sc-pipelines-prod', 'Name of the CF space for prod env')
+			stringParam('PAAS_PROD_SPACE', 'cloudpipelines-prod', 'Name of the CF space for prod env')
 			stringParam('PAAS_TEST_CREDENTIAL_ID', 'cf-test', 'ID of the CF credentials for test environment')
 			stringParam('PAAS_STAGE_CREDENTIAL_ID', 'cf-stage', 'ID of the CF credentials for stage environment')
 			stringParam('PAAS_TEST_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for test env')
@@ -318,13 +315,13 @@ factory.job('jenkins-spinnaker-cf-seed') {
 	steps {
 		gradle("clean build -x test --refresh-dependencies")
 		dsl {
-			external('jenkins/jobs/jenkins_spinnaker_pipeline_sample*.groovy')
+			external('job-dsl/jobs/jenkins_spinnaker_pipeline_sample*.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
 			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/bash', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
+				'job-dsl/src/main/groovy', 'job-dsl/src/main/bash', 'job-dsl/src/main/resources', 'job-dsl/build/lib/*.*'
 			].join("\n"))
 		}
 	}
@@ -350,7 +347,7 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -375,7 +372,7 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
@@ -383,17 +380,17 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 			booleanParam('DB_ROLLBACK_STEP_REQUIRED', true, 'Should DB rollback step be present')
 			booleanParam('DEPLOY_TO_STAGE_STEP_REQUIRED', true, 'Should deploy to stage step be present')
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 
 			stringParam('PAAS_TEST_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for test env')
 			stringParam('PAAS_STAGE_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for stage env')
 			stringParam('PAAS_PROD_API_URL', 'api.local.pcfdev.io', 'URL to CF Api for prod env')
 			stringParam('PAAS_TEST_ORG', 'pcfdev-org', 'Name of the CF organization for test env')
-			stringParam('PAAS_TEST_SPACE_PREFIX', 'sc-pipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
+			stringParam('PAAS_TEST_SPACE_PREFIX', 'cloudpipelines-test', 'Prefix of the name of the CF space for the test env to which the app name will be appended')
 			stringParam('PAAS_STAGE_ORG', 'pcfdev-org', 'Name of the CF organization for stage env')
-			stringParam('PAAS_STAGE_SPACE', 'sc-pipelines-stage', 'Name of the CF space for stage env')
+			stringParam('PAAS_STAGE_SPACE', 'cloudpipelines-stage', 'Name of the CF space for stage env')
 			stringParam('PAAS_PROD_ORG', 'pcfdev-org', 'Name of the CF organization for prod env')
-			stringParam('PAAS_PROD_SPACE', 'sc-pipelines-prod', 'Name of the CF space for prod env')
+			stringParam('PAAS_PROD_SPACE', 'cloudpipelines-prod', 'Name of the CF space for prod env')
 			stringParam('PAAS_TEST_CREDENTIAL_ID', 'cf-test', 'ID of the CF credentials for test environment')
 			stringParam('PAAS_STAGE_CREDENTIAL_ID', 'cf-stage', 'ID of the CF credentials for stage environment')
 			stringParam('PAAS_PROD_CREDENTIAL_ID', 'cf-prod', 'ID of the CF credentials for prod environment')
@@ -403,14 +400,11 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 	steps {
 		gradle("clean build -x test")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
+			external('declarative-pipeline/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
-			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
-			].join("\n"))
 		}
 	}
 }
@@ -420,7 +414,7 @@ factory.job('jenkins-pipeline-k8s-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -445,7 +439,7 @@ factory.job('jenkins-pipeline-k8s-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
@@ -461,7 +455,7 @@ factory.job('jenkins-pipeline-k8s-seed') {
 			stringParam('DOCKER_EMAIL', 'change@me.com', "Email used to connect to Docker registry")
 			stringParam('DOCKER_REGISTRY_ORGANIZATION', 'scpipelines', 'URL to Kubernetes cluster for test env')
 			stringParam('DOCKER_REGISTRY_URL', 'https://index.docker.io/v1/', 'URL to the docker registry')
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 
 			stringParam('PAAS_TEST_API_URL', '192.168.99.100:8443', 'URL to Kubernetes cluster for test env')
 			stringParam('PAAS_STAGE_API_URL', '192.168.99.100:8443', 'URL to Kubernetes cluster for stage env')
@@ -490,21 +484,21 @@ factory.job('jenkins-pipeline-k8s-seed') {
 			stringParam('PAAS_TEST_SYSTEM_NAME', 'minikube', "Name for the system for test env")
 			stringParam('PAAS_STAGE_SYSTEM_NAME', 'minikube', "Name for the system for stage env")
 			stringParam('PAAS_PROD_SYSTEM_NAME', 'minikube', "Name for the system for prod env")
-			stringParam('PAAS_TEST_NAMESPACE', 'sc-pipelines-test', 'Namespace for the test env')
-			stringParam('PAAS_STAGE_NAMESPACE', 'sc-pipelines-stage', 'Namespace for the stage env')
-			stringParam('PAAS_PROD_NAMESPACE', 'sc-pipelines-prod', 'Namespace for the prod env')
+			stringParam('PAAS_TEST_NAMESPACE', 'cloudpipelines-test', 'Namespace for the test env')
+			stringParam('PAAS_STAGE_NAMESPACE', 'cloudpipelines-stage', 'Namespace for the stage env')
+			stringParam('PAAS_PROD_NAMESPACE', 'cloudpipelines-prod', 'Namespace for the prod env')
 		}
 	}
 	steps {
 		gradle("clean build -x test")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_sample*.groovy')
+			external('job-dsl/jobs/jenkins_pipeline_sample*.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
 			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
+				'job-dsl/src/main/groovy', 'job-dsl/src/main/resources', 'job-dsl/build/lib/*.*'
 			].join("\n"))
 		}
 	}
@@ -514,7 +508,7 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -539,7 +533,7 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines/archive/master.tar.gz', "The URL to tarball containing pipeline functions repository. Also git repository is supported (for backward compatibility)")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball containing pipeline functions repository. Also git repository is supported (for backward compatibility)")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
@@ -555,7 +549,7 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 			stringParam('DOCKER_EMAIL', 'change@me.com', "Email used to connect to Docker registry")
 			stringParam('DOCKER_REGISTRY_ORGANIZATION', 'scpipelines', 'URL to Kubernetes cluster for test env')
 			stringParam('DOCKER_REGISTRY_URL', 'https://index.docker.io/v1/', 'URL to the docker registry')
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 
 			stringParam('PAAS_TEST_API_URL', '192.168.99.100:8443', 'URL to Kubernetes cluster for test env')
 			stringParam('PAAS_STAGE_API_URL', '192.168.99.100:8443', 'URL to Kubernetes cluster for stage env')
@@ -584,22 +578,19 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 			stringParam('PAAS_TEST_SYSTEM_NAME', 'minikube', "Name for the system for test env")
 			stringParam('PAAS_STAGE_SYSTEM_NAME', 'minikube', "Name for the system for stage env")
 			stringParam('PAAS_PROD_SYSTEM_NAME', 'minikube', "Name for the system for prod env")
-			stringParam('PAAS_TEST_NAMESPACE', 'sc-pipelines-test', 'Namespace for the test env')
-			stringParam('PAAS_STAGE_NAMESPACE', 'sc-pipelines-stage', 'Namespace for the stage env')
-			stringParam('PAAS_PROD_NAMESPACE', 'sc-pipelines-prod', 'Namespace for the prod env')
+			stringParam('PAAS_TEST_NAMESPACE', 'cloudpipelines-test', 'Namespace for the test env')
+			stringParam('PAAS_STAGE_NAMESPACE', 'cloudpipelines-stage', 'Namespace for the stage env')
+			stringParam('PAAS_PROD_NAMESPACE', 'cloudpipelines-prod', 'Namespace for the prod env')
 		}
 	}
 	steps {
 		gradle("clean build -x test")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
+			external('declarative-pipeline/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
-			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
-			].join("\n"))
 		}
 	}
 }
@@ -609,7 +600,7 @@ factory.job('jenkins-pipeline-ansible-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -635,7 +626,7 @@ factory.job('jenkins-pipeline-ansible-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines', "The URL containing pipeline functions repository")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts', "The URL containing pipeline functions repository")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
@@ -643,7 +634,7 @@ factory.job('jenkins-pipeline-ansible-seed') {
 			booleanParam('DB_ROLLBACK_STEP_REQUIRED', true, 'Should DB rollback step be present')
 			booleanParam('DEPLOY_TO_STAGE_STEP_REQUIRED', true, 'Should deploy to stage step be present')
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 			stringParam('ANSIBLE_INVENTORY_DIR', '', "Directory where the Ansible inventory files will be stored")
 			textParam('ANSIBLE_TEST_INVENTORY', '', "Content of the Ansible static inventory for TEST environment")
 			textParam('ANSIBLE_STAGE_INVENTORY', '', "Content of the Ansible static inventory for STAGE ebvironment")
@@ -653,13 +644,13 @@ factory.job('jenkins-pipeline-ansible-seed') {
 	steps {
 		gradle("clean build")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_sample*.groovy')
+			external('job-dsl/jobs/jenkins_pipeline_sample*.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
 			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources'
+				'job-dsl/src/main/groovy', 'job-dsl/src/main/resources'
 			].join("\n"))
 		}
 		['TEST', 'STAGE', 'PROD'].each {
@@ -675,7 +666,7 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 	scm {
 		git {
 			remote {
-				github('spring-cloud/spring-cloud-pipelines')
+				github('cloudpipelines/jenkins')
 			}
 			branch('${TOOLS_BRANCH}')
 			extensions {
@@ -700,7 +691,7 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/spring-cloud/spring-cloud-pipelines', "The URL containing pipeline functions repository")
+			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts', "The URL containing pipeline functions repository")
 			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
@@ -708,7 +699,7 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 			booleanParam('DB_ROLLBACK_STEP_REQUIRED', true, 'Should DB rollback step be present')
 			booleanParam('DEPLOY_TO_STAGE_STEP_REQUIRED', true, 'Should deploy to stage step be present')
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
-			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `sc-pipelines.yml` will be assumed")
+			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 			stringParam('ANSIBLE_INVENTORY_DIR', '', "Directory where the Ansible inventory files will be stored")
 			textParam('ANSIBLE_TEST_INVENTORY', '', "Content of the Ansible static inventory for TEST environment")
 			textParam('ANSIBLE_STAGE_INVENTORY', '', "Content of the Ansible static inventory for STAGE ebvironment")
@@ -723,9 +714,6 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
-			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources'
-			].join("\n"))
 		}
 		['TEST', 'STAGE', 'PROD'].each {
 			shell("""

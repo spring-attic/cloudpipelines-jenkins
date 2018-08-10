@@ -1,7 +1,7 @@
 [[jenkins_faq]]
 == Jenkins FAQ
 
-This section provides answers to the most frequently asked questions about using Jenkins with Spring Cloud Pipelines.
+This section provides answers to the most frequently asked questions about using Jenkins with Cloud Pipelines.
 
 Pipeline version contains ${PIPELINE_VERSION}::
 You can check the Jenkins logs and see the following warning:

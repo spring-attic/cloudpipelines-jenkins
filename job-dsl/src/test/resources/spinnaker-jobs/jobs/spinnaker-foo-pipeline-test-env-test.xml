@@ -10,7 +10,7 @@
         <EnvInjectJobProperty>
             <info>
                 <propertiesContent>PROJECT_NAME=foo
-PAAS_TEST_SPACE_PREFIX=sc-pipelines-test</propertiesContent>
+PAAS_TEST_SPACE_PREFIX=cloudpipelines-test</propertiesContent>
                 <loadFilesFromMaster>false</loadFilesFromMaster>
             </info>
             <on>true</on>
@@ -45,7 +45,7 @@ PAAS_TEST_SPACE_PREFIX=sc-pipelines-test</propertiesContent>
 				git config user.email "pivo@tal.com"
 				git config credential.helper "store --file=${tmpDir}/gitcredentials"
 				echo "https://$GIT_USERNAME:$GIT_PASSWORD@bar.com" &gt; ${tmpDir}/gitcredentials
-			rm -rf .git/tools &amp;&amp; mkdir -p .git/tools &amp;&amp; pushd .git/tools &amp;&amp; curl -Lk "https://github.com/spring-cloud/spring-cloud-pipelines/raw/master/dist/spring-cloud-pipelines.tar.gz" -o pipelines.tar.gz &amp;&amp; tar xf pipelines.tar.gz --strip-components 1 &amp;&amp; popd</command>
+			rm -rf .git/tools &amp;&amp; mkdir -p .git/tools &amp;&amp; pushd .git/tools &amp;&amp; curl -Lk "https://github.com/cloudpipelines/scripts/raw/master/dist/scripts.tar.gz" -o pipelines.tar.gz &amp;&amp; tar xf pipelines.tar.gz --strip-components 1 &amp;&amp; popd</command>
         </hudson.tasks.Shell>
         <hudson.tasks.Shell>
             <command>#!/bin/bash
@@ -54,7 +54,7 @@ set -o errtrace
 set -o pipefail
 
 # shellcheck source=/dev/null
-"${WORKSPACE}"/.git/tools/common/src/main/bash/test_smoke.sh
+"${WORKSPACE}"/.git/tools/src/main/bash/test_smoke.sh
 </command>
         </hudson.tasks.Shell>
     </builders>
@@ -93,7 +93,7 @@ set -o pipefail
         </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
         <EnvInjectBuildWrapper>
             <info>
-                <propertiesContent>APPLICATION_URL=sc-pipelines-test-foo.foo.com
+                <propertiesContent>APPLICATION_URL=cloudpipelines-test-foo.foo.com
 STUBRUNNER_URL=stubrunner-test-foo.foo.com
 CF_SKIP_PREPARE_FOR_TESTS=true</propertiesContent>
                 <loadFilesFromMaster>false</loadFilesFromMaster>

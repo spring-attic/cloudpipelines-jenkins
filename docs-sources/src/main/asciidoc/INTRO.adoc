@@ -2,7 +2,7 @@
 
 This section describes how Jenkins works with Cloud Pipelines.
 
-IMPORTANT: You do not need to use all the pieces of Spring Cloud Pipelines. You
+IMPORTANT: You do not need to use all the pieces of Cloud Pipelines. You
 can (and should) gradually migrate your applications to use those pieces of
 Cloud Pipelines that you think best suit your needs.
 
@@ -40,7 +40,7 @@ The following diagram depicts this situation:
 [source,options="nowrap"]
 ----
 +---------+                                                  +-------+                                                                           +-------------+ +---------+
-| Jenkins |                                                  | Seed  |                                                                           | SCPipelines | | Github  |
+| Jenkins |                                                  | Seed  |                                                                           | CloudPipes  | | Github  |
 +---------+                                                  +-------+                                                                           +-------------+ +---------+
      |                                                           |                                                                                      |             |
      | Copy the seed job from the repo                           |                                                                                      |             |
@@ -93,7 +93,7 @@ The following diagram shows how Jenkins, the seed job for Spinnaker, and Spinnak
 [source,options="nowrap"]
 ----
 +---------+                                                  +-------+                                                                           +-------------+                          +---------+ +-----------+
-| Jenkins |                                                  | Seed  |                                                                           | SCPipelines |                          | Github  | | Spinnaker |
+| Jenkins |                                                  | Seed  |                                                                           | CloudPipes  |                          | Github  | | Spinnaker |
 +---------+                                                  +-------+                                                                           +-------------+                          +---------+ +-----------+
      |                                                           |                                                                                      |                                      |            |
      | Copy the seed job from the repo                           |                                                                                      |                                      |            |

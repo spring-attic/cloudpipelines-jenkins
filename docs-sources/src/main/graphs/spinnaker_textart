@@ -1,5 +1,5 @@
-object Jenkins Seed SCPipelines Github Spinnaker
-Jenkins->SCPipelines: Copy the seed job from the repo
+object Jenkins Seed CloudPipes Github Spinnaker
+Jenkins->CloudPipes: Copy the seed job from the repo
 Jenkins->Seed: Run seed job to generate Spinnaker pipelines and jobs
 Seed->Github: Crawl org [foo] and fetch all repositories
 Github->Seed: In org [foo] there [a,b,c] repos
@@ -14,9 +14,9 @@ Jenkins->Spinnaker: Upload JSON pipelines to Spinnaker
 Spinnaker->Spinnaker: The pipelines for [a,b,c] successfully created
 Spinnaker->Jenkins: Waiting for [spinnaker-a-build] build to start & complete
 Jenkins->Jenkins: New commit! Running a build [spinnaker-a-build]
-Jenkins->SCPipelines: Run the [build_and_upload.sh] script
-note right of SCPipelines: Proceed with all the sourcing\n depending on language etc.
-SCPipelines->Jenkins: Build completed!
+Jenkins->CloudPipes: Run the [build_and_upload.sh] script
+note right of CloudPipes: Proceed with all the sourcing\n depending on language etc.
+CloudPipes->Jenkins: Build completed!
 Jenkins->Spinnaker: [spinnaker-a-build] started and completed
 note right of Spinnaker: Running the rest of the pipeline!
 Spinnaker->Spinnaker: Pipeline for [a] in progress. Deploy [a] to test env

@@ -42,7 +42,7 @@ function logInToPaas() {
 	echo "Logging in to Kubernetes API [${apiUrl}], with cluster name [${k8sClusterName}] and user [${k8sClusterUser}]"
 	if [[ "${k8sCaData}" != "" ]]; then
 		echo "Creating a temporary file with CA"
-		tmpDir="$(mktemp -d 2>/dev/null || mktemp -d -t 'sc-pipelines-k8s-ca')"
+		tmpDir="$(mktemp -d 2>/dev/null || mktemp -d -t 'cloudpipelines-k8s-ca')"
 		tmpCa="${tmpDir}/ca"
 		trap "{ rm -rf \$tmpDir; }" EXIT
 		echo "${k8sCaData}" > "${tmpCa}"
@@ -763,7 +763,7 @@ SYSTEM="$(system)"
 export KUBE_CONFIG_PATH
 KUBE_CONFIG_PATH="${KUBE_CONFIG_PATH}"
 if [[ "${KUBE_CONFIG_PATH}" == "" ]]; then
-	tmpKubeConfigPath="$(mktemp -d 2>/dev/null || mktemp -d -t 'sc-pipelines-k8s')"
+	tmpKubeConfigPath="$(mktemp -d 2>/dev/null || mktemp -d -t 'cloudpipelines-k8s')"
 	KUBE_CONFIG_PATH="${tmpKubeConfigPath}/config"
 	trap '{ rm -f ${KUBE_CONFIG_PATH}; }' EXIT
 fi

@@ -38,10 +38,10 @@
         "memory" : "1024M",
         "services" : [ "github-rabbitmq", "github-eureka" ],
         "type" : "direct",
-        "routes" : [ "sc-pipelines-test-github-webhook.test.foo.com" ]
+        "routes" : [ "cloudpipelines-test-github-webhook.test.foo.com" ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-test-github-webhook",
+      "region" : "scpipelines > cloudpipelines-test-github-webhook",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -85,10 +85,10 @@
         "memory" : "1024M",
         "services" : [ "github-rabbitmq", "github-eureka" ],
         "type" : "direct",
-        "routes" : [ "sc-pipelines-test-github-webhook.test.foo.com" ]
+        "routes" : [ "cloudpipelines-test-github-webhook.test.foo.com" ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-test-github-webhook",
+      "region" : "scpipelines > cloudpipelines-test-github-webhook",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -162,10 +162,10 @@
         "memory" : "1024M",
         "services" : [ "github-rabbitmq", "github-eureka" ],
         "type" : "direct",
-        "routes" : [ "github-webhook-sc-pipelines-stage.stage.foo.com" ]
+        "routes" : [ "github-webhook-cloudpipelines-stage.stage.foo.com" ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-stage",
+      "region" : "scpipelines > cloudpipelines-stage",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -228,7 +228,7 @@
         "routes" : [ "github-webhook.prod.foo.com" ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-prod",
+      "region" : "scpipelines > cloudpipelines-prod",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -283,7 +283,7 @@
         "routes" : [ "github-webhook.prod.foo.com" ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-prod",
+      "region" : "scpipelines > cloudpipelines-prod",
       "stack" : "",
       "strategy" : "highlander"
     } ],

@@ -21,7 +21,7 @@ function createNamespace() {
 # shellcheck disable=SC2120
 function createJenkins() {
 	local appName="jenkins"
-	local namespaceName="sc-pipelines-prod"
+	local namespaceName="cloudpipelines-prod"
 	local folder=""
 	if [ -d "tools" ]; then
 		folder="tools/"
@@ -37,7 +37,7 @@ function createJenkins() {
 # shellcheck disable=SC2120
 function createArtifactory() {
 	local appName="artifactory"
-	local namespaceName="sc-pipelines-prod"
+	local namespaceName="cloudpipelines-prod"
 	local folder=""
 	if [ -d "tools" ]; then
 		folder="tools/"
@@ -50,7 +50,7 @@ function createArtifactory() {
 
 function copyK8sYamls() {
 	mkdir -p "${FOLDER}build"
-	cp "${ROOT_FOLDER}"common/src/main/bash/k8s/*.* "${FOLDER}build/"
+	cp "${SCRIPTS}"/src/main/bash/k8s/*.* "${FOLDER}build/"
 }
 
 function system {
@@ -76,18 +76,25 @@ if [ -d "tools" ]; then
 	ROOT_FOLDER="$( pwd )/"
 fi
 
-export PAAS_NAMESPACE="sc-pipelines-prod"
+export PAAS_NAMESPACE="cloudpipelines-prod"
 export PAAS_PROD_API_URL="192.168.99.100:8443"
 export ENVIRONMENT="PROD"
 export PAAS_TYPE="k8s"
 
+export TOOLS_REPO="${TOOLS_REPO:-https://github.com/CloudPipelines/scripts}"
+export SCRIPTS
+tmpDir="$(mktemp -d)"
+SCRIPTS="${tmpDir}"
+trap "{ rm -rf ${tmpDir}; }" EXIT
+git clone "${TOOLS_REPO}" "${tmpDir}"
+
 # shellcheck source=/dev/null
-source ${ROOT_FOLDER}common/src/main/bash/pipeline.sh
+source "${SCRIPTS}"/src/main/bash/pipeline.sh
 
 # Overridden functions
 
 function outputFolder() {
-	echo "${ROOT_FOLDER}common/build"
+	echo "${SCRIPTS}/build"
 }
 export -f outputFolder
 
@@ -142,34 +149,34 @@ case $1 in
 		;;
 
 	delete-all-apps)
-		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=sc-pipelines-test --all
-		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=sc-pipelines-stage --all
-		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=sc-pipelines-prod --all
+		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=cloudpipelines-test --all
+		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=cloudpipelines-stage --all
+		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=cloudpipelines-prod --all
 		;;
 
 	delete-all-test-apps)
-		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=sc-pipelines-test --all
+		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=cloudpipelines-test --all
 		;;
 
 	delete-all-stage-apps)
-		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=sc-pipelines-stage --all
+		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=cloudpipelines-stage --all
 		;;
 
 	delete-all-prod-apps)
-		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=sc-pipelines-prod --all
+		kubectl delete pods,deployments,services,persistentvolumeclaims,secrets,replicationcontrollers --namespace=cloudpipelines-prod --all
 		;;
 
 	setup-namespaces)
 		mkdir -p build
-		createNamespace "sc-pipelines-test"
-		createNamespace "sc-pipelines-stage"
-		createNamespace "sc-pipelines-prod"
+		createNamespace "cloudpipelines-test"
+		createNamespace "cloudpipelines-stage"
+		createNamespace "cloudpipelines-prod"
 		;;
 
 	setup-prod-infra)
 		copyK8sYamls
-		deployService "rabbitmq" "github-rabbitmq" "scpipelines/github-analytics-stub-runner-boot-classpath-stubs:latest"
-		deployService "eureka" "github-eureka" "scpipelines/github-eureka:latest"
+		deployService "rabbitmq" "github-rabbitmq" "cloudpipelines/github-analytics-stub-runner-boot-classpath-stubs:latest"
+		deployService "eureka" "github-eureka" "cloudpipelines/github-eureka:latest"
 		export MYSQL_USER
 		MYSQL_USER=username
 		export MYSQL_PASSWORD

@@ -25,10 +25,10 @@
         "memory" : "1024M",
         "services" : [ "github-rabbitmq", "github-eureka" ],
         "type" : "direct",
-        "routes" : [ "sc-pipelines-test-github-webhook." ]
+        "routes" : [ "cloudpipelines-test-github-webhook." ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-test-github-webhook",
+      "region" : "scpipelines > cloudpipelines-test-github-webhook",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -72,10 +72,10 @@
         "memory" : "1024M",
         "services" : [ "github-rabbitmq", "github-eureka" ],
         "type" : "direct",
-        "routes" : [ "sc-pipelines-test-github-webhook." ]
+        "routes" : [ "cloudpipelines-test-github-webhook." ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-test-github-webhook",
+      "region" : "scpipelines > cloudpipelines-test-github-webhook",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -149,10 +149,10 @@
         "memory" : "1024M",
         "services" : [ "github-rabbitmq", "github-eureka" ],
         "type" : "direct",
-        "routes" : [ "github-webhook-sc-pipelines-stage." ]
+        "routes" : [ "github-webhook-cloudpipelines-stage." ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-stage",
+      "region" : "scpipelines > cloudpipelines-stage",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -215,7 +215,7 @@
         "routes" : [ "github-webhook." ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-prod",
+      "region" : "scpipelines > cloudpipelines-prod",
       "stack" : "",
       "strategy" : "highlander"
     } ],
@@ -270,7 +270,7 @@
         "routes" : [ "github-webhook." ]
       },
       "provider" : "cloudfoundry",
-      "region" : "scpipelines > sc-pipelines-prod",
+      "region" : "scpipelines > cloudpipelines-prod",
       "stack" : "",
       "strategy" : "highlander"
     } ],

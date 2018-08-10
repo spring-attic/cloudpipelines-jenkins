@@ -11,7 +11,7 @@ setup() {
 	cp -a "${FIXTURES_DIR}/scripts" "${TEMP_DIR}"
 
 	# Copying the common folder
-	NEW_SRC="${TEMP_DIR}/.git/tools/common/src/main/bash/"
+	NEW_SRC="${TEMP_DIR}/.git/tools/src/main/bash/"
 	mkdir -p "${NEW_SRC}"
 	cp "${TEMP_DIR}"/scripts/*.sh "${NEW_SRC}/"
 

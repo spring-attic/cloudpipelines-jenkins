@@ -466,7 +466,7 @@ a copy of the Jenkins seed and pipeline jobs.</p>
 <div class="sect3">
 <h4 id="overriding-jenkins-job-dsl-pipelines">1.1.1. Overriding Jenkins Job DSL pipelines</h4>
 <div class="paragraph">
-<p>We provide an interface (called <code>org.springframework.cloud.pipelines.common.JobCustomizer</code>)
+<p>We provide an interface (called <code>io.cloudpipelines.common.JobCustomizer</code>)
 that lets you provide customization for:</p>
 </div>
 <div class="ulist">
@@ -493,7 +493,7 @@ that lets you provide customization for:</p>
 </div>
 <div class="paragraph">
 <p>You can write an implementation of that interface (for example, <code>com.example.MyJubCustomizer</code>)
-and create a <code>META-INF/org.springframework.cloud.pipelines.common.JobCustomizer</code> file in which you put the
+and create a <code>META-INF/io.cloudpipelines.common.JobCustomizer</code> file in which you put the
 <code>com.example.MyJubCustomizer</code> line.</p>
 </div>
 <div class="paragraph">
@@ -528,7 +528,7 @@ or any other customizations of your choosing.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-10 12:03:26 CEST
+Last updated 2018-08-10 15:00:50 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

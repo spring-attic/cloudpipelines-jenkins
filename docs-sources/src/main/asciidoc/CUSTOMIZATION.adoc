@@ -12,7 +12,7 @@ a copy of the Jenkins seed and pipeline jobs.
 
 ==== Overriding Jenkins Job DSL pipelines
 
-We provide an interface (called `org.springframework.cloud.pipelines.common.JobCustomizer`)
+We provide an interface (called `io.cloudpipelines.common.JobCustomizer`)
 that lets you provide customization for:
 
 * all jobs
@@ -24,7 +24,7 @@ that lets you provide customization for:
 We use the JDK's `java.util.ServiceLoader` mechanism to achieve extensibility.
 
 You can write an implementation of that interface (for example, `com.example.MyJubCustomizer`)
-and create a `META-INF/org.springframework.cloud.pipelines.common.JobCustomizer` file in which you put the
+and create a `META-INF/io.cloudpipelines.common.JobCustomizer` file in which you put the
 `com.example.MyJubCustomizer` line.
 
 If you create a JAR with your class (for example `com.example:my-customizer:1.0.0`),

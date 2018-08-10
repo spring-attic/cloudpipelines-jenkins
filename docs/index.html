@@ -616,7 +616,7 @@ jobs use the scripts defined in
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-You do not need to use all the pieces of Spring Cloud Pipelines. You
+You do not need to use all the pieces of Cloud Pipelines. You
 can (and should) gradually migrate your applications to use those pieces of
 Cloud Pipelines that you think best suit your needs.
 </td>
@@ -666,7 +666,7 @@ library, which can:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code>+---------+                                                  +-------+                                                                           +-------------+ +---------+
-| Jenkins |                                                  | Seed  |                                                                           | SCPipelines | | Github  |
+| Jenkins |                                                  | Seed  |                                                                           | CloudPipes  | | Github  |
 +---------+                                                  +-------+                                                                           +-------------+ +---------+
      |                                                           |                                                                                      |             |
      | Copy the seed job from the repo                           |                                                                                      |             |
@@ -722,7 +722,7 @@ the CI jobs (that is, build and test) and prepare the JSON definitions of Spinna
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight nowrap"><code>+---------+                                                  +-------+                                                                           +-------------+                          +---------+ +-----------+
-| Jenkins |                                                  | Seed  |                                                                           | SCPipelines |                          | Github  | | Spinnaker |
+| Jenkins |                                                  | Seed  |                                                                           | CloudPipes  |                          | Github  | | Spinnaker |
 +---------+                                                  +-------+                                                                           +-------------+                          +---------+ +-----------+
      |                                                           |                                                                                      |                                      |            |
      | Copy the seed job from the repo                           |                                                                                      |                                      |            |
@@ -843,7 +843,7 @@ a copy of the Jenkins seed and pipeline jobs.</p>
 <div class="sect3">
 <h4 id="overriding-jenkins-job-dsl-pipelines">2.1.1. Overriding Jenkins Job DSL pipelines</h4>
 <div class="paragraph">
-<p>We provide an interface (called <code>org.springframework.cloud.pipelines.common.JobCustomizer</code>)
+<p>We provide an interface (called <code>io.cloudpipelines.common.JobCustomizer</code>)
 that lets you provide customization for:</p>
 </div>
 <div class="ulist">
@@ -870,7 +870,7 @@ that lets you provide customization for:</p>
 </div>
 <div class="paragraph">
 <p>You can write an implementation of that interface (for example, <code>com.example.MyJubCustomizer</code>)
-and create a <code>META-INF/org.springframework.cloud.pipelines.common.JobCustomizer</code> file in which you put the
+and create a <code>META-INF/io.cloudpipelines.common.JobCustomizer</code> file in which you put the
 <code>com.example.MyJubCustomizer</code> line.</p>
 </div>
 <div class="paragraph">
@@ -1814,7 +1814,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_SPACE_PREFIX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Prefix of the name of the CF space for the test environment to which the app name is appended</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-test</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-test</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_ORG</code></p></td>
@@ -1824,7 +1824,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_SPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the space for the stage environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-stage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-stage</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_ORG</code></p></td>
@@ -1834,7 +1834,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_SPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the space for the prod environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-prod</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-prod</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_WITH_BINARIES_FOR_UPLOAD</code></p></td>
@@ -2476,7 +2476,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_ORGANIZATION</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the docker organization to which Docker images should be deployed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scpipelines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_CREDENTIAL_ID</code></p></td>
@@ -2496,7 +2496,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_ORGANIZATION</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URL of the Kubernetes cluster for the test environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scpipelines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_URL</code></p></td>
@@ -2641,17 +2641,17 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_NAMESPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Namespace for the test environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-test</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-test</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_NAMESPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Namespace for the stage environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-stage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-stage</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_NAMESPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Namespace for the prod environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-prod</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-prod</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>KUBERNETES_MINIKUBE</code></p></td>
@@ -2785,7 +2785,7 @@ $ kubectl proxy</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ ZONE=us-east1-b
-$ gcloud compute disks create --size=200GB --zone=${ZONE} sc-pipelines-jenkins-disk</code></pre>
+$ gcloud compute disks create --size=200GB --zone=${ZONE} cloudpipelines-jenkins-disk</code></pre>
 </div>
 </div>
 </div>
@@ -3374,7 +3374,7 @@ you deploy to production, you can provision the <code>pcfdev-prod</code> space b
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push sc-pipelines-prometheus -b binary_buildpack -c './prometheus -web.listen-address=:8080' -m 64m</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push cloudpipelines-prometheus -b binary_buildpack -c './prometheus -web.listen-address=:8080' -m 64m</code></pre>
 </div>
 </div>
 </div>
@@ -3383,7 +3383,7 @@ you deploy to production, you can provision the <code>pcfdev-prod</code> space b
 <p>Also, <code>localhost:9090</code> in <code>prometheus.yml</code> should be <code>localhost:8080</code>.</p>
 </div>
 <div class="paragraph">
-<p>The file should resemble the following listing to work with the demo setup (change <code>github-analytics-sc-pipelines.cfapps.io</code>
+<p>The file should resemble the following listing to work with the demo setup (change <code>github-analytics-cloud-pipelines.cfapps.io</code>
 to your <code>github-analytics</code> installation).</p>
 </div>
 <div class="exampleblock">
@@ -3427,13 +3427,13 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['github-analytics-sc-pipelines.cfapps.io']</code></pre>
+      - targets: ['github-analytics-cloud-pipelines.cfapps.io']</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>A deployed version for the Cloud Pipelines demo is available <a href="https://sc-pipelines-prometheus.cfapps.io/">here</a>.</p>
+<p>A deployed version for the Cloud Pipelines demo is available <a href="https://cloudpipelines-prometheus.cfapps.io/">here</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3449,7 +3449,7 @@ and set <code>http_port = 8080</code> in <code>conf/default.ini</code>. Then run
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push sc-pipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -m 64m</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">cf push cloudpipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -m 64m</code></pre>
 </div>
 </div>
 </div>
@@ -3458,7 +3458,7 @@ and set <code>http_port = 8080</code> in <code>conf/default.ini</code>. Then run
 <p>The demo uses Grafana Dashboard with an ID of <code>2471</code>.</p>
 </div>
 <div class="paragraph">
-<p>A deployed version for the Cloud Pipelines demo is available <a href="https://sc-pipelines-grafana.cfapps.io/">here</a></p>
+<p>A deployed version for the Cloud Pipelines demo is available <a href="https://cloudpipelines-grafana.cfapps.io/">here</a></p>
 </div>
 </div>
 </div>
@@ -3522,7 +3522,7 @@ sent to Slack.</p>
 <p>In a real-world scenario, we would not want to automatically provision services such as
 RabbitMQ, MySQL, or Eureka each time we deploy a new application to production. Typically,
 production is provisioned manually (often by using automated solutions). In our case, before
-you deploy to production, you can provision the <code>sc-pipelines-prod</code> namespace by using the
+you deploy to production, you can provision the <code>cloudpipelines-prod</code> namespace by using the
  <code>k8s-helper.sh</code>. To do so, call the following script:</p>
 </div>
 <div class="exampleblock">
@@ -4142,7 +4142,7 @@ serverFiles:
         metrics_path: '/prometheus'
         static_configs:
           - targets:
-            - github-analytics.sc-pipelines-prod.svc.cluster.local:8080
+            - github-analytics.cloudpipelines-prod.svc.cluster.local:8080
       - job_name: prometheus
         static_configs:
           - targets:
@@ -4342,7 +4342,7 @@ networkPolicy:
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ helm install --name sc-pipelines-prometheus stable/prometheus -f values.yaml</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ helm install --name cloudpipelines-prometheus stable/prometheus -f values.yaml</code></pre>
 </div>
 </div>
 </div>
@@ -4356,7 +4356,7 @@ networkPolicy:
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">NOTES:
 The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
-sc-pipelines-prometheus-prometheus-server.default.svc.cluster.local
+cloudpipelines-prometheus-prometheus-server.default.svc.cluster.local
 
 
 Get the Prometheus server URL by running these commands in the same shell:
@@ -4365,7 +4365,7 @@ Get the Prometheus server URL by running these commands in the same shell:
 
 
 The Prometheus alertmanager can be accessed via port 80 on the following DNS name from within your cluster:
-sc-pipelines-prometheus-prometheus-alertmanager.default.svc.cluster.local
+cloudpipelines-prometheus-prometheus-alertmanager.default.svc.cluster.local
 
 
 Get the Alertmanager URL by running these commands in the same shell:
@@ -4374,7 +4374,7 @@ Get the Alertmanager URL by running these commands in the same shell:
 
 
 The Prometheus PushGateway can be accessed via port 9091 on the following DNS name from within your cluster:
-sc-pipelines-prometheus-prometheus-pushgateway.default.svc.cluster.local
+cloudpipelines-prometheus-prometheus-pushgateway.default.svc.cluster.local
 
 
 Get the PushGateway URL by running these commands in the same shell:
@@ -4397,7 +4397,7 @@ https://prometheus.io/</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ helm install --name sc-pipelines-grafana stable/grafana</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ helm install --name cloudpipelines-grafana stable/grafana</code></pre>
 </div>
 </div>
 </div>
@@ -4412,15 +4412,15 @@ https://prometheus.io/</code></pre>
 <pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">NOTES:
 1. Get your 'admin' user password by running:
 
-   kubectl get secret --namespace default sc-pipelines-grafana-grafana -o jsonpath="{.data.grafana-admin-password}" | base64 --decode ; echo
+   kubectl get secret --namespace default cloudpipelines-grafana-grafana -o jsonpath="{.data.grafana-admin-password}" | base64 --decode ; echo
 
 2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
 
-   sc-pipelines-grafana-grafana.default.svc.cluster.local
+   cloudpipelines-grafana-grafana.default.svc.cluster.local
 
    Get the Grafana URL to visit by running these commands in the same shell:
 
-     export POD_NAME=$(kubectl get pods --namespace default -l "app=sc-pipelines-grafana-grafana,component=grafana" -o jsonpath="{.items[0].metadata.name}")
+     export POD_NAME=$(kubectl get pods --namespace default -l "app=cloudpipelines-grafana-grafana,component=grafana" -o jsonpath="{.items[0].metadata.name}")
      kubectl --namespace default port-forward $POD_NAME 3000
 
 3. Login with the password from step 1 and the username: admin</code></pre>
@@ -4430,7 +4430,7 @@ https://prometheus.io/</code></pre>
 </div>
 <div class="paragraph">
 <p>Perform the steps listed in the preceding output and add the Grafana&#8217;s datasource
-as Prometheus with the following URL: <code><a href="http://sc-pipelines-prometheus-prometheus-server.default.svc.cluster.local" class="bare">sc-pipelines-prometheus-prometheus-server.default.svc.cluster.local</a></code></p>
+as Prometheus with the following URL: <code><a href="http://cloudpipelines-prometheus-prometheus-server.default.svc.cluster.local" class="bare">cloudpipelines-prometheus-prometheus-server.default.svc.cluster.local</a></code></p>
 </div>
 <div class="paragraph">
 <p>You can pick up the dashboard with the Grafana ID (2471). This is the
@@ -4447,7 +4447,7 @@ locally to a port <code>9876</code>, as follows:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ kubectl port-forward --namespace=sc-pipelines-prod $( kubectl get pods --namespace=sc-pipelines-prod | grep github-webhook | head -1 | awk '{print $1}' ) 9876:8080</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ kubectl port-forward --namespace=cloudpipelines-prod $( kubectl get pods --namespace=cloudpipelines-prod | grep github-webhook | head -1 | awk '{print $1}' ) 9876:8080</code></pre>
 </div>
 </div>
 </div>
@@ -4553,7 +4553,7 @@ pull to update it. The following command clones the project:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ git clone --recursive https://github.com/spring-cloud/spring-cloud-pipelines.git</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ git clone --recursive https://github.com/cloudpipelines/jenkins.git</code></pre>
 </div>
 </div>
 </div>
@@ -4678,7 +4678,7 @@ In the demo setup all of these libraries are already installed.
 <h2 id="jenkins_faq">12. Jenkins FAQ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section provides answers to the most frequently asked questions about using Jenkins with Spring Cloud Pipelines.</p>
+<p>This section provides answers to the most frequently asked questions about using Jenkins with Cloud Pipelines.</p>
 </div>
 <div class="dlist">
 <dl>

@@ -54,7 +54,7 @@ pull to update it. The following command clones the project:
 ====
 [source,bash]
 ----
-$ git clone --recursive https://github.com/spring-cloud/spring-cloud-pipelines.git
+$ git clone --recursive https://github.com/cloudpipelines/jenkins.git
 ----
 ====
 

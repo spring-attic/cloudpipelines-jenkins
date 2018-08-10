@@ -1419,7 +1419,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_SPACE_PREFIX</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Prefix of the name of the CF space for the test environment to which the app name is appended</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-test</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-test</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_ORG</code></p></td>
@@ -1429,7 +1429,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_SPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the space for the stage environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-stage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-stage</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_ORG</code></p></td>
@@ -1439,7 +1439,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_SPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the space for the prod environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-prod</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-prod</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_WITH_BINARIES_FOR_UPLOAD</code></p></td>
@@ -2081,7 +2081,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_ORGANIZATION</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of the docker organization to which Docker images should be deployed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scpipelines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_CREDENTIAL_ID</code></p></td>
@@ -2101,7 +2101,7 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_ORGANIZATION</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">URL of the Kubernetes cluster for the test environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>scpipelines</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_URL</code></p></td>
@@ -2246,17 +2246,17 @@ when you want to make custom changes.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_NAMESPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Namespace for the test environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-test</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-test</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_NAMESPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Namespace for the stage environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-stage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-stage</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_NAMESPACE</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Namespace for the prod environment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sc-pipelines-prod</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudpipelines-prod</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>KUBERNETES_MINIKUBE</code></p></td>
@@ -2390,7 +2390,7 @@ $ kubectl proxy</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ ZONE=us-east1-b
-$ gcloud compute disks create --size=200GB --zone=${ZONE} sc-pipelines-jenkins-disk</code></pre>
+$ gcloud compute disks create --size=200GB --zone=${ZONE} cloudpipelines-jenkins-disk</code></pre>
 </div>
 </div>
 </div>
