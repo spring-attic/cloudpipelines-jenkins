@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
     <actions/>
     <description/>
     <keepDependencies>false</keepDependencies>
@@ -141,6 +140,7 @@ waitForServicesToInitialize
                 <disableSubmodules>false</disableSubmodules>
                 <recursiveSubmodules>true</recursiveSubmodules>
                 <trackingSubmodules>false</trackingSubmodules>
+                <reference/>
             </hudson.plugins.git.extensions.impl.SubmoduleOption>
         </extensions>
     </scm>

@@ -38,8 +38,8 @@ configurations {
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.7'
-	compile 'org.jenkins-ci.plugins:job-dsl-core:1.69'
-	compile 'org.jenkins-ci.plugins:job-dsl:1.69@jar'
+	compile "org.jenkins-ci.plugins:job-dsl-core:${jenkinsJobDslVersion}"
+	compile "org.jenkins-ci.plugins:job-dsl:${jenkinsJobDslVersion}@jar"
 
 	// for dsl
 	libs "org.springframework.cloud.internal:project-crawler:${projectCrawlerVersion}"

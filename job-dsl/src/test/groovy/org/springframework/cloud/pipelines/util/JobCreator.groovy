@@ -38,18 +38,17 @@ trait JobCreator {
 	}
 
 	private void defaultStubbing(MemoryJobManagement jm) {
-		jm.availableFiles['foo/Jenkinsfile-sample'] = new File('declarative-pipeline/Jenkinsfile-sample').text
-		jm.availableFiles['foo/pipeline.sh'] = JobCreator.getResource('/pipeline.sh').text
-		jm.availableFiles['foo/build_and_upload.sh'] = JobCreator.getResource('/build_and_upload.sh').text
-		jm.availableFiles['foo/build_api_compatibility_check.sh'] = JobCreator.getResource('/build_api_compatibility_check.sh').text
-		jm.availableFiles['foo/test_deploy.sh'] = JobCreator.getResource('/test_deploy.sh').text
-		jm.availableFiles['foo/test_smoke.sh'] = JobCreator.getResource('/test_smoke.sh').text
-		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobCreator.getResource('/test_rollback_deploy.sh').text
-		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobCreator.getResource('/test_rollback_smoke.sh').text
-		jm.availableFiles['foo/stage_deploy.sh'] = JobCreator.getResource('/stage_deploy.sh').text
-		jm.availableFiles['foo/stage_e2e.sh'] = JobCreator.getResource('/stage_e2e.sh').text
-		jm.availableFiles['foo/prod_deploy.sh'] = JobCreator.getResource('/prod_deploy.sh').text
-		jm.availableFiles['foo/prod_complete.sh'] = JobCreator.getResource('/prod_complete.sh').text
+		jm.availableFiles['foo/pipeline.sh'] = JobCreator.getResource('/cloudpipelines-scripts/pipeline.sh').text
+		jm.availableFiles['foo/build_and_upload.sh'] = JobCreator.getResource('/cloudpipelines-scripts/build_and_upload.sh').text
+		jm.availableFiles['foo/build_api_compatibility_check.sh'] = JobCreator.getResource('/cloudpipelines-scripts/build_api_compatibility_check.sh').text
+		jm.availableFiles['foo/test_deploy.sh'] = JobCreator.getResource('/cloudpipelines-scripts/test_deploy.sh').text
+		jm.availableFiles['foo/test_smoke.sh'] = JobCreator.getResource('/cloudpipelines-scripts/test_smoke.sh').text
+		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobCreator.getResource('/cloudpipelines-scripts/test_rollback_deploy.sh').text
+		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobCreator.getResource('/cloudpipelines-scripts/test_rollback_smoke.sh').text
+		jm.availableFiles['foo/stage_deploy.sh'] = JobCreator.getResource('/cloudpipelines-scripts/stage_deploy.sh').text
+		jm.availableFiles['foo/stage_e2e.sh'] = JobCreator.getResource('/cloudpipelines-scripts/stage_e2e.sh').text
+		jm.availableFiles['foo/prod_deploy.sh'] = JobCreator.getResource('/cloudpipelines-scripts/prod_deploy.sh').text
+		jm.availableFiles['foo/prod_complete.sh'] = JobCreator.getResource('/cloudpipelines-scripts/prod_complete.sh').text
 	}
 
 	static class StubbedJobParent extends JobParent {

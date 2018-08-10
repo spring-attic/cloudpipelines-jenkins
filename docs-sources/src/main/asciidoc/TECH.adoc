@@ -7,8 +7,8 @@ This section covers how to build the project. It covers:
 * <<building-bats-submodules>>
 * <<building-build-and-test>>
 * <<building-generate-documentation>>
-* <<building-distributions>>
 * <<building-making-a-release>>
+* <<building-ci-worker-prerequisites>>
 
 [[building-project-setup]]
 === Project Setup
@@ -34,6 +34,7 @@ $ sudo apt-get install -y ruby jq
 
 If you use a Mac, run the following commands to install the missing software:
 
+====
 [source,bash]
 ----
 $ brew install jq
@@ -41,6 +42,7 @@ $ brew install ruby
 $ brew install bats
 $ brew install shellcheck
 ----
+====
 
 [[building-bats-submodules]]
 === Bats Submodules
@@ -92,6 +94,7 @@ $ ./gradlew generateDocs
 ----
 ====
 
+[[building-making-a-release]]
 == Releasing the Project
 
 This section covers how to release the project by publishing a Docker image.
@@ -111,9 +114,10 @@ $ docker push cloudpipelines/cloud-pipeline-jenkins:<version>
 ----
 ====
 
+[[building-ci-worker-prerequisites]]
 == CI Server Worker Prerequisites
 
-Spring Cloud Pipelines uses Bash scripts extensively. The following list shows the software
+Cloud Pipelines uses Bash scripts extensively. The following list shows the software
 that needs to be installed on a CI server worker for the build to pass:
 
 ====

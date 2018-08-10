@@ -4,7 +4,7 @@ This section describes how Jenkins works with Cloud Pipelines.
 
 IMPORTANT: You do not need to use all the pieces of Spring Cloud Pipelines. You
 can (and should) gradually migrate your applications to use those pieces of
-Spring Cloud Pipelines that you think best suit your needs.
+Cloud Pipelines that you think best suit your needs.
 
 === Five-second Introduction
 

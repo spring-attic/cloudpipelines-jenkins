@@ -33,6 +33,7 @@ of Artifactory you can skip this step
 [[jenkins-settings]] So that `./mvnw deploy` works with Artifactory from Docker we're
 already copying the missing `settings.xml` file for you. It looks more or less like this:
 
+====
 [source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
@@ -54,6 +55,7 @@ already copying the missing `settings.xml` file for you. It looks more or less l
 	</servers>
 </settings>
 ----
+====
 
 As you can see the file is parameterized. In Maven it's enough to pass
 to `./mvnw` command the proper system property to override that value. For example to pass

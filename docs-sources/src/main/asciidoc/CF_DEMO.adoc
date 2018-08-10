@@ -92,7 +92,7 @@ scrape_configs:
 ----
 ====
 
-A deployed version for the Spring Cloud Pipelines demo is available https://sc-pipelines-prometheus.cfapps.io/[here].
+A deployed version for the Cloud Pipelines demo is available https://sc-pipelines-prometheus.cfapps.io/[here].
 
 === Running Grafana on CF
 
@@ -110,4 +110,4 @@ cf push sc-pipelines-grafana -b binary_buildpack -c './bin/grafana-server web' -
 
 The demo uses Grafana Dashboard with an ID of `2471`.
 
-A deployed version for the Spring Cloud Pipelines demo is available https://sc-pipelines-grafana.cfapps.io/[here]
+A deployed version for the Cloud Pipelines demo is available https://sc-pipelines-grafana.cfapps.io/[here]

@@ -62,6 +62,7 @@ asciidoctor {
 		parse: 'false',
 		'allow-uri-read': '',
 		'docs-base-url': docsBaseUrl,
+		'demo-root-docs': "${docsBaseUrl}/docs/images/demo",
 		'jenkins-root-docs' : "${docsBaseUrl}/docs/images/jenkins"
 }
 

@@ -176,4 +176,4 @@ have it set up that way. If, in the logs of your application,
 you can see that you cannot connect to a service, first ensure that
 the service is forwarding traffic to a pod. Next, if that is not the case,
 delete the service and re-run the step in the pipeline. That way,
-Spring Cloud Pipelines redeploy the service and the underlying pods.
+Cloud Pipelines redeploy the service and the underlying pods.

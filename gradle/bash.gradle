@@ -70,30 +70,6 @@ ext {
 
 }
 
-task installZshellDocIfMissing() {
-	doLast {
-		boolean zsdInstalled = isCommandAvailable("zsd -h")
-		boolean zsdDownloaded = new File(project.rootProject.buildDir, "zsd/bin/zsd").exists()
-		exec {
-			if (zsdInstalled || zsdDownloaded) {
-				commandLine "echo", "zsd installed - continuing"
-			} else {
-				logger.lifecycle("zsd is missing. Will try to install it.")
-				commandLine "bash", new File(project.rootDir, "tools/build-helper.sh").path, "install-zsd"
-			}
-		}
-	}
-}
-
-task zsd {
-	dependsOn installZshellDocIfMissing
-	doLast {
-		exec {
-			commandLine "bash", new File(project.rootDir, "tools/build-helper.sh").path, "generate-zsd"
-		}
-	}
-}
-
 task installShellcheckIfMissing {
 	doLast {
 		boolean shellcheckInstalled = isShellcheckPresent() || isShellcheckDownloaded()
@@ -174,4 +150,3 @@ test.dependsOn("shellcheck")
 installBatsIfMissing.dependsOn("initalizeSubModules")
 bats.dependsOn("installBatsIfMissing")
 test.dependsOn("bats")
-test.dependsOn("zsd")

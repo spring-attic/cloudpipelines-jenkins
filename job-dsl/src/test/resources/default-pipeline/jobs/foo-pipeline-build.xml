@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
     <actions/>
     <description/>
     <keepDependencies>false</keepDependencies>
@@ -112,6 +111,7 @@
                     <updateTag>true</updateTag>
                 </hudson.plugins.git.GitPublisher_-TagToPush>
             </tagsToPush>
+            <notesToPush/>
             <branchesToPush/>
         </hudson.plugins.git.GitPublisher>
         <hudson.tasks.ArtifactArchiver>
@@ -188,6 +188,7 @@
                 <disableSubmodules>false</disableSubmodules>
                 <recursiveSubmodules>true</recursiveSubmodules>
                 <trackingSubmodules>false</trackingSubmodules>
+                <reference/>
             </hudson.plugins.git.extensions.impl.SubmoduleOption>
             <hudson.plugins.git.extensions.impl.UserIdentity>
                 <email>Pivo Tal</email>

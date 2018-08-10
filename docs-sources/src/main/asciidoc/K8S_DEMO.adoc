@@ -901,7 +901,7 @@ Perform the steps listed in the preceding output and add the Grafana's datasourc
 as Prometheus with the following URL: `http://sc-pipelines-prometheus-prometheus-server.default.svc.cluster.local`
 
 You can pick up the dashboard with the Grafana ID (2471). This is the
-default dashboard for the Spring Cloud Pipelines demo apps.
+default dashboard for the Cloud Pipelines demo apps.
 
 If you have both apps (`github-webhook` and `github-analytics`) running on production,
 you can now trigger the messages. Download the JSON with a sample request

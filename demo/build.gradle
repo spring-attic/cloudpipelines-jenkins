@@ -20,8 +20,8 @@ repositories {
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.7'
-	compile 'org.jenkins-ci.plugins:job-dsl-core:1.64'
-	compile 'org.jenkins-ci.plugins:job-dsl:1.64@jar'
+	compile "org.jenkins-ci.plugins:job-dsl-core:${jenkinsJobDslVersion}"
+	compile "org.jenkins-ci.plugins:job-dsl:${jenkinsJobDslVersion}@jar"
 
 	// for init.groovy
 	compile 'org.jenkins-ci.plugins:credentials:2.1.13@jar'
@@ -30,4 +30,8 @@ dependencies {
 	compile 'org.jenkins-ci.main:jenkins-core:2.19.1'
 	// for Intellij not to throw exceptions
 	compile 'javax.servlet:servlet-api:2.4'
+
+	testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
+		exclude module: 'groovy-all'
+	}
 }

@@ -45,18 +45,17 @@ class JobScriptsSpec extends Specification {
 	}
 
 	private void defaultStubbing(MemoryJobManagement jm) {
-		jm.availableFiles['foo/Jenkinsfile-sample'] = new File('declarative-pipeline/Jenkinsfile-sample').text
-		jm.availableFiles['foo/pipeline.sh'] = JobScriptsSpec.getResource('/pipeline.sh').text
-		jm.availableFiles['foo/build_and_upload.sh'] = JobScriptsSpec.getResource('/build_and_upload.sh').text
-		jm.availableFiles['foo/build_api_compatibility_check.sh'] = JobScriptsSpec.getResource('/build_api_compatibility_check.sh').text
-		jm.availableFiles['foo/test_deploy.sh'] = JobScriptsSpec.getResource('/test_deploy.sh').text
-		jm.availableFiles['foo/test_smoke.sh'] = JobScriptsSpec.getResource('/test_smoke.sh').text
-		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobScriptsSpec.getResource('/test_rollback_deploy.sh').text
-		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobScriptsSpec.getResource('/test_rollback_smoke.sh').text
-		jm.availableFiles['foo/stage_deploy.sh'] = JobScriptsSpec.getResource('/stage_deploy.sh').text
-		jm.availableFiles['foo/stage_e2e.sh'] = JobScriptsSpec.getResource('/stage_e2e.sh').text
-		jm.availableFiles['foo/prod_deploy.sh'] = JobScriptsSpec.getResource('/prod_deploy.sh').text
-		jm.availableFiles['foo/prod_complete.sh'] = JobScriptsSpec.getResource('/prod_complete.sh').text
+		jm.availableFiles['foo/pipeline.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/pipeline.sh').text
+		jm.availableFiles['foo/build_and_upload.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/build_and_upload.sh').text
+		jm.availableFiles['foo/build_api_compatibility_check.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/build_api_compatibility_check.sh').text
+		jm.availableFiles['foo/test_deploy.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/test_deploy.sh').text
+		jm.availableFiles['foo/test_smoke.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/test_smoke.sh').text
+		jm.availableFiles['foo/test_rollback_deploy.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/test_rollback_deploy.sh').text
+		jm.availableFiles['foo/test_rollback_smoke.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/test_rollback_smoke.sh').text
+		jm.availableFiles['foo/stage_deploy.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/stage_deploy.sh').text
+		jm.availableFiles['foo/stage_e2e.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/stage_e2e.sh').text
+		jm.availableFiles['foo/prod_deploy.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/prod_deploy.sh').text
+		jm.availableFiles['foo/prod_complete.sh'] = JobScriptsSpec.getResource('/cloudpipelines-scripts/prod_complete.sh').text
 	}
 
 	static List<File> jobFiles() {

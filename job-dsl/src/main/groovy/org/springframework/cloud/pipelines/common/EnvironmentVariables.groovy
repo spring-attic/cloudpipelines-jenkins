@@ -116,7 +116,7 @@ final class EnvironmentVariables {
 
 	/**
 	 * {@code TOOLS_REPOSITORY} - URL of the tools repository (i.e. this repository) to be used within
-	 * the build. Defaults to the tar.gz package of the master branch of the Spring Cloud Pipelines repo.
+	 * the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.
 	 * You can provide URL to either tar.gz or .git repository.
 	 */
 	public static final String TOOLS_REPOSITORY_ENV_VAR = "TOOLS_REPOSITORY"
@@ -124,7 +124,7 @@ final class EnvironmentVariables {
 	/**
 	 * {@code TOOLS_BRANCH} - Branch of tools (i.e. this repository) to be used within
 	 * the build. Defaults to {@code master} but when you're working on a feature in
-	 * Spring Cloud Pipelines you can want to point to your branch
+	 * Cloud Pipelines you can want to point to your branch
 	 */
 	public static final String TOOLS_BRANCH_ENV_VAR = "TOOLS_BRANCH"
 

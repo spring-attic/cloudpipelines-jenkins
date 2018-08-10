@@ -246,7 +246,7 @@ security. *YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU'RE DOING
 IMPORTANT: In this chapter, we assume that you deploy your application
 to Cloud Foundry PaaS.
 
-[[jenkins]] The Spring Cloud Pipelines repository contains job definitions and the opinionated setup pipeline, which uses the https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and a opinionated sample pipeline that you can use in your company.
+[[jenkins]] The Cloud Pipelines repository contains job definitions and the opinionated setup pipeline, which uses the https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and a opinionated sample pipeline that you can use in your company.
 
 The following projects take part in the `microservice setup` for this demo.
 
@@ -597,7 +597,7 @@ IMPORTANT: In this chapter, we assume that you deploy your application
 to Kubernetes PaaS.
 
 [[jenkins]]
-The Spring Cloud Pipelines repository contains job definitions and the opinionated setup pipeline that uses https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and an opinionated sample pipeline that you can use in your company.
+The Cloud Pipelines repository contains job definitions and the opinionated setup pipeline that uses https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and an opinionated sample pipeline that you can use in your company.
 
 The following projects take part in the `microservice setup` for this demo.
 

@@ -5,7 +5,7 @@ IMPORTANT: In this chapter, we assume that you deploy your Java application
 to Cloud Foundry PaaS. The chosen language is just an example, you could perform
 similar tasks with another language.
 
-[[jenkins]] The Spring Cloud Pipelines repository contains job definitions and the opinionated setup pipeline, which uses the https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and a opinionated sample pipeline that you can use in your company.
+[[jenkins]] The Cloud Pipelines repository contains job definitions and the opinionated setup pipeline, which uses the https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and a opinionated sample pipeline that you can use in your company.
 
 The following projects take part in the `microservice setup` for this demo.
 
@@ -146,7 +146,7 @@ You can also run the `./tools/cf-helper.sh setup-spaces` script to do this.
 
 include::JENKINS_RUN_SEED.adoc[]
 
-[[jenkins-pipeline-cf]]
+[[jenkins-run-pipeline-cf]]
 ==== Run the `github-webhook` Pipeline
 
 include::JENKINS_RUN_PIPELINE.adoc[]

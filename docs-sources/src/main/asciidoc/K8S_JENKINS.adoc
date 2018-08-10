@@ -4,8 +4,8 @@
 IMPORTANT: In this chapter, we assume that you deploy your application
 to Kubernetes PaaS.
 
-[[jenkins]]
-The Spring Cloud Pipelines repository contains job definitions and the opinionated setup pipeline that uses https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and an opinionated sample pipeline that you can use in your company.
+[[k8s-jenkins]]
+The Cloud Pipelines repository contains job definitions and the opinionated setup pipeline that uses https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and an opinionated sample pipeline that you can use in your company.
 
 The following projects take part in the `microservice setup` for this demo.
 
@@ -104,7 +104,7 @@ Docker images to Docker Hub too.
 
 include::JENKINS_RUN_SEED.adoc[]
 
-[[jenkins-pipeline-k8s]]
+[[jenkins-run-pipeline-k8s]]
 ==== Run the `github-webhook` pipeline
 
 include::JENKINS_RUN_PIPELINE.adoc[]

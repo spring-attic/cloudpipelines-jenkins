@@ -22,7 +22,7 @@ import org.springframework.cloud.pipelines.steps.TestRollbackTest
 import org.springframework.cloud.pipelines.steps.TestTest
 
 /**
- * Factory for default Spring Cloud Pipelines Jenkins jobs. This class
+ * Factory for default Cloud Pipelines Jenkins jobs. This class
  * knows how to create a pipeline and link the jobs in it.
  *
  * @author Marcin Grzejszczak
