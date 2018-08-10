@@ -62,27 +62,7 @@ and `myfeed` for `github-webhook`.
 
 Can this work for ANY project out of the box?::
 Not really. This is an "`opinionated pipeline`". That is why we took some
-opinionated decisions, such as:
-+
-* Using Spring Cloud, Spring Cloud Contract Stub Runner, and Spring Cloud Eureka.
-* Application deployment to Cloud Foundry.
-* Maven, including:
-** Using the Maven Wrapper.
-** Artifacts deployment by using `./mvnw clean deploy`.
-** The `stubrunner.ids` property to retrieve the list of collaborators for which stubs should be downloaded.
-** Running smoke tests on a deployed app with the `smoke` Maven profile.
-** Running end to end tests on a deployed app with the `e2e` Maven profile.
-* Gradle (in the `github-analytics` application check in the `gradle/pipeline.gradle` file), including:
-** Using the Gradlew Wrapper.
-** A `deploy` task for artifacts deployment.
-** Running smoke tests on a deployed application with the `smoke` task.
-** Running end to end tests on a deployed application with the `e2e` task.
-** A `groupId` task to retrieve group ID.
-** An `artifactId` task to retrieve artifact ID.
-** A `currentVersion` task to retrieve the current version.
-** A `stubIds` task to retrieve the list of collaborators for which stubs should be downloaded.
-+
-This is the initial approach that can be easily changed in the future.
+opinionated decisions
 
 Can I modify this to reuse in my project?::
 Yes. It is open-source. The important thing is that the core part of the logic is written
@@ -96,7 +76,7 @@ contained them. To fix this, remove the tags by using the following command:
 ====
 [source,bash]
 ----
-git tag -l | xargs -n 1 git push --delete origin
+$ git tag -l | xargs -n 1 git push --delete origin
 ----
 ====
 

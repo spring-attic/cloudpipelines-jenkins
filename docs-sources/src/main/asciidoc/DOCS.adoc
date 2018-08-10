@@ -1,36 +1,15 @@
-= Spring Cloud Pipelines
+= Cloud Pipelines Jenkins
 
-Spring, Spring Boot, and Spring Cloud are tools that let developers speed up the
-time of creating new business features. It is common knowledge, however, that the
-feature is only valuable if it is in production. That is why companies
-spend a lot of time and resources on building their own deployment pipelines.
-
-This project tries to solve the following problems:
-
-* Creation of a common deployment pipeline.
-* Propagation of good testing and deployment practices.
-* Reducing the time required to deploy a feature to production.
-
-A common way of running, configuring, and deploying applications lowers support costs
-and time needed by new developers to blend in when they change projects.
+This project contains setup for Jenkins that creates jobs and pipelines
+via Jenkins Job DSL or Jenkinsfile for your projects. The pipelines and
+jobs use the scripts defined in
+https://github.com/CloudPipelines/scripts[Cloud Pipelines Scripts] repo.
 
 include::INTRO.adoc[]
 
-include::OPINIONATED.adoc[]
-
 include::CUSTOMIZATION.adoc[]
 
-// remove::start[CF]
-include::CF_MIGRATION.adoc[]
-// remove::end[CF]
-
-// remove::start[CONCOURSE]
-include::CONCOURSE.adoc[]
-// remove::end[CONCOURSE]
-
-// remove::start[JENKINS]
 include::JENKINS.adoc[]
-// remove::end[JENKINS]
 
 // remove::start[K8S]
 include::K8S_SETUP.adoc[]

@@ -1,0 +1,83 @@
+apply plugin: 'groovy'
+apply from: "${project.rootDir}/gradle/bash.gradle"
+
+sourceSets {
+	main {
+		groovy {
+			srcDirs 'jobs', 'src/main/groovy'
+		}
+		resources {
+			srcDirs 'src/main/resources', 'src/main/bash'
+		}
+	}
+	test {
+		resources {
+			srcDirs 'src/test/bats', 'src/test/docs_helper'
+		}
+	}
+}
+
+ext {
+	projectCrawlerVersion = "1.0.0.BUILD-SNAPSHOT"
+	jacksonVersion = "2.9.5"
+}
+
+repositories {
+	jcenter()
+	mavenCentral()
+	maven { url 'http://repo.jenkins-ci.org/releases/' }
+	maven { url "http://repo.spring.io/libs-snapshot-local" }
+	maven { url "http://repo.spring.io/libs-milestone-local" }
+	maven { url "http://repo.spring.io/libs-release-local" }
+}
+
+configurations {
+	libs
+	compile.extendsFrom(libs)
+}
+
+dependencies {
+	compile 'org.codehaus.groovy:groovy-all:2.4.7'
+	compile 'org.jenkins-ci.plugins:job-dsl-core:1.69'
+	compile 'org.jenkins-ci.plugins:job-dsl:1.69@jar'
+
+	// for dsl
+	libs "org.springframework.cloud.internal:project-crawler:${projectCrawlerVersion}"
+	libs "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
+	libs "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+	libs "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${jacksonVersion}"
+
+	testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
+		exclude module: 'groovy-all'
+	}
+	testCompile 'org.xmlunit:xmlunit-core:2.6.0'
+	testCompile "org.skyscreamer:jsonassert:1.4.0"
+}
+
+test {
+	testLogging {
+		exceptionFormat = 'full'
+	}
+}
+
+task libs(type: Copy) {
+	into "${project.buildDir}/lib"
+	from configurations.libs
+}
+
+task storeFile {
+	doLast {
+		File file = new File(project.buildDir, "lib/jcabigithub.properties")
+		file.createNewFile()
+		file.text = """\
+#User-Agent info
+JCabi-Version 0.41
+JCabi-Build f1055c4
+JCabi-Date 2018-06-20 11:00
+"""
+	}
+}
+
+build.dependsOn libs
+build.dependsOn storeFile
+storeFile.mustRunAfter(libs)

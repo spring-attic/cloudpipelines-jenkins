@@ -5,62 +5,24 @@ We will also provide answers to most frequently asked questions.
 
 === Project setup
 
-[source,bash]
-----
-.
-├── declarative-pipeline
-│   └── Jenkinsfile-sample.groovy
-├── jobs
-│   ├── jenkins_pipeline_empty.groovy
-│   ├── jenkins_pipeline_jenkinsfile_empty.groovy
-│   ├── jenkins_pipeline_sample.groovy
-│   └── jenkins_pipeline_sample_view.groovy
-├── seed
-│   ├── init.groovy
-│   ├── jenkins_pipeline.groovy
-│   ├── k8s
-│   └── settings.xml
-└── src
-    ├── main
-    └── test
-----
-
-In the `declarative-pipeline` you can find a definition of a `Jenkinsfile-sample.groovy` declarative
+In the `declarative-pipeline` you can find a definition of a declarative
 pipeline. It's used together with the Blueocean UI.
 
-In the `jobs` folder you have all the seed jobs that will generate pipelines.
+Under `job-dsl` folder you'll find all `job-dsl` related setup. In its `jobs` subfolder
+you have all the seed jobs that will generate pipelines. You can read
+comments inside each script to understand what it's doing.
 
-- `jenkins_pipeline_empty.groovy` - is a template of a pipeline with empty steps using the Jenkins Job DSL plugin
-- `jenkins_pipeline_jenkinsfile_empty.groovy` - is a template of a pipeline with empty steps using the Pipeline plugin
-- `jenkins_pipeline_sample.groovy` - is an opinionated implementation using the Jenkins Job DSL plugin
-- `jenkins_pipeline_sample_view.groovy` - builds the views for the pipelines
-
-In the `seed` folder you have the `init.groovy` file which is executed when Jenkins starts.
+Under `demo` folder you can find the setup prepared for demo purposes.
+In its `seed` subfolder folder you have the `init.groovy` file which is executed when Jenkins starts.
 That way we can configure most of Jenkins options for you (adding credentials, JDK etc.).
 `jenkins_pipeline.groovy` contains logic to build a seed job (that way you don't have to even click that
 job - we generate it for you). Under the `k8s` folder there are all the configuration
 files required for deployment to a Kubernetes cluster.
 
-In the `src` folder you have production and test classes needed for you to build your own pipeline.
-Currently we have tests only cause the whole logic resides in the `jenkins_pipeline_sample` file.
-
 === Optional customization steps
 
 [[jenkins_optional]] All the steps below are not necessary to run the demo. They are needed only
 when you want to do some custom changes.
-
-[[deploying-infra]]
-==== Deploying infra jars to a different location
-
-It's enough to set the `ARTIFACTORY_URL` environmental variable before
-executing `tools/deploy-infra.sh`. Example for deploying to Artifactory at IP `192.168.99.100`
-
-[source,bash]
-----
-git clone https://github.com/spring-cloud/spring-cloud-pipelines
-cd spring-cloud-pipelines/
-ARTIFACTORY_URL="http://192.168.99.100:8081/artifactory/libs-release-local" ./tools/deploy-infra.sh
-----
 
 [[setup-settings-xml]]
 ==== Setup settings.xml for Maven deployment
@@ -118,6 +80,9 @@ For the sake of simplicity let's go with the *last* option.
 IMPORTANT: If you're choosing the global envs, you *HAVE* to remove the other approach
 (e.g. if you set the global env for `REPOS`, please remove that property in the
 seed job
+
+If you're using the Project Crawler based solution, you can also provide your own implementation
+to customize the created jobs.
 
 [[setup-seed-props]]
 ===== Seed properties
@@ -210,22 +175,19 @@ image::{jenkins-root-docs}/credentials_example.png[caption="Step 4: ", title="Fi
 
 === Testing Jenkins scripts
 
-`./gradlew clean build`
+To run the tests against your bash and Groovy scripts just call
 
-WARNING: The ran test only checks if your scripts compile.
+`./gradlew clean build`
 
 === How to work with Jenkins Job DSL plugin
 
 Check out the https://github.com/jenkinsci/job-dsl-plugin/wiki/Tutorial---Using-the-Jenkins-Job-DSL[tutorial].
 Provide the link to this repository in your Jenkins installation.
 
-WARNING: Remember that views can be overridden that's why the suggestion is to contain in one script all the logic needed to build a view
- for a single project (check out that `spring_cloud_views.groovy` is building all the `spring-cloud` views).
-
 === Docker Image
 
 If you would like to run the pre-configured Jenkins image somewhere other than your local machine, we
-have an image you can pull and use on https://hub.docker.com/r/springcloud/spring-cloud-pipeline-jenkins/[DockerHub].
+have an image you can pull and use on https://hub.docker.com/r/cloudpipelines/cloud-pipeline-jenkins/[DockerHub].
 The `latest` tag corresponds to the latest snapshot build.  You can also find tags
 corresponding to stable releases that you can use as well.
 

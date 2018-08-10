@@ -1,8 +1,9 @@
 [[jenkins-pipeline-cf]]
 == Jenkins Pipeline (Cloud Foundry)
 
-IMPORTANT: In this chapter, we assume that you deploy your application
-to Cloud Foundry PaaS.
+IMPORTANT: In this chapter, we assume that you deploy your Java application
+to Cloud Foundry PaaS. The chosen language is just an example, you could perform
+similar tasks with another language.
 
 [[jenkins]] The Spring Cloud Pipelines repository contains job definitions and the opinionated setup pipeline, which uses the https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin[Jenkins Job DSL plugin]. Those jobs form an empty pipeline and a opinionated sample pipeline that you can use in your company.
 
@@ -53,8 +54,8 @@ Jenkins + Artifactory can be ran locally. To do so, run the
 ====
 [source,bash]
 ----
-git clone https://github.com/spring-cloud/spring-cloud-pipelines
-cd spring-cloud-pipelines/jenkins
+git clone https://github.com/cloudpipelines/jenkins
+cd jenkins/demo
 ./start.sh yourGitUsername yourGitPassword yourForkedGithubOrg
 ----
 ====
@@ -78,8 +79,8 @@ When Artifactory is running, run the `tools/deploy-infra.sh` script from this re
 ====
 [source,bash]
 ----
-git clone https://github.com/spring-cloud/spring-cloud-pipelines
-cd spring-cloud-pipelines/
+git clone https://github.com/cloudpipelines/jenkins
+cd jenkins/
 ./tools/deploy-infra.sh
 ----
 ====

@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: springcloud/spring-cloud-pipeline-jenkins:latest
+          image: cloudpipelines/cloud-pipeline-jenkins:latest
           ports:
           - containerPort: 8080
           resources:

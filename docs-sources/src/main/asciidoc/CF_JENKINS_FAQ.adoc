@@ -5,10 +5,10 @@ solve it is to kill some applications from the test and stage environments. To d
 ====
 [source,bash]
 ----
-cf target -o pcfdev-org -s pcfdev-test
-cf stop github-webhook
-cf stop github-eureka
-cf stop stubrunner
+$ cf target -o pcfdev-org -s pcfdev-test
+$ cf stop github-webhook
+$ cf stop github-eureka
+$ cf stop stubrunner
 ----
 ====
 +
@@ -52,13 +52,13 @@ To resolve the issue, delete the offending routes, by using commands similar to 
 ====
 [source,bash]
 ----
-yes | cf delete-route local.pcfdev.io -n github-webhook-test
-yes | cf delete-route local.pcfdev.io -n github-eureka-test
-yes | cf delete-route local.pcfdev.io -n stubrunner-test
-yes | cf delete-route local.pcfdev.io -n github-webhook-stage
-yes | cf delete-route local.pcfdev.io -n github-eureka-stage
-yes | cf delete-route local.pcfdev.io -n github-webhook-prod
-yes | cf delete-route local.pcfdev.io -n github-eureka-prod
+$ yes | cf delete-route local.pcfdev.io -n github-webhook-test
+$ yes | cf delete-route local.pcfdev.io -n github-eureka-test
+$ yes | cf delete-route local.pcfdev.io -n stubrunner-test
+$ yes | cf delete-route local.pcfdev.io -n github-webhook-stage
+$ yes | cf delete-route local.pcfdev.io -n github-eureka-stage
+$ yes | cf delete-route local.pcfdev.io -n github-webhook-prod
+$ yes | cf delete-route local.pcfdev.io -n github-eureka-prod
 ----
 ====
 +

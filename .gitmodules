@@ -1,15 +1,6 @@
-[submodule "common/src/test/bats/test_helper/bats-assert"]
-	path = common/src/test/bats/test_helper/bats-assert
-	url = https://github.com/ztombol/bats-assert
-[submodule "common/src/test/bats/test_helper/bats-support"]
-	path = common/src/test/bats/test_helper/bats-support
+[submodule "job-dsl/src/test/bats/test_helper/bats-support"]
+	path = job-dsl/src/test/bats/test_helper/bats-support
 	url = https://github.com/ztombol/bats-support
-[submodule "common/src/test/bats/docs_helper/zshelldoc"]
-	path = common/src/test/bats/docs_helper/zshelldoc
-	url = https://github.com/zdharma/zshelldoc.git
-[submodule "jenkins/src/test/bats/test_helper/bats-support"]
-	path = jenkins/src/test/bats/test_helper/bats-support
-	url = https://github.com/ztombol/bats-support
-[submodule "jenkins/src/test/bats/test_helper/bats-assert"]
-	path = jenkins/src/test/bats/test_helper/bats-assert
+[submodule "job-dsl/src/test/bats/test_helper/bats-assert"]
+	path = job-dsl/src/test/bats/test_helper/bats-assert
 	url = https://github.com/ztombol/bats-assert
