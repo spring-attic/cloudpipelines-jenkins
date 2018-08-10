@@ -1,2 +1,2 @@
-rootProject.name="jenkins"
+rootProject.name = "jenkins"
 include 'docs', 'docs-sources', 'demo', 'declarative-pipeline', 'job-dsl'
