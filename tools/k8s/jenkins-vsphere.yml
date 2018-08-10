@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: cloudpipelines/cloud-pipeline-jenkins:latest
+          image: cloudpipelines/cloud-pipelines-jenkins:latest
           ports:
           - containerPort: 8080
           resources:

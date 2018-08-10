@@ -109,8 +109,8 @@ version of the release:
 [source,bash]
 ----
 $ docker login
-$ docker build -t cloudpipelines/cloud-pipeline-jenkins:<version> ./jenkins
-$ docker push cloudpipelines/cloud-pipeline-jenkins:<version>
+$ docker build -t cloudpipelines/cloud-pipelines-jenkins:<version> ./jenkins
+$ docker push cloudpipelines/cloud-pipelines-jenkins:<version>
 ----
 ====
 

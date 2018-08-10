@@ -189,7 +189,7 @@ Provide the link to this repository in your Jenkins installation.
 === Docker Image
 
 If you would like to run the pre-configured Jenkins image somewhere other than your local machine, we
-have an image you can pull and use on https://hub.docker.com/r/cloudpipelines/cloud-pipeline-jenkins/[DockerHub].
+have an image you can pull and use on https://hub.docker.com/r/cloudpipelines/cloud-pipelines-jenkins/[DockerHub].
 The `latest` tag corresponds to the latest snapshot build.  You can also find tags
 corresponding to stable releases that you can use as well.
 
