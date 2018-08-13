@@ -442,19 +442,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#five-minute-introduction">1.2. Five-minute Introduction</a>
 <ul class="sectlevel3">
 <li><a href="#how-to-use-it">1.2.1. How to Use It</a></li>
+<li><a href="#how-it-works">1.2.2. How It Works</a></li>
 </ul>
 </li>
-<li><a href="#the-flow">1.3. The Flow</a></li>
-<li><a href="#vocabulary">1.4. Vocabulary</a>
-<ul class="sectlevel3">
-<li><a href="#environments">1.4.1. Environments</a></li>
-<li><a href="#tests">1.4.2. Tests</a></li>
-<li><a href="#testing-against-stubs">1.4.3. Testing against Stubs</a></li>
-<li><a href="#general-view">1.4.4. General View</a></li>
-</ul>
-</li>
-<li><a href="#project-crawler">1.5. Project Crawler</a></li>
-<li><a href="#how-do-the-scripts-work-with-spinanker">1.6. How Scripts Work with Spinnaker</a></li>
+<li><a href="#project-crawler">1.3. Project Crawler</a></li>
+<li><a href="#how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</a></li>
 </ul>
 </li>
 </ul>
@@ -492,291 +484,54 @@ jobs use the scripts defined in
 </div>
 <div class="sect2">
 <h3 id="five-minute-introduction">1.2. Five-minute Introduction</h3>
+<div class="paragraph">
+<p>In these sections you will learn how exactly Cloud Pipelines Jenkins integrates
+with <a href="https://github.com/CloudPipelines/scripts">Cloud Pipelines Scripts</a> and how
+you can setup deployment pipelines for each project.</p>
+</div>
 <div class="sect3">
 <h4 id="how-to-use-it">1.2.1. How to Use It</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="the-flow">1.3. The Flow</h3>
 <div class="paragraph">
-<p>The following images show the flow of the opinionated pipeline:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/flow_concourse.png" alt="flow concourse">
-</div>
-<div class="title">Figure 1. Flow in Concourse</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/flow.png" alt="flow">
-</div>
-<div class="title">Figure 2. Flow in Jenkins</div>
+<p>The suggested approach is to use the <a href="#project-crawler">Project Crawler</a> approach, where
+we scan your organization for projects and create deployment pipeline for each.</p>
 </div>
 <div class="paragraph">
-<p>We first describe the overall concept behind the flow and then
-split it into pieces and describe each piece independently.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="vocabulary">1.4. Vocabulary</h3>
-<div class="paragraph">
-<p>This section defines some common vocabulary. We describe four typical
-environments in terms of running the pipeline.</p>
-</div>
-<div class="sect3">
-<h4 id="environments">1.4.1. Environments</h4>
-<div class="paragraph">
-<p>We typically encounter the following environments:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>build</strong> environment is a machine where the building of the application takes place.
-It is a continuous integration or continuous delivery tool worker.</p>
-</li>
-<li>
-<p><strong>test</strong> is an environment where you can deploy an application to test it. It does not
-resemble production, because we cannot be sure of its state (which application is deployed
-there and in which version). It can be used by multiple teams at the same time.</p>
-</li>
-<li>
-<p><strong>stage</strong> is an environment that does resemble production. Most likely, applications
-are deployed there in versions that correspond to those deployed to production.
-Typically, staging databases hold (often obfuscated) production data. Most
-often, this environment is a single environment shared between many teams. In other
-words, in order to run some performance and user acceptance tests, you have to block
-and wait until the environment is free.</p>
-</li>
-<li>
-<p><strong>prod</strong> is the production environment where we want our tested applications to be
-deployed for our customers.</p>
-</li>
-</ul>
+<p>Another approach is to pass an environment variable with a list of repositories
+for which you would like the pipeline to be built.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="tests">1.4.2. Tests</h4>
+<h4 id="how-it-works">1.2.2. How It Works</h4>
 <div class="paragraph">
-<p>We typically encounter the following kinds of tests:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Unit tests</strong>: Tests that run on the application during the build phase.
-No integrations with databases or HTTP server stubs or other resources take place.
-Generally speaking, your application should have plenty of these tests to provide fast
-feedback about whether your features work.</p>
-</li>
-<li>
-<p><strong>Integration tests</strong>: Tests that run on the built application during the build phase.
-Integrations with in-memory databases and HTTP server stubs take place. According to the
-<a href="https://martinfowler.com/bliki/TestPyramid.html">test pyramid</a>, in most cases, you should
-not have many of these kind of tests.</p>
-</li>
-<li>
-<p><strong>Smoke tests</strong>: Tests that run on a deployed application. The concept of these tests
-is to check that the crucial parts of your application are working properly. If you have 100 features
-in your application but you gain the most money from five features, you could write smoke tests
-for those five features. We are talking about smoke tests of an application, not of
-the whole system. In our understanding inside the opinionated pipeline, these tests are
-executed against an application that is surrounded with stubs.</p>
-</li>
-<li>
-<p><strong>End-to-end tests</strong>: Tests that run on a system composed of multiple applications.
-These tests ensure that the tested feature works when the whole system is set up.
-Due to the fact that it takes a lot of time, effort, and resources to maintain such an environment
-and that these tests are often unreliable (due to many different moving pieces, such as network,
-database, and others), you should have a handful of those tests. They should be only for critical parts of your business.
-Since only production is the key verifier of whether your feature works, some companies
-do not even want to have these tests and move directly to deployment to production. When your
-system contains KPI monitoring and alerting, you can quickly react when your deployed application
-does not behave properly.</p>
-</li>
-<li>
-<p><strong>Performance testing</strong>: Tests run on an application or set of applications
-to check if your system can handle a big load. In the case of our opinionated pipeline,
-these tests can run either on test (against a stubbed environment) or on
-staging (against the whole system).</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="testing-against-stubs">1.4.3. Testing against Stubs</h4>
-<div class="paragraph">
-<p>Before we go into the details of the flow, consider the example described by the following image:</p>
+<p>As the following image shows, Cloud Pipelines contains logic to generate a
+pipeline and the runtime to execute pipeline steps.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/monolith.png" alt="monolith">
+<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/how.png" alt="how">
 </div>
-<div class="title">Figure 3. Two monolithic applications deployed for end to end testing</div>
-</div>
-<div class="paragraph">
-<p>When you have only a handful of applications, end-to-end testing is beneficial.
-From the operations perspective, it is maintainable for a finite number of deployed instances.
-From the developers perspective, it is nice to verify the whole flow in the system
-for a feature.</p>
+<div class="title">Figure 1. How Cloud Pipelines works</div>
 </div>
 <div class="paragraph">
-<p>In the case of microservices, the scale starts to be a problem, as the following image shows:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/many_microservices.png" alt="many microservices">
-</div>
-<div class="title">Figure 4. Many microservices deployed in different versions</div>
+<p>Once a pipeline is created (for example, by using the Jenkins Job DSL or from a Concourse
+templated pipeline), when the jobs are ran, they clone or download Cloud Pipelines
+code to run each step. Those steps run functions that are
+defined in the <code>commons</code> module of Cloud Pipelines.</p>
 </div>
 <div class="paragraph">
-<p>The following questions arise:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Should I queue deployments of microservices on one testing environment or should I have an environment per microservice?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If I queue deployments, people have to wait for hours to have their tests run. That can be a problem</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>To remove that issue, I can have an environment for each microservice.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Who will pay the bills? (Imagine 100 microservices, each having each own environment).</p>
-</li>
-<li>
-<p>Who will support each of those environments?</p>
-</li>
-<li>
-<p>Should we spawn a new environment each time we execute a new pipeline and then wrap it up or should we have
-them up and running for the whole day?</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>In which versions should I deploy the dependent microservices - development or production versions?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>If I have development versions, I can test my application against a feature that is not yet on production.
-That can lead to exceptions in production.</p>
-</li>
-<li>
-<p>If I test against production versions, I can never test against a feature under development
-anytime before deployment to production.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>Cloud Pipelines performs steps to guess what kind of a project your
+repository is (for example, JVM or PHP) and what framework it uses (Maven or Gradle), and it
+can deploy your application to a cloud (Cloud Foundry or Kubernetes). You can read about how
+it works by reading the <a href="#how-do-the-scripts-work">[how-do-the-scripts-work]</a> section.</p>
 </div>
 <div class="paragraph">
-<p>One of the possibilities of tackling these problems is to not do end-to-end tests.</p>
-</div>
-<div class="paragraph">
-<p>The following image shows one solution to the problem, in the form of stubbed dependencies:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/stubbed_dependencies.png" alt="stubbed dependencies">
-</div>
-<div class="title">Figure 5. Execute tests on a deployed microservice on stubbed dependencies</div>
-</div>
-<div class="paragraph">
-<p>If we stub out all the dependencies of our application, most of the problems presented earlier
-disappear. There is no need to start and setup the infrastructure required by the dependent
-microservices. That way, the testing setup looks like the following image:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="https://raw.githubusercontent.com/CloudPipelines/scripts/master/docs/images/intro/stubbed_dependencies.png" alt="stubbed dependencies">
-</div>
-<div class="title">Figure 6. We&#8217;re testing microservices in isolation</div>
-</div>
-<div class="paragraph">
-<p>Such an approach to testing and deployment gives the following benefits
-(thanks to the usage of <a href="http://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html">Spring Cloud Contract</a>):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>No need to deploy dependent services.</p>
-</li>
-<li>
-<p>The stubs used for the tests run on a deployed microservice are the same as those used during integration tests.</p>
-</li>
-<li>
-<p>Those stubs have been tested against the application that produces them (see <a href="http://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html">Spring Cloud Contract</a> for more information).</p>
-</li>
-<li>
-<p>We do not have many slow tests running on a deployed application, so the pipeline gets executed much faster.</p>
-</li>
-<li>
-<p>We do not have to queue deployments. We test in isolation so that pipelines do not interfere with each other.</p>
-</li>
-<li>
-<p>We do not have to spawn virtual machines each time for deployment purposes.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>However, this approach brings the following challenges:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>No end-to-end tests before production. You do not have full certainty that a feature is working.</p>
-</li>
-<li>
-<p>The first time the applications interact in a real way is on production.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As with every solution, it has its benefits and drawbacks. The opinionated pipeline
-lets you configure whether you want to follow this flow or not.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="general-view">1.4.4. General View</h4>
-<div class="paragraph">
-<p>The general view behind this deployment pipeline is to:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Test the application in isolation.</p>
-</li>
-<li>
-<p>Test the backwards compatibility of the application, in order to roll it back if necessary.</p>
-</li>
-<li>
-<p>Allow testing of the packaged application in a deployed environment.</p>
-</li>
-<li>
-<p>Allow user acceptance tests and performance tests in a deployed environment.</p>
-</li>
-<li>
-<p>Allow deployment to production.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The pipeline could have been split to more steps, but it seems that all of the aforementioned
-actions fit nicely in our opinionated proposal.</p>
+<p>All of that happens automatically if your application follows the conventions.
+You can read about them in the <a href="#project-opinions">[project-opinions]</a> section.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="project-crawler">1.5. Project Crawler</h3>
+<h3 id="project-crawler">1.3. Project Crawler</h3>
 <div class="paragraph">
 <p>In Jenkins, you can generate the deployment pipelines by passing an environment variable
 with a comma-separated list of repositories. This, however, does not scale. We would like to automatically fetch
@@ -812,7 +567,7 @@ stored at Github, Gitlab, and Bitbucket. You can also register your own implemen
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-do-the-scripts-work-with-spinanker">1.6. How Scripts Work with Spinnaker</h3>
+<h3 id="how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</h3>
 <div class="paragraph">
 <p>With Spinnaker, the deployment pipeline is inside of Spinnaker. No longer do we treat
 Jenkins or Concourse as a tool that does deployments. In Jenkins, we create only
@@ -832,7 +587,7 @@ the CI jobs (that is, build and test) and prepare the JSON definitions of Spinna
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-13 16:53:05 CEST
+Last updated 2018-08-13 17:08:40 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
