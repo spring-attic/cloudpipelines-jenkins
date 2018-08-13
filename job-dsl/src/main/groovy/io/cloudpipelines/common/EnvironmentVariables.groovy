@@ -3,7 +3,14 @@ package io.cloudpipelines.common
 import groovy.transform.CompileStatic
 
 /**
- * Contains all Jenkins related environment variables
+ * Contains all Jenkins related environment variables.
+ * Requires certain structure of JavaDocs
+ *
+ * ENV_VAR - description
+ *
+ * ENV_VAR needs to be surrounded with JavaDocs code
+ * There needs to be a hyphen
+ * After the hyphen we take the description
  *
  * @author Marcin Grzejszczak
  * @since 1.0.0

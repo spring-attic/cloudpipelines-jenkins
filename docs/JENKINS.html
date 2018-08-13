@@ -458,6 +458,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#testing-jenkins-scripts">1.3. Testing Jenkins scripts</a></li>
 <li><a href="#how-to-work-with-jenkins-job-dsl-plugin">1.4. How to work with Jenkins Job DSL plugin</a></li>
 <li><a href="#docker-image">1.5. Docker Image</a></li>
+<li><a href="#env_vars">1.6. All Environment Variables</a></li>
 </ul>
 </li>
 <li><a href="#jenkins-pipeline-cf">2. Jenkins Pipeline (Cloud Foundry)</a>
@@ -845,6 +846,481 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="env_vars">1.6. All Environment Variables</h3>
+<div class="paragraph">
+<p>Below you can find a table with all environment variables</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Environment variables</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Environment variable name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of credentials used for GIT interaction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_SSH_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of credentials used for GIT interaction via ssh</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_USE_SSH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if set to <code>true</code> will set the SSH key for GIT interaction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username used for GIT integration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password used for GIT integration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_TOKEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Token used for GIT integration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_EMAIL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email used for GIT integration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GIT_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name used for GIT integration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>JDK_VERSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the used JDK installation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>OUTPUT_FOLDER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Folder to which the app will output files</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>API_COMPATIBILITY_STEP_REQUIRED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should API compatibility step be there? Defaults to <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DB_ROLLBACK_STEP_REQUIRED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should DB rollback step be there? Defaults to <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DEPLOY_TO_TEST_STEP_REQUIRED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should test steps be there? Defaults to <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DEPLOY_TO_STAGE_STEP_REQUIRED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should stage steps be there? Defaults to <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTO_DEPLOY_TO_STAGE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should deploy to stage automatically? Defaults to <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AUTO_DEPLOY_TO_PROD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should deploy to prod automatically? Defaults to <code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PROJECT_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Project name that should override the default	  one (which is the one taken from the build)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PROJECT_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the project. Depends on the used framework. Can be	  e.g. Maven, Gradle etc. Depending on the value of this env variable a proper	  <code>projectType/pipeline-$PROJECT_TYPE.sh</code> script will be sourced</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the used PAAS. Can be e.g. CF, K8S, etc.	  Depending on the value of this env variable a proper <code>pipeline-$PAAS_TYPE.sh</code>	  script will be sourced</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SCRIPTS_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the repository containing scripts to be used within	  the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.	  You can provide URL to either tar.gz or .git repository.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SCRIPTS_BRANCH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Branch of the repository containing scripts to be used within	  the build. Defaults to <code>master</code> but when you&#8217;re working on a feature in	  Cloud Pipelines you can want to point to your branch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>JENKINS_SCRIPTS_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the repository containing scripts to be used within	  the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.	  You can provide URL to either tar.gz or .git repository.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>JENKINS_SCRIPTS_BRANCH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Branch of the repository containing scripts to be used within	  the build. Defaults to <code>master</code> but when you&#8217;re working on a feature in	  Cloud Pipelines you can want to point to your branch</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>M2_SETTINGS_REPO_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the credentials that will be put	  to {@code ~/.m2/settings.xml} as credentials used to deploy an artifact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>M2_SETTINGS_REPO_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">username put inside {@code ~/.m2/settings.xml}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>M2_SETTINGS_REPO_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password put inside {@code ~/.m2/settings.xml}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_WITH_BINARIES_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the credentials that will be	  passed to your build if you need to upload artifacts to a binary storage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_WITH_BINARIES</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the repo that contains binaries</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_WITH_BINARIES_FOR_UPLOAD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL for uploading of the repo that contains binaries.	  Often points to the <code>REPO_WITH_BINARIES</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PIPELINE_DESCRIPTOR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the pipeline descriptor. Defaults to	  <code>cloud-pipelines.yml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LEGACY_PIPELINE_DESCRIPTOR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the legacy pipeline descriptor. Defaults to	  <code>sc-pipelines.yml</code>. Will be used as a fallback if the <code>PIPELINE_DESCRIPTOR</code>	  is not found</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PIPELINE_VERSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">env var containing the version of the pipeline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>WORKSPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">env var containing the Jenkins workspace path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TEST_MODE_DESCRIPTOR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">used for tests - descriptor to be returned	  for test purposes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>APPLICATION_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">used in integration tests. URL of the deployed application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>STUBRUNNER_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">used in integration tests. URL of the deployed	  Stub Runner application</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LATEST_PROD_VERSION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">used in rollback tests deployment and tests. Latest	  production version of the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>LATEST_PROD_TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">used in rollback tests deployment and tests. Latest	  production tag of the application.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PASSED_LATEST_PROD_TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">used in rollback tests deployment and tests. Latest	  production tag of the application. Certain CI tools (e.g. Concourse)	  add the PASSED_ prefix before the env var.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_ORGANIZATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">organization / team to crawl by project crawler</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_MANAGEMENT_TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type of repo management used. Can be	  GITHUB, GITLAB, BITBUCKET or OTHER</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_URL_ROOT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the API to reach to crawl the organization</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_PROJECTS_EXCLUDE_PATTERN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pattern of projects to exclude</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_API_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the test environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_API_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_API_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of credentials used to connect to test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username used to connect to test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password used to connect to test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username used to connect to stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password used to connect to stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of credentials used to connect to prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of credentials used to connect to stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username used to connect to prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password used to connect to prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_ORG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization used for the test environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_SPACE_PREFIX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix prepended to the application name.	  Together forms a unique name of a test space.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_ORG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization used for the stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_SPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Space used for the stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_ORG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization used for the prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_SPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Space used for the prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_HOSTNAME_UUID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hostname prepended to the route. When	  the name of the app is already taken, the route typically is also used.	  That&#8217;s why you can use this env var to prepend additional value to the hostname</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CF_REDOWNLOAD_CLI</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">defaults to true, forces to redownload CLI	  regardless of whether it&#8217;s already downloaded or not</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CF_CLI_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL from which CF should be downloaded</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>CF_SKIP_PREPARE_FOR_TESTS</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if true, will not connect to CF to fetch	  info about app host</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL of the docker registry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_ORGANIZATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization where your Docker repo lays</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_REGISTRY_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of credentials used to push Docker images</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username used to push Docker images</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_PASSWORD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Password used to push Docker images</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_SERVER_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In {@code ~/.m2/settings.xml} server id of the Docker	  registry can be set so that credentials don&#8217;t have to be explicitly passed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_EMAIL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email used for Docker repository interaction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CA_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the test CA in the container</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CA_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the stage CA in the container</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CA_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the prod CA in the container</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CLIENT_CERT_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the client certificate for test environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CLIENT_CERT_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the client certificate for stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CLIENT_CERT_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the client certificate for prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CLIENT_KEY_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the client key for test environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CLIENT_KEY_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the client key for stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CLIENT_KEY_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the client key for prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TOKEN</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Token used to login to PAAS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CLIENT_TOKEN_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the file containing the token for test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CLIENT_TOKEN_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the file containing the token for stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CLIENT_TOKEN_PATH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Path to the file containing the token for prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CLIENT_TOKEN_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the token used to connect to test environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CLIENT_TOKEN_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the token used to connect to stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CLIENT_TOKEN_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the token used to connect to prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CLUSTER_NAME_ENV_VAR</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the cluster for test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CLUSTER_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the cluster for stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CLUSTER_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the cluster for prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_CLUSTER_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the user to connect to test environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_CLUSTER_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the user to connect to stage environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_CLUSTER_USERNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the user to connect to prod environment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_SYSTEM_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the system for test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_SYSTEM_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the system for stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_SYSTEM_NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the system for prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TEST_NAMESPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace used for the test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_STAGE_NAMESPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace used for the stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_PROD_NAMESPACE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Namespace used for the prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>KUBERNETES_MINIKUBE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set to <code>true</code> if minikube is used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MYSQL_ROOT_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the MYSQL ROOT user credentials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MYSQL_ROOT_USER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username of the MYSQL user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MYSQL_CREDENTIAL_ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID of the MYSQL user credentials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MYSQL_USER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Username of the MYSQL user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_TEST_DEPLOYMENT_ACCOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account used for deployment to test env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_STAGE_DEPLOYMENT_ACCOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account used for deployment to stage env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_PROD_DEPLOYMENT_ACCOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account used for deployment to prod env</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_JENKINS_ROOT_URL</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the Jenkins host used by Spinnaker</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_JENKINS_ACCOUNT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the Jenkins account used by Spinnaker</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_JENKINS_MASTER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the Jenkins master installation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_TEST_HOSTNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the hostname appended to the routes for test envs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_STAGE_HOSTNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the hostname appended to the routes for test envs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SPINNAKER_PROD_HOSTNAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the hostname appended to the routes for test envs</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
