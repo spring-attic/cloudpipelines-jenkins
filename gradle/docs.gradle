@@ -22,7 +22,7 @@ apply plugin: 'org.asciidoctor.convert'
 
 ext {
 	git = Grgit.open()
-	ghOrg = "cloudpipelines"
+	ghOrg = "CloudPipelines"
 	repo = project.name
 	branch = git.branch.current().getName()
 	docsBaseUrl = [
@@ -30,6 +30,13 @@ ext {
 		ghOrg,
 		repo,
 		branch
+	].join('/')
+	scriptsBranch = "master"
+	scriptsBaseUrl = [
+		'https://raw.githubusercontent.com',
+		ghOrg,
+		"scripts",
+		scriptsBranch
 	].join('/')
 }
 
@@ -61,6 +68,8 @@ asciidoctor {
 		safe: 'unsafe',
 		parse: 'false',
 		'allow-uri-read': '',
+		'scripts-base-url': scriptsBaseUrl,
+		'intro-root-docs': "${scriptsBaseUrl}/docs/images/intro",
 		'docs-base-url': docsBaseUrl,
 		'demo-root-docs': "${docsBaseUrl}/docs/images/demo",
 		'jenkins-root-docs' : "${docsBaseUrl}/docs/images/jenkins"

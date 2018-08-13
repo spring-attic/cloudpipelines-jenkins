@@ -22,6 +22,8 @@ https://github.com/CloudPipelines/scripts[Cloud Pipelines Scripts] repo.
 
 // TODO: Write this
 
+include::{scripts-base-url}/docs-sources/src/main/asciidoc/FLOW.adoc[]
+
 [[project-crawler]]
 === Project Crawler
 
