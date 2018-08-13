@@ -885,11 +885,11 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PROJECT_TYPE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the project. Depends on the used framework. Can be	  e.g. Maven, Gradle etc. Depending on the value of this env variable a proper	  <code>projectType/pipeline-$PROJECT_TYPE.sh</code> script will be sourced</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the project. Depends on the used framework. Can be	  e.g. Maven, Gradle etc. Depending on the value of this env variable a proper	  {@code projectType/pipeline-$PROJECT_TYPE.sh } script will be sourced</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PAAS_TYPE</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the used PAAS. Can be e.g. CF, K8S, etc.	  Depending on the value of this env variable a proper <code>pipeline-$PAAS_TYPE.sh</code>	  script will be sourced</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of the used PAAS. Can be e.g. CF, K8S, etc.	  Depending on the value of this env variable a proper {@code pipeline-$PAAS_TYPE.sh }	  script will be sourced</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>SCRIPTS_URL</code></p></td>
@@ -909,15 +909,15 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>M2_SETTINGS_REPO_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id of the credentials that will be put	  to {@code ~/.m2/settings.xml} as credentials used to deploy an artifact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id of the credentials that will be put	  to <code>~/.m2/settings.xml</code> as credentials used to deploy an artifact</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>M2_SETTINGS_REPO_USERNAME</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">username put inside {@code ~/.m2/settings.xml}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">username put inside <code>~/.m2/settings.xml</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>M2_SETTINGS_REPO_PASSWORD</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">password put inside {@code ~/.m2/settings.xml}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">password put inside <code>~/.m2/settings.xml</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>REPO_WITH_BINARIES_CREDENTIAL_ID</code></p></td>
@@ -933,11 +933,11 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PIPELINE_DESCRIPTOR</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name of the pipeline descriptor. Defaults to	  <code>cloud-pipelines.yml</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the pipeline descriptor. Defaults to	  {@code cloud-pipelines.yml}</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>LEGACY_PIPELINE_DESCRIPTOR</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name of the legacy pipeline descriptor. Defaults to	  <code>sc-pipelines.yml</code>. Will be used as a fallback if the <code>PIPELINE_DESCRIPTOR</code>	  is not found</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name of the legacy pipeline descriptor. Defaults to	  {@code sc-pipelines.yml}. Will be used as a fallback if the <code>PIPELINE_DESCRIPTOR</code>	  is not found</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>PIPELINE_VERSION</code></p></td>
@@ -1097,7 +1097,7 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_SERVER_ID</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">In {@code ~/.m2/settings.xml} server id of the Docker	  registry can be set so that credentials don&#8217;t have to be explicitly passed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In <code>~/.m2/settings.xml</code> server id of the Docker	  registry can be set so that credentials don&#8217;t have to be explicitly passed</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>DOCKER_EMAIL</code></p></td>

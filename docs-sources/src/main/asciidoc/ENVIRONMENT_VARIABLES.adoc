@@ -20,20 +20,20 @@
 |`AUTO_DEPLOY_TO_STAGE` | Should deploy to stage automatically? Defaults to `true`
 |`AUTO_DEPLOY_TO_PROD` | Should deploy to prod automatically? Defaults to `true`
 |`PROJECT_NAME` | Project name that should override the default	  one (which is the one taken from the build)
-|`PROJECT_TYPE` | Type of the project. Depends on the used framework. Can be	  e.g. Maven, Gradle etc. Depending on the value of this env variable a proper	  `projectType/pipeline-$PROJECT_TYPE.sh` script will be sourced
-|`PAAS_TYPE` | Type of the used PAAS. Can be e.g. CF, K8S, etc.	  Depending on the value of this env variable a proper `pipeline-$PAAS_TYPE.sh`	  script will be sourced
+|`PROJECT_TYPE` | Type of the project. Depends on the used framework. Can be	  e.g. Maven, Gradle etc. Depending on the value of this env variable a proper	  {@code projectType/pipeline-$PROJECT_TYPE.sh } script will be sourced
+|`PAAS_TYPE` | Type of the used PAAS. Can be e.g. CF, K8S, etc.	  Depending on the value of this env variable a proper {@code pipeline-$PAAS_TYPE.sh }	  script will be sourced
 |`SCRIPTS_URL` | URL of the repository containing scripts to be used within	  the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.	  You can provide URL to either tar.gz or .git repository.
 |`SCRIPTS_BRANCH` | Branch of the repository containing scripts to be used within	  the build. Defaults to `master` but when you're working on a feature in	  Cloud Pipelines you can want to point to your branch
 |`JENKINS_SCRIPTS_URL` | URL of the repository containing scripts to be used within	  the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.	  You can provide URL to either tar.gz or .git repository.
 |`JENKINS_SCRIPTS_BRANCH` | Branch of the repository containing scripts to be used within	  the build. Defaults to `master` but when you're working on a feature in	  Cloud Pipelines you can want to point to your branch
-|`M2_SETTINGS_REPO_ID` | id of the credentials that will be put	  to {@code ~/.m2/settings.xml} as credentials used to deploy an artifact
-|`M2_SETTINGS_REPO_USERNAME` | username put inside {@code ~/.m2/settings.xml}
-|`M2_SETTINGS_REPO_PASSWORD` | password put inside {@code ~/.m2/settings.xml}
+|`M2_SETTINGS_REPO_ID` | id of the credentials that will be put	  to `~/.m2/settings.xml` as credentials used to deploy an artifact
+|`M2_SETTINGS_REPO_USERNAME` | username put inside `~/.m2/settings.xml`
+|`M2_SETTINGS_REPO_PASSWORD` | password put inside `~/.m2/settings.xml`
 |`REPO_WITH_BINARIES_CREDENTIAL_ID` | id of the credentials that will be	  passed to your build if you need to upload artifacts to a binary storage
 |`REPO_WITH_BINARIES` | URL of the repo that contains binaries
 |`REPO_WITH_BINARIES_FOR_UPLOAD` | URL for uploading of the repo that contains binaries.	  Often points to the `REPO_WITH_BINARIES`
-|`PIPELINE_DESCRIPTOR` | name of the pipeline descriptor. Defaults to	  `cloud-pipelines.yml`
-|`LEGACY_PIPELINE_DESCRIPTOR` | name of the legacy pipeline descriptor. Defaults to	  `sc-pipelines.yml`. Will be used as a fallback if the `PIPELINE_DESCRIPTOR`	  is not found
+|`PIPELINE_DESCRIPTOR` | name of the pipeline descriptor. Defaults to	  {@code cloud-pipelines.yml}
+|`LEGACY_PIPELINE_DESCRIPTOR` | name of the legacy pipeline descriptor. Defaults to	  {@code sc-pipelines.yml}. Will be used as a fallback if the `PIPELINE_DESCRIPTOR`	  is not found
 |`PIPELINE_VERSION` | env var containing the version of the pipeline
 |`WORKSPACE` | env var containing the Jenkins workspace path
 |`TEST_MODE_DESCRIPTOR` | used for tests - descriptor to be returned	  for test purposes
@@ -73,7 +73,7 @@
 |`DOCKER_REGISTRY_CREDENTIAL_ID` | ID of credentials used to push Docker images
 |`DOCKER_USERNAME` | Username used to push Docker images
 |`DOCKER_PASSWORD` | Password used to push Docker images
-|`DOCKER_SERVER_ID` | In {@code ~/.m2/settings.xml} server id of the Docker	  registry can be set so that credentials don't have to be explicitly passed
+|`DOCKER_SERVER_ID` | In `~/.m2/settings.xml` server id of the Docker	  registry can be set so that credentials don't have to be explicitly passed
 |`DOCKER_EMAIL` | Email used for Docker repository interaction
 |`PAAS_TEST_CA_PATH` | Path to the test CA in the container
 |`PAAS_STAGE_CA_PATH` | Path to the stage CA in the container

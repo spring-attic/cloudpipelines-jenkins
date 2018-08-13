@@ -94,7 +94,7 @@ task generateEnvVars() {
 		List<String> javaDocs = startWithEnd.collect { splitClazz.getAt(it[0] + 1..it[1] - 1).join("").replaceAll("\\*", "") }.findAll { it.contains("@code") }
 		List<List<String>> table = [["Environment variable name", "Description"]]
 		String asciiDocTable = javaDocs.inject(table) { List<List<String>> acc, String value ->
-			String replaced = value.replace("\n", " ").replace("      ", " ").replaceAll(/\{\@code[ ]?([\w_$.\/-]+)[ ]?\}/) { allValues, code -> return "`${code}`" }
+			String replaced = value.replace("\n", " ").replace("      ", " ").replaceAll(/\{\@code[ ]?([\w_$.\/-~]+)[ ]?\}/) { allValues, code -> return "`${code}`" }
 			int index = replaced.indexOf("-")
 			String envName = replaced.substring(0, index).trim()
 			String description = replaced.substring(index + 1).trim()
