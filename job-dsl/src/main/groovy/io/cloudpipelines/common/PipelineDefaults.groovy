@@ -25,7 +25,7 @@ class PipelineDefaults {
 		setIfPresent(envs, variables, EnvironmentVariables.PROJECT_NAME_ENV_VAR)
 		setIfPresent(envs, variables, EnvironmentVariables.PROJECT_TYPE_ENV_VAR)
 		setIfPresent(envs, variables, EnvironmentVariables.PAAS_TYPE_ENV_VAR)
-		setIfPresent(envs, variables, EnvironmentVariables.TOOLS_BRANCH_ENV_VAR)
+		setIfPresent(envs, variables, EnvironmentVariables.SCRIPTS_BRANCH_ENV_VAR)
 		setIfPresent(envs, variables, EnvironmentVariables.M2_SETTINGS_REPO_ID_ENV_VAR)
 		setIfPresent(envs, variables, EnvironmentVariables.REPO_WITH_BINARIES_ENV_VAR)
 		setIfPresent(envs, variables, EnvironmentVariables.REPO_WITH_BINARIES_FOR_UPLOAD_ENV_VAR)
@@ -319,13 +319,19 @@ class PipelineDefaults {
 	}
 
 // TODO: Automate customization of this value
-	String toolsBranch() { return prop(EnvironmentVariables.TOOLS_BRANCH_ENV_VAR, "master") }
+	String scriptsBranch() { return prop(EnvironmentVariables.SCRIPTS_BRANCH_ENV_VAR, "master") }
 
-	String toolsRepo() {
-		return prop(EnvironmentVariables.TOOLS_REPOSITORY_ENV_VAR, "https://github.com/cloudpipelines/scripts/raw/${toolsBranch()}/dist/scripts.tar.gz")
+	String scriptsUrl() {
+		return prop(EnvironmentVariables.SCRIPTS_URL_ENV_VAR, "https://github.com/CloudPipelines/scripts/raw/${scriptsBranch()}/dist/scripts.tar.gz")
 	}
 
-	RepoType repoType() { return RepoType.from(toolsRepo()) }
+	String jenkinsScriptsBranch() { return prop(EnvironmentVariables.JENKINS_SCRIPTS_BRANCH_ENV_VAR, "master") }
+
+	String jenkinsScriptsUrl() {
+		return prop(EnvironmentVariables.JENKINS_SCRIPTS_URL_ENV_VAR, "https://github.com/CloudPipelines/jenkins.git")
+	}
+
+	RepoType repoType() { return RepoType.from(scriptsUrl()) }
 // TODO: K8S - consider parametrization
 // remove::start[K8S]
 	String mySqlRootCredential() {

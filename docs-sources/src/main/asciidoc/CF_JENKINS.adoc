@@ -54,7 +54,7 @@ Jenkins + Artifactory can be ran locally. To do so, run the
 ====
 [source,bash]
 ----
-git clone https://github.com/cloudpipelines/jenkins
+git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/demo
 ./start.sh yourGitUsername yourGitPassword yourForkedGithubOrg
 ----
@@ -79,7 +79,7 @@ When Artifactory is running, run the `tools/deploy-infra.sh` script from this re
 ====
 [source,bash]
 ----
-git clone https://github.com/cloudpipelines/jenkins
+git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/
 ./tools/deploy-infra.sh
 ----

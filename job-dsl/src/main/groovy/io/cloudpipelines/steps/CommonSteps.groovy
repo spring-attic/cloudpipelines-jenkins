@@ -2,7 +2,6 @@ package io.cloudpipelines.steps
 
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
-import groovy.transform.PackageScope
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.helpers.ScmContext
 import javaposse.jobdsl.dsl.helpers.publisher.PublisherContext
@@ -12,9 +11,7 @@ import javaposse.jobdsl.dsl.helpers.wrapper.WrapperContext
 import io.cloudpipelines.common.BashFunctions
 import io.cloudpipelines.common.EnvironmentVariables
 import io.cloudpipelines.common.JobCustomizer
-import io.cloudpipelines.common.PipelineDefaults
 import io.cloudpipelines.common.RepoType
-import org.springframework.cloud.projectcrawler.RepositoryManagementBuilder
 
 /**
  * @author Marcin Grzejszczak
@@ -122,12 +119,12 @@ class CommonSteps {
 
 	protected String downloadToolsScript(String repoUrl) {
 		String script = """#!/bin/bash\n"""
-		RepoType repoType = RepoType.from(defaults.toolsRepo())
+		RepoType repoType = RepoType.from(defaults.scriptsUrl())
 		script = script + bashFunctions.setupGitCredentials(repoUrl)
 		if (repoType == RepoType.TARBALL) {
-			return script + """rm -rf .git/tools && mkdir -p .git/tools && pushd .git/tools && curl -Lk "${defaults.toolsRepo()}" -o pipelines.tar.gz && tar xf pipelines.tar.gz --strip-components 1 && popd"""
+			return script + """rm -rf .git/tools && mkdir -p .git/tools && pushd .git/tools && curl -Lk "${defaults.scriptsUrl()}" -o pipelines.tar.gz && tar xf pipelines.tar.gz --strip-components 1 && popd"""
 		}
-		return script + """rm -rf .git/tools && git clone --recursive -b ${defaults.toolsBranch()} --single-branch ${defaults.toolsRepo()} .git/tools"""
+		return script + """rm -rf .git/tools && git clone --recursive -b ${defaults.scriptsBranch()} --single-branch ${defaults.scriptsUrl()} .git/tools"""
 	}
 
 	Iterable<JobCustomizer> customizers() {

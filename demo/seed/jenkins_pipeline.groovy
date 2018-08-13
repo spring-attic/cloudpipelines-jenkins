@@ -15,9 +15,9 @@ factory.job('meta-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -37,7 +37,7 @@ factory.job('meta-seed') {
 	}
 	wrappers {
 		parameters {
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
 			stringParam('GIT_CREDENTIAL_ID', 'git', 'ID of the credentials used to push tags to git repo')
 			stringParam('PAAS_TEST_CREDENTIAL_ID', 'cf-test', 'ID of the CF credentials for test environment')
 			stringParam('PAAS_STAGE_CREDENTIAL_ID', 'cf-stage', 'ID of the CF credentials for stage environment')
@@ -51,9 +51,9 @@ factory.job('pipelines-ci') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -66,7 +66,7 @@ factory.job('pipelines-ci') {
 	}
 	wrappers {
 		parameters {
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
 		}
 	}
 }
@@ -76,9 +76,9 @@ factory.job('jenkins-pipeline-cf-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -111,8 +111,10 @@ factory.job('jenkins-pipeline-cf-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')
@@ -155,9 +157,9 @@ factory.job('jenkins-pipeline-cf-crawler-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -194,8 +196,10 @@ factory.job('jenkins-pipeline-cf-crawler-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', true, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', true, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')
@@ -250,9 +254,9 @@ factory.job('jenkins-spinnaker-cf-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -287,8 +291,10 @@ factory.job('jenkins-spinnaker-cf-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			stringParam('PAAS_TYPE', 'cf', "Which PAAS do you want to choose")
 			stringParam('PIPELINE_DESCRIPTOR', '', "The name of the pipeline descriptor. If none is set then `cloud-pipelines.yml` will be assumed")
 			// Spinnaker
@@ -347,9 +353,9 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -372,8 +378,10 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')
@@ -414,9 +422,9 @@ factory.job('jenkins-pipeline-k8s-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -439,8 +447,10 @@ factory.job('jenkins-pipeline-k8s-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')
@@ -508,9 +518,9 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -533,8 +543,10 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts/archive/master.tar.gz', "The URL to tarball containing pipeline functions repository. Also git repository is supported (for backward compatibility)")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball containing pipeline functions repository. Also git repository is supported (for backward compatibility)")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')
@@ -600,9 +612,9 @@ factory.job('jenkins-pipeline-ansible-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -626,8 +638,10 @@ factory.job('jenkins-pipeline-ansible-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts', "The URL containing pipeline functions repository")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts', "The URL containing pipeline functions repository")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')
@@ -666,9 +680,9 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 	scm {
 		git {
 			remote {
-				github('cloudpipelines/jenkins')
+				github('CloudPipelines/jenkins')
 			}
-			branch('${TOOLS_BRANCH}')
+			branch('${JENKINS_SCRIPTS_BRANCH}')
 			extensions {
 				submoduleOptions {
 					recursive()
@@ -691,8 +705,10 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 			stringParam('REPO_WITH_BINARIES_CREDENTIAL_ID', 'repo-with-binaries', "Credential ID of repo with binaries")
 			stringParam('GIT_EMAIL', 'email@example.com', "Email used to tag the repo")
 			stringParam('GIT_NAME', 'Pivo Tal', "Name used to tag the repo")
-			stringParam('TOOLS_REPOSITORY', 'https://github.com/cloudpipelines/scripts', "The URL containing pipeline functions repository")
-			stringParam('TOOLS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts', "The URL containing pipeline functions repository")
+			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			booleanParam('AUTO_DEPLOY_TO_STAGE', false, 'Should deployment to stage be automatic')
 			booleanParam('AUTO_DEPLOY_TO_PROD', false, 'Should deployment to prod be automatic')
 			booleanParam('API_COMPATIBILITY_STEP_REQUIRED', true, 'Should api compatibility step be present')

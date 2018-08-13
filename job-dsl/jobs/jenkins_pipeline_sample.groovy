@@ -49,8 +49,8 @@ boolean apiCompatibilityStep = binding.variables["API_COMPATIBILITY_STEP_REQUIRE
 boolean rollbackStep = binding.variables["DB_ROLLBACK_STEP_REQUIRED"] == null ? true : Boolean.parseBoolean(binding.variables["DB_ROLLBACK_STEP_REQUIRED"])
 boolean stageStep = binding.variables["DEPLOY_TO_STAGE_STEP_REQUIRED"] == null ? true : Boolean.parseBoolean(binding.variables["DEPLOY_TO_STAGE_STEP_REQUIRED"])
 // TODO: Automate customization of this value
-String toolsBranch = binding.variables["TOOLS_BRANCH"] ?: "master"
-String toolsRepo = binding.variables["TOOLS_REPOSITORY"] ?: "https://github.com/cloudpipelines/scripts/raw/${toolsBranch}/dist/scripts.tar.gz"
+String toolsBranch = binding.variables["SCRIPTS_BRANCH"] ?: "master"
+String toolsRepo = binding.variables["SCRIPTS_URL"] ?: "https://github.com/CloudPipelines/scripts/raw/${toolsBranch}/dist/scripts.tar.gz"
 RepoType repoType = RepoType.from(toolsRepo)
 // TODO: K8S - consider parametrization
 // remove::start[K8S]
@@ -731,7 +731,7 @@ class PipelineDefaults {
 		setIfPresent(envs, variables, "PROJECT_NAME")
 		setIfPresent(envs, variables, "PROJECT_TYPE")
 		setIfPresent(envs, variables, "PAAS_TYPE")
-		setIfPresent(envs, variables, "TOOLS_BRANCH")
+		setIfPresent(envs, variables, "SCRIPTS_BRANCH")
 		setIfPresent(envs, variables, "M2_SETTINGS_REPO_ID")
 		setIfPresent(envs, variables, "REPO_WITH_BINARIES")
 		setIfPresent(envs, variables, "REPO_WITH_BINARIES_FOR_UPLOAD")

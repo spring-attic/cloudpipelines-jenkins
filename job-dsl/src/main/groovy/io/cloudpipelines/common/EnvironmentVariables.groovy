@@ -115,18 +115,32 @@ final class EnvironmentVariables {
 	public static final String PAAS_TYPE_ENV_VAR = "PAAS_TYPE"
 
 	/**
-	 * {@code TOOLS_REPOSITORY} - URL of the tools repository (i.e. this repository) to be used within
+	 * {@code SCRIPTS_URL} - URL of the repository containing scripts to be used within
 	 * the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.
 	 * You can provide URL to either tar.gz or .git repository.
 	 */
-	public static final String TOOLS_REPOSITORY_ENV_VAR = "TOOLS_REPOSITORY"
+	public static final String SCRIPTS_URL_ENV_VAR = "SCRIPTS_URL"
 
 	/**
-	 * {@code TOOLS_BRANCH} - Branch of tools (i.e. this repository) to be used within
+	 * {@code SCRIPTS_BRANCH} - Branch of the repository containing scripts to be used within
 	 * the build. Defaults to {@code master} but when you're working on a feature in
 	 * Cloud Pipelines you can want to point to your branch
 	 */
-	public static final String TOOLS_BRANCH_ENV_VAR = "TOOLS_BRANCH"
+	public static final String SCRIPTS_BRANCH_ENV_VAR = "SCRIPTS_BRANCH"
+
+	/**
+	 * {@code JENKINS_SCRIPTS_URL} - URL of the repository containing scripts to be used within
+	 * the build. Defaults to the tar.gz package of the master branch of the Cloud Pipelines repo.
+	 * You can provide URL to either tar.gz or .git repository.
+	 */
+	public static final String JENKINS_SCRIPTS_URL_ENV_VAR = "JENKINS_SCRIPTS_URL"
+
+	/**
+	 * {@code JENKINS_SCRIPTS_BRANCH} - Branch of the repository containing scripts to be used within
+	 * the build. Defaults to {@code master} but when you're working on a feature in
+	 * Cloud Pipelines you can want to point to your branch
+	 */
+	public static final String JENKINS_SCRIPTS_BRANCH_ENV_VAR = "JENKINS_SCRIPTS_BRANCH"
 
 	/**
 	 * {@code M2_SETTINGS_REPO_ID} - id of the credentials that will be put

@@ -43,7 +43,7 @@ PAAS_TEST_SPACE_PREFIX=cloudpipelines-test</propertiesContent>
 				git config user.email "pivo@tal.com"
 				git config credential.helper "store --file=${tmpDir}/gitcredentials"
 				echo "https://$GIT_USERNAME:$GIT_PASSWORD@bar.com" &gt; ${tmpDir}/gitcredentials
-			rm -rf .git/tools &amp;&amp; mkdir -p .git/tools &amp;&amp; pushd .git/tools &amp;&amp; curl -Lk "https://github.com/cloudpipelines/scripts/raw/master/dist/scripts.tar.gz" -o pipelines.tar.gz &amp;&amp; tar xf pipelines.tar.gz --strip-components 1 &amp;&amp; popd</command>
+			rm -rf .git/tools &amp;&amp; mkdir -p .git/tools &amp;&amp; pushd .git/tools &amp;&amp; curl -Lk "https://github.com/CloudPipelines/scripts/raw/master/dist/scripts.tar.gz" -o pipelines.tar.gz &amp;&amp; tar xf pipelines.tar.gz --strip-components 1 &amp;&amp; popd</command>
         </hudson.tasks.Shell>
         <hudson.tasks.Shell>
             <command>#!/bin/bash 

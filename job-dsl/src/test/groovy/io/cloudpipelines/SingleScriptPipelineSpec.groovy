@@ -416,7 +416,7 @@ class SingleScriptPipelineSpec extends Specification {
 		jm.parameters << [
 			SCRIPTS_DIR: 'foo',
 			JENKINSFILE_DIR: 'foo',
-			TOOLS_REPOSITORY: 'https://akjsad.com/foo/bar'
+			SCRIPTS_URL: 'https://akjsad.com/foo/bar'
 		]
 		DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -442,7 +442,7 @@ class SingleScriptPipelineSpec extends Specification {
 			new File("jobs/jenkins_pipeline_sample.groovy").text)])
 
 		then:
-		assertScriptForScriptsDownloading(jm, 'curl -Lk "https://github.com/cloudpipelines/scripts/raw/master/dist/scripts.tar.gz" -o pipelines.tar.gz && tar xf pipelines.tar.gz --strip-components 1')
+		assertScriptForScriptsDownloading(jm, 'curl -Lk "https://github.com/CloudPipelines/scripts/raw/master/dist/scripts.tar.gz" -o pipelines.tar.gz && tar xf pipelines.tar.gz --strip-components 1')
 	}
 
 	def 'should curl for tar ball with pipelines functions if archives ends with .tar.gz'() {
@@ -451,7 +451,7 @@ class SingleScriptPipelineSpec extends Specification {
 		jm.parameters << [
 			SCRIPTS_DIR: 'foo',
 			JENKINSFILE_DIR: 'foo',
-			TOOLS_REPOSITORY: 'https://foo.com/bar.tar.gz'
+			SCRIPTS_URL: 'https://foo.com/bar.tar.gz'
 		]
 		DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -469,8 +469,8 @@ class SingleScriptPipelineSpec extends Specification {
 		jm.parameters << [
 			SCRIPTS_DIR: 'foo',
 			JENKINSFILE_DIR: 'foo',
-			TOOLS_REPOSITORY: 'https://foo.com/bar.git',
-			TOOLS_BRANCH: 'baz'
+			SCRIPTS_URL: 'https://foo.com/bar.git',
+			SCRIPTS_BRANCH: 'baz'
 		]
 		DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -488,7 +488,7 @@ class SingleScriptPipelineSpec extends Specification {
 		jm.parameters << [
 			SCRIPTS_DIR: 'foo',
 			JENKINSFILE_DIR: 'foo',
-			TOOLS_REPOSITORY: 'https://foo.com/bar.git'
+			SCRIPTS_URL: 'https://foo.com/bar.git'
 		]
 		DslScriptLoader loader = new DslScriptLoader(jm)
 
