@@ -37,7 +37,10 @@ factory.job('meta-seed') {
 	}
 	wrappers {
 		parameters {
+			stringParam('SCRIPTS_URL', 'https://github.com/CloudPipelines/scripts/archive/master.tar.gz', "The URL to tarball or URL to git repository containing pipeline functions repository. Has to end either with .tar.gz or .git ")
 			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_URL', 'https://github.com/CloudPipelines/jenkins.git', "The URL to git repository containing Jenkins setup")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with Jenkins setup")
 			stringParam('GIT_CREDENTIAL_ID', 'git', 'ID of the credentials used to push tags to git repo')
 			stringParam('PAAS_TEST_CREDENTIAL_ID', 'cf-test', 'ID of the CF credentials for test environment')
 			stringParam('PAAS_STAGE_CREDENTIAL_ID', 'cf-stage', 'ID of the CF credentials for stage environment')
@@ -147,7 +150,7 @@ factory.job('jenkins-pipeline-cf-seed') {
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
 			additionalClasspath([
-				'jenkins/src/main/groovy', 'jenkins/src/main/resources', 'jenkins/build/lib/*.*'
+				'job-dsl/src/main/groovy', 'job-dsl/src/main/resources', 'job-dsl/build/lib/*.*'
 			].join("\n"))
 		}
 	}
@@ -725,7 +728,7 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 	steps {
 		gradle("clean build")
 		dsl {
-			external('jenkins/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
+			external('job-dsl/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
