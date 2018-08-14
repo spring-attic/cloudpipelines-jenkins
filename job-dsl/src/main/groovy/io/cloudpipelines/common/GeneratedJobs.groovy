@@ -3,7 +3,7 @@ package io.cloudpipelines.common
 import groovy.transform.Canonical
 import groovy.transform.CompileStatic
 
-import org.springframework.cloud.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.Repository
 
 /**
  * @author Marcin Grzejszczak

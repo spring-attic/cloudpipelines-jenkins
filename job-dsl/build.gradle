@@ -42,7 +42,7 @@ dependencies {
 	compile "org.jenkins-ci.plugins:job-dsl:${jenkinsJobDslVersion}@jar"
 
 	// for dsl
-	libs "org.springframework.cloud.internal:project-crawler:${projectCrawlerVersion}"
+	libs "io.cloudpipelines:project-crawler:${projectCrawlerVersion}"
 	libs "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
 	libs "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 	libs "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${jacksonVersion}"

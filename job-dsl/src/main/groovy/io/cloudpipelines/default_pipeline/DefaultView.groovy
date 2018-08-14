@@ -11,7 +11,7 @@ import io.cloudpipelines.common.Coordinates
 import io.cloudpipelines.common.PipelineDefaults
 import io.cloudpipelines.common.PipelineDescriptor
 import io.cloudpipelines.steps.Build
-import org.springframework.cloud.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.Repository
 
 /**
  * Generates views for a project

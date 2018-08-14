@@ -20,7 +20,7 @@ import io.cloudpipelines.steps.CommonSteps
 import io.cloudpipelines.steps.TestRollbackTest
 import io.cloudpipelines.steps.StageTest
 import io.cloudpipelines.steps.TestTest
-import org.springframework.cloud.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.Repository
 
 /**
  * Factory for Spinnaker Jenkins jobs

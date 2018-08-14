@@ -22,7 +22,7 @@ import io.cloudpipelines.spinnaker.pipeline.model.StageEnabled
 import io.cloudpipelines.spinnaker.pipeline.model.Trigger
 import io.cloudpipelines.spinnaker.pipeline.model.cf.CloudFoundryManifest
 import io.cloudpipelines.spinnaker.pipeline.model.cf.ListOfCloudFoundryManifest
-import org.springframework.cloud.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.Repository
 
 /**
  * Given the env variables produces a JSON with a Spinnaker

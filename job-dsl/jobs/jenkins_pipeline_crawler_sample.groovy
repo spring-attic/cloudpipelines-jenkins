@@ -9,9 +9,9 @@ import io.cloudpipelines.common.PipelineJobsFactoryProvider
 import io.cloudpipelines.default_pipeline.DefaultPipelineJobsFactory
 import io.cloudpipelines.default_pipeline.DefaultView
 import io.cloudpipelines.test.TestUtils
-import org.springframework.cloud.projectcrawler.OptionsBuilder
-import org.springframework.cloud.projectcrawler.Repository
-import org.springframework.cloud.projectcrawler.ProjectCrawler
+import io.cloudpipelines.projectcrawler.OptionsBuilder
+import io.cloudpipelines.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.ProjectCrawler
 
 /**
  *  This script contains logic that

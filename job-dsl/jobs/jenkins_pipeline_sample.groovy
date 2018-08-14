@@ -2,10 +2,10 @@ import groovy.transform.CompileStatic
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.helpers.ScmContext
 
-import org.springframework.cloud.projectcrawler.OptionsBuilder
-import org.springframework.cloud.projectcrawler.Repositories
-import org.springframework.cloud.projectcrawler.Repository
-import org.springframework.cloud.projectcrawler.ProjectCrawler
+import io.cloudpipelines.projectcrawler.OptionsBuilder
+import io.cloudpipelines.projectcrawler.Repositories
+import io.cloudpipelines.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.ProjectCrawler
 
 /**
  *  This script contains logic that

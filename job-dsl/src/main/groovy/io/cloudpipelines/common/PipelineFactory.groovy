@@ -3,8 +3,8 @@ package io.cloudpipelines.common
 import groovy.transform.CompileStatic
 import javaposse.jobdsl.dsl.DslFactory
 
-import org.springframework.cloud.projectcrawler.Repository
-import org.springframework.cloud.projectcrawler.ProjectCrawler
+import io.cloudpipelines.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.ProjectCrawler
 
 /**
  * Entry point to creating pipeline / build jobs and providing input for

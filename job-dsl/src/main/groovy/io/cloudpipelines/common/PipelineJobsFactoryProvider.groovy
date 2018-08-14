@@ -2,7 +2,7 @@ package io.cloudpipelines.common
 
 import javaposse.jobdsl.dsl.DslFactory
 
-import org.springframework.cloud.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.Repository
 
 interface PipelineJobsFactoryProvider {
 	/**

@@ -8,7 +8,7 @@ import spock.lang.Specification
 
 import io.cloudpipelines.common.PipelineDefaults
 import io.cloudpipelines.common.PipelineDescriptor
-import org.springframework.cloud.projectcrawler.Repository
+import io.cloudpipelines.projectcrawler.Repository
 
 /**
  * @author Marcin Grzejszczak
