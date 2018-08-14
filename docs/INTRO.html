@@ -454,7 +454,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="introduction">1. Introduction</h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes how Jenkins works with Cloud Pipelines.</p>
@@ -474,7 +474,7 @@ Cloud Pipelines that you think best suit your needs.
 </table>
 </div>
 <div class="sect2">
-<h3 id="five-second-introduction">1.1. Five-second Introduction</h3>
+<h3 id="five-second-introduction"><a class="link" href="#five-second-introduction">1.1. Five-second Introduction</a></h3>
 <div class="paragraph">
 <p>Cloud Pipelines Jenkins provides setup for Jenkins that creates jobs and pipelines
 via Jenkins Job DSL or Jenkinsfile for your projects. The pipelines and
@@ -483,14 +483,14 @@ jobs use the scripts defined in
 </div>
 </div>
 <div class="sect2">
-<h3 id="five-minute-introduction">1.2. Five-minute Introduction</h3>
+<h3 id="five-minute-introduction"><a class="link" href="#five-minute-introduction">1.2. Five-minute Introduction</a></h3>
 <div class="paragraph">
 <p>In these sections you will learn how exactly Cloud Pipelines Jenkins integrates
 with <a href="https://github.com/CloudPipelines/scripts">Cloud Pipelines Scripts</a> and how
 you can setup deployment pipelines for each project.</p>
 </div>
 <div class="sect3">
-<h4 id="how-to-use-it">1.2.1. How to Use It</h4>
+<h4 id="how-to-use-it"><a class="link" href="#how-to-use-it">1.2.1. How to Use It</a></h4>
 <div class="paragraph">
 <p>The suggested approach is to use the <a href="#project-crawler">Project Crawler</a> approach, where
 we scan your organization for projects and create deployment pipeline for each.</p>
@@ -501,7 +501,7 @@ for which you would like the pipeline to be built.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-works">1.2.2. How It Works</h4>
+<h4 id="how-it-works"><a class="link" href="#how-it-works">1.2.2. How It Works</a></h4>
 <div class="paragraph">
 <p>As the following image shows, Cloud Pipelines contains logic to generate a
 pipeline and the runtime to execute pipeline steps.</p>
@@ -520,18 +520,13 @@ defined in the <code>commons</code> module of Cloud Pipelines.</p>
 </div>
 <div class="paragraph">
 <p>Cloud Pipelines performs steps to guess what kind of a project your
-repository is (for example, JVM or PHP) and what framework it uses (Maven or Gradle), and it
-can deploy your application to a cloud (Cloud Foundry or Kubernetes). You can read about how
-it works by reading the <a href="#how-do-the-scripts-work">[how-do-the-scripts-work]</a> section.</p>
-</div>
-<div class="paragraph">
-<p>All of that happens automatically if your application follows the conventions.
-You can read about them in the <a href="#project-opinions">[project-opinions]</a> section.</p>
+repository is (e.g. JVM or PHP) and what framework it uses (Maven or Gradle), and it
+can deploy your application to a cloud (e.g. Cloud Foundry or Kubernetes)</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="project-crawler">1.3. Project Crawler</h3>
+<h3 id="project-crawler"><a class="link" href="#project-crawler">1.3. Project Crawler</a></h3>
 <div class="paragraph">
 <p>In Jenkins, you can generate the deployment pipelines by passing an environment variable
 with a comma-separated list of repositories. This, however, does not scale. We would like to automatically fetch
@@ -567,7 +562,7 @@ stored at Github, Gitlab, and Bitbucket. You can also register your own implemen
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</h3>
+<h3 id="how-do-the-scripts-work-with-spinanker"><a class="link" href="#how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</a></h3>
 <div class="paragraph">
 <p>With Spinnaker, the deployment pipeline is inside of Spinnaker. No longer do we treat
 Jenkins or Concourse as a tool that does deployments. In Jenkins, we create only
@@ -583,11 +578,6 @@ the CI jobs (that is, build and test) and prepare the JSON definitions of Spinna
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-08-13 17:08:40 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

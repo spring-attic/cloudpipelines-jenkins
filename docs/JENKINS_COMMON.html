@@ -466,14 +466,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="jenkins-pipeline-common">1. Jenkins Pipeline (Common)</h2>
+<h2 id="jenkins-pipeline-common"><a class="link" href="#jenkins-pipeline-common">1. Jenkins Pipeline (Common)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section we will present the common setup of Jenkins for any platform.
 We will also provide answers to most frequently asked questions.</p>
 </div>
 <div class="sect2">
-<h3 id="project-setup">1.1. Project setup</h3>
+<h3 id="project-setup"><a class="link" href="#project-setup">1.1. Project setup</a></h3>
 <div class="paragraph">
 <p>In the <code>declarative-pipeline</code> you can find a definition of a declarative
 pipeline. It&#8217;s used together with the Blueocean UI.</p>
@@ -493,13 +493,13 @@ files required for deployment to a Kubernetes cluster.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-customization-steps">1.2. Optional customization steps</h3>
+<h3 id="optional-customization-steps"><a class="link" href="#optional-customization-steps">1.2. Optional customization steps</a></h3>
 <div class="paragraph">
 <p><a id="jenkins_optional"></a> All the steps below are not necessary to run the demo. They are needed only
 when you want to do some custom changes.</p>
 </div>
 <div class="sect3">
-<h4 id="setup-settings-xml">1.2.1. Setup settings.xml for Maven deployment</h4>
+<h4 id="setup-settings-xml"><a class="link" href="#setup-settings-xml">1.2.1. Setup settings.xml for Maven deployment</a></h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -555,7 +555,7 @@ the file (it&#8217;s in <code>seed/settings.xml</code>).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setup-jenkins-env-vars">1.2.2. Setup Jenkins env vars</h4>
+<h4 id="setup-jenkins-env-vars"><a class="link" href="#setup-jenkins-env-vars">1.2.2. Setup Jenkins env vars</a></h4>
 <div class="paragraph">
 <p><a id="jenkins_env"></a> If you want to only play around with the demo that we&#8217;ve prepared you have to set <strong>ONE</strong> variable which is the <code>REPOS</code> variable.
 That variable needs to consists of comma separated list of URLs to repositories containing business apps. So you should pass your forked repos URLs.</p>
@@ -598,7 +598,7 @@ seed job
 to customize the created jobs.</p>
 </div>
 <div class="sect4">
-<h5 id="setup-seed-props">Seed properties</h5>
+<h5 id="setup-seed-props"><a class="link" href="#setup-seed-props">Seed properties</a></h5>
 <div class="paragraph">
 <p>Click on the seed job and pick <code>Build with parameters</code>. Then as presented in the screen below (you&#8217;ll have far more properties to set) just modify the <code>REPOS</code> property by providing the comma separated list of URLs to your forks. Whatever you set will be parsed by the seed job and passed to the generated Jenkins jobs.</p>
 </div>
@@ -629,7 +629,7 @@ of Java installation and the others to another one.
 </div>
 </div>
 <div class="sect4">
-<h5 id="global-envs">Global envs</h5>
+<h5 id="global-envs"><a class="link" href="#global-envs">Global envs</a></h5>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -657,7 +657,7 @@ This section is presented only for informational purposes - for the sake of demo
 </div>
 </div>
 <div class="sect3">
-<h4 id="git-email">1.2.3. Set Git email / user</h4>
+<h4 id="git-email"><a class="link" href="#git-email">1.2.3. Set Git email / user</a></h4>
 <div class="paragraph">
 <p>Since our pipeline is setting the git user / name explicitly for the build step
  you&#8217;d have to go to <code>Configure</code> of the build step and modify the Git name / email.
@@ -702,7 +702,7 @@ This section is presented only for informational purposes - for the sake of demo
 &#160;</p>
 </div>
 <div class="sect4">
-<h5 id="jenkins-credentials-github">Add Jenkins credentials for GitHub</h5>
+<h5 id="jenkins-credentials-github"><a class="link" href="#jenkins-credentials-github">Add Jenkins credentials for GitHub</a></h5>
 <div class="paragraph">
 <p><a id="jenkins-credentials"></a> The scripts will need to access the credential in order to tag the repo.</p>
 </div>
@@ -761,7 +761,7 @@ remember to provide the one with id <code>git</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="testing-jenkins-scripts">1.3. Testing Jenkins scripts</h3>
+<h3 id="testing-jenkins-scripts"><a class="link" href="#testing-jenkins-scripts">1.3. Testing Jenkins scripts</a></h3>
 <div class="paragraph">
 <p>To run the tests against your bash and Groovy scripts just call</p>
 </div>
@@ -770,14 +770,14 @@ remember to provide the one with id <code>git</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-to-work-with-jenkins-job-dsl-plugin">1.4. How to work with Jenkins Job DSL plugin</h3>
+<h3 id="how-to-work-with-jenkins-job-dsl-plugin"><a class="link" href="#how-to-work-with-jenkins-job-dsl-plugin">1.4. How to work with Jenkins Job DSL plugin</a></h3>
 <div class="paragraph">
 <p>Check out the <a href="https://github.com/jenkinsci/job-dsl-plugin/wiki/Tutorial---Using-the-Jenkins-Job-DSL">tutorial</a>.
 Provide the link to this repository in your Jenkins installation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="docker-image">1.5. Docker Image</h3>
+<h3 id="docker-image"><a class="link" href="#docker-image">1.5. Docker Image</a></h3>
 <div class="paragraph">
 <p>If you would like to run the pre-configured Jenkins image somewhere other than your local machine, we
 have an image you can pull and use on <a href="https://hub.docker.com/r/cloudpipelines/cloud-pipelines-jenkins/">DockerHub</a>.
@@ -800,7 +800,7 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </div>
 </div>
 <div class="sect2">
-<h3 id="env_vars">1.6. All Environment Variables</h3>
+<h3 id="env_vars"><a class="link" href="#env_vars">1.6. All Environment Variables</a></h3>
 <div class="paragraph">
 <p>Below you can find a table with all environment variables</p>
 </div>
@@ -1277,11 +1277,6 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </table>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-08-13 18:48:14 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

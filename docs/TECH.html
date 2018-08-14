@@ -456,7 +456,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="building-the-project">1. Building the Project</h2>
+<h2 id="building-the-project"><a class="link" href="#building-the-project">1. Building the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers how to build the project. It covers:</p>
@@ -487,11 +487,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </div>
 <div class="sect2">
-<h3 id="building-project-setup">1.1. Project Setup</h3>
+<h3 id="building-project-setup"><a class="link" href="#building-project-setup">1.1. Project Setup</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="building-prerequisites">1.2. Prerequisites</h3>
+<h3 id="building-prerequisites"><a class="link" href="#building-prerequisites">1.2. Prerequisites</a></h3>
 <div class="paragraph">
 <p>As prerequisites, you need to have <a href="http://www.shellcheck.net/">shellcheck</a>,
 <a href="https://github.com/sstephenson/bats">bats</a>, <a href="https://stedolan.github.io/jq/">jq</a>
@@ -527,7 +527,7 @@ $ brew install shellcheck</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="building-bats-submodules">1.3. Bats Submodules</h3>
+<h3 id="building-bats-submodules"><a class="link" href="#building-bats-submodules">1.3. Bats Submodules</a></h3>
 <div class="paragraph">
 <p>To make <code>bats</code> work properly, we needed to attach Git submodules. To have them
 initialized, either clone the project or (if you have already cloned the project)
@@ -560,7 +560,7 @@ $ git submodule update</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="building-build-and-test">1.4. Build and test</h3>
+<h3 id="building-build-and-test"><a class="link" href="#building-build-and-test">1.4. Build and test</a></h3>
 <div class="paragraph">
 <p>Once you have installed all the prerequisites, you can run the following command to build and test the project:</p>
 </div>
@@ -575,7 +575,7 @@ $ git submodule update</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="building-generate-documentation">1.5. Generate Documentation</h3>
+<h3 id="building-generate-documentation"><a class="link" href="#building-generate-documentation">1.5. Generate Documentation</a></h3>
 <div class="paragraph">
 <p>To generate the documentation, run the following command:</p>
 </div>
@@ -592,13 +592,13 @@ $ git submodule update</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="building-making-a-release">2. Releasing the Project</h2>
+<h2 id="building-making-a-release"><a class="link" href="#building-making-a-release">2. Releasing the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers how to release the project by publishing a Docker image.</p>
 </div>
 <div class="sect2">
-<h3 id="publishing-a-docker-image">2.1. Publishing A Docker Image</h3>
+<h3 id="publishing-a-docker-image"><a class="link" href="#publishing-a-docker-image">2.1. Publishing A Docker Image</a></h3>
 <div class="paragraph">
 <p>When doing a release, you also need to push a Docker image to Dockerhub.
 From the project root, run the following commands, replacing <code>&lt;version&gt;</code> with the
@@ -619,7 +619,7 @@ $ docker push cloudpipelines/cloud-pipelines-jenkins:&lt;version&gt;</code></pre
 </div>
 </div>
 <div class="sect1">
-<h2 id="building-ci-worker-prerequisites">3. CI Server Worker Prerequisites</h2>
+<h2 id="building-ci-worker-prerequisites"><a class="link" href="#building-ci-worker-prerequisites">3. CI Server Worker Prerequisites</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Cloud Pipelines uses Bash scripts extensively. The following list shows the software
@@ -657,11 +657,6 @@ In the demo setup all of these libraries are already installed.
 </table>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-08-13 14:53:07 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

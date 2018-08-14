@@ -564,7 +564,7 @@ jobs use the scripts defined in
 </div>
 </div>
 <div class="sect1">
-<h2 id="introduction">1. Introduction</h2>
+<h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes how Jenkins works with Cloud Pipelines.</p>
@@ -584,7 +584,7 @@ Cloud Pipelines that you think best suit your needs.
 </table>
 </div>
 <div class="sect2">
-<h3 id="five-second-introduction">1.1. Five-second Introduction</h3>
+<h3 id="five-second-introduction"><a class="link" href="#five-second-introduction">1.1. Five-second Introduction</a></h3>
 <div class="paragraph">
 <p>Cloud Pipelines Jenkins provides setup for Jenkins that creates jobs and pipelines
 via Jenkins Job DSL or Jenkinsfile for your projects. The pipelines and
@@ -593,14 +593,14 @@ jobs use the scripts defined in
 </div>
 </div>
 <div class="sect2">
-<h3 id="five-minute-introduction">1.2. Five-minute Introduction</h3>
+<h3 id="five-minute-introduction"><a class="link" href="#five-minute-introduction">1.2. Five-minute Introduction</a></h3>
 <div class="paragraph">
 <p>In these sections you will learn how exactly Cloud Pipelines Jenkins integrates
 with <a href="https://github.com/CloudPipelines/scripts">Cloud Pipelines Scripts</a> and how
 you can setup deployment pipelines for each project.</p>
 </div>
 <div class="sect3">
-<h4 id="how-to-use-it">1.2.1. How to Use It</h4>
+<h4 id="how-to-use-it"><a class="link" href="#how-to-use-it">1.2.1. How to Use It</a></h4>
 <div class="paragraph">
 <p>The suggested approach is to use the <a href="#project-crawler">Project Crawler</a> approach, where
 we scan your organization for projects and create deployment pipeline for each.</p>
@@ -611,7 +611,7 @@ for which you would like the pipeline to be built.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="how-it-works">1.2.2. How It Works</h4>
+<h4 id="how-it-works"><a class="link" href="#how-it-works">1.2.2. How It Works</a></h4>
 <div class="paragraph">
 <p>As the following image shows, Cloud Pipelines contains logic to generate a
 pipeline and the runtime to execute pipeline steps.</p>
@@ -630,18 +630,13 @@ defined in the <code>commons</code> module of Cloud Pipelines.</p>
 </div>
 <div class="paragraph">
 <p>Cloud Pipelines performs steps to guess what kind of a project your
-repository is (for example, JVM or PHP) and what framework it uses (Maven or Gradle), and it
-can deploy your application to a cloud (Cloud Foundry or Kubernetes). You can read about how
-it works by reading the <a href="#how-do-the-scripts-work">[how-do-the-scripts-work]</a> section.</p>
-</div>
-<div class="paragraph">
-<p>All of that happens automatically if your application follows the conventions.
-You can read about them in the <a href="#project-opinions">[project-opinions]</a> section.</p>
+repository is (e.g. JVM or PHP) and what framework it uses (Maven or Gradle), and it
+can deploy your application to a cloud (e.g. Cloud Foundry or Kubernetes)</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="project-crawler">1.3. Project Crawler</h3>
+<h3 id="project-crawler"><a class="link" href="#project-crawler">1.3. Project Crawler</a></h3>
 <div class="paragraph">
 <p>In Jenkins, you can generate the deployment pipelines by passing an environment variable
 with a comma-separated list of repositories. This, however, does not scale. We would like to automatically fetch
@@ -677,7 +672,7 @@ stored at Github, Gitlab, and Bitbucket. You can also register your own implemen
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</h3>
+<h3 id="how-do-the-scripts-work-with-spinanker"><a class="link" href="#how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</a></h3>
 <div class="paragraph">
 <p>With Spinnaker, the deployment pipeline is inside of Spinnaker. No longer do we treat
 Jenkins or Concourse as a tool that does deployments. In Jenkins, we create only
@@ -695,7 +690,7 @@ the CI jobs (that is, build and test) and prepare the JSON definitions of Spinna
 </div>
 </div>
 <div class="sect1">
-<h2 id="customizing-the-project">2. Customizing the Project</h2>
+<h2 id="customizing-the-project"><a class="link" href="#customizing-the-project">2. Customizing the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Cloud Pipelines offers a way to override the way pipelines are built</p>
@@ -708,13 +703,13 @@ the CI jobs (that is, build and test) and prepare the JSON definitions of Spinna
 </ul>
 </div>
 <div class="sect2">
-<h3 id="customization-overriding-pipelines">2.1. Overriding Pipelines</h3>
+<h3 id="customization-overriding-pipelines"><a class="link" href="#customization-overriding-pipelines">2.1. Overriding Pipelines</a></h3>
 <div class="paragraph">
 <p>Currently, the best way to extend Jenkins Jenkinsfile pipelines is to make
 a copy of the Jenkins seed and pipeline jobs.</p>
 </div>
 <div class="sect3">
-<h4 id="overriding-jenkins-job-dsl-pipelines">2.1.1. Overriding Jenkins Job DSL pipelines</h4>
+<h4 id="overriding-jenkins-job-dsl-pipelines"><a class="link" href="#overriding-jenkins-job-dsl-pipelines">2.1.1. Overriding Jenkins Job DSL pipelines</a></h4>
 <div class="paragraph">
 <p>We provide an interface (called <code>io.cloudpipelines.common.JobCustomizer</code>)
 that lets you provide customization for:</p>
@@ -776,14 +771,14 @@ or any other customizations of your choosing.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="jenkins-pipeline-common">3. Jenkins Pipeline (Common)</h2>
+<h2 id="jenkins-pipeline-common"><a class="link" href="#jenkins-pipeline-common">3. Jenkins Pipeline (Common)</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section we will present the common setup of Jenkins for any platform.
 We will also provide answers to most frequently asked questions.</p>
 </div>
 <div class="sect2">
-<h3 id="project-setup">3.1. Project setup</h3>
+<h3 id="project-setup"><a class="link" href="#project-setup">3.1. Project setup</a></h3>
 <div class="paragraph">
 <p>In the <code>declarative-pipeline</code> you can find a definition of a declarative
 pipeline. It&#8217;s used together with the Blueocean UI.</p>
@@ -803,13 +798,13 @@ files required for deployment to a Kubernetes cluster.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-customization-steps">3.2. Optional customization steps</h3>
+<h3 id="optional-customization-steps"><a class="link" href="#optional-customization-steps">3.2. Optional customization steps</a></h3>
 <div class="paragraph">
 <p><a id="jenkins_optional"></a> All the steps below are not necessary to run the demo. They are needed only
 when you want to do some custom changes.</p>
 </div>
 <div class="sect3">
-<h4 id="setup-settings-xml">3.2.1. Setup settings.xml for Maven deployment</h4>
+<h4 id="setup-settings-xml"><a class="link" href="#setup-settings-xml">3.2.1. Setup settings.xml for Maven deployment</a></h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -865,7 +860,7 @@ the file (it&#8217;s in <code>seed/settings.xml</code>).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setup-jenkins-env-vars">3.2.2. Setup Jenkins env vars</h4>
+<h4 id="setup-jenkins-env-vars"><a class="link" href="#setup-jenkins-env-vars">3.2.2. Setup Jenkins env vars</a></h4>
 <div class="paragraph">
 <p><a id="jenkins_env"></a> If you want to only play around with the demo that we&#8217;ve prepared you have to set <strong>ONE</strong> variable which is the <code>REPOS</code> variable.
 That variable needs to consists of comma separated list of URLs to repositories containing business apps. So you should pass your forked repos URLs.</p>
@@ -908,7 +903,7 @@ seed job
 to customize the created jobs.</p>
 </div>
 <div class="sect4">
-<h5 id="setup-seed-props">Seed properties</h5>
+<h5 id="setup-seed-props"><a class="link" href="#setup-seed-props">Seed properties</a></h5>
 <div class="paragraph">
 <p>Click on the seed job and pick <code>Build with parameters</code>. Then as presented in the screen below (you&#8217;ll have far more properties to set) just modify the <code>REPOS</code> property by providing the comma separated list of URLs to your forks. Whatever you set will be parsed by the seed job and passed to the generated Jenkins jobs.</p>
 </div>
@@ -939,7 +934,7 @@ of Java installation and the others to another one.
 </div>
 </div>
 <div class="sect4">
-<h5 id="global-envs">Global envs</h5>
+<h5 id="global-envs"><a class="link" href="#global-envs">Global envs</a></h5>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -967,7 +962,7 @@ This section is presented only for informational purposes - for the sake of demo
 </div>
 </div>
 <div class="sect3">
-<h4 id="git-email">3.2.3. Set Git email / user</h4>
+<h4 id="git-email"><a class="link" href="#git-email">3.2.3. Set Git email / user</a></h4>
 <div class="paragraph">
 <p>Since our pipeline is setting the git user / name explicitly for the build step
  you&#8217;d have to go to <code>Configure</code> of the build step and modify the Git name / email.
@@ -1012,7 +1007,7 @@ This section is presented only for informational purposes - for the sake of demo
 &#160;</p>
 </div>
 <div class="sect4">
-<h5 id="jenkins-credentials-github">Add Jenkins credentials for GitHub</h5>
+<h5 id="jenkins-credentials-github"><a class="link" href="#jenkins-credentials-github">Add Jenkins credentials for GitHub</a></h5>
 <div class="paragraph">
 <p><a id="jenkins-credentials"></a> The scripts will need to access the credential in order to tag the repo.</p>
 </div>
@@ -1071,7 +1066,7 @@ remember to provide the one with id <code>git</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="testing-jenkins-scripts">3.3. Testing Jenkins scripts</h3>
+<h3 id="testing-jenkins-scripts"><a class="link" href="#testing-jenkins-scripts">3.3. Testing Jenkins scripts</a></h3>
 <div class="paragraph">
 <p>To run the tests against your bash and Groovy scripts just call</p>
 </div>
@@ -1080,14 +1075,14 @@ remember to provide the one with id <code>git</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="how-to-work-with-jenkins-job-dsl-plugin">3.4. How to work with Jenkins Job DSL plugin</h3>
+<h3 id="how-to-work-with-jenkins-job-dsl-plugin"><a class="link" href="#how-to-work-with-jenkins-job-dsl-plugin">3.4. How to work with Jenkins Job DSL plugin</a></h3>
 <div class="paragraph">
 <p>Check out the <a href="https://github.com/jenkinsci/job-dsl-plugin/wiki/Tutorial---Using-the-Jenkins-Job-DSL">tutorial</a>.
 Provide the link to this repository in your Jenkins installation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="docker-image">3.5. Docker Image</h3>
+<h3 id="docker-image"><a class="link" href="#docker-image">3.5. Docker Image</a></h3>
 <div class="paragraph">
 <p>If you would like to run the pre-configured Jenkins image somewhere other than your local machine, we
 have an image you can pull and use on <a href="https://hub.docker.com/r/cloudpipelines/cloud-pipelines-jenkins/">DockerHub</a>.
@@ -1110,7 +1105,7 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </div>
 </div>
 <div class="sect2">
-<h3 id="env_vars">3.6. All Environment Variables</h3>
+<h3 id="env_vars"><a class="link" href="#env_vars">3.6. All Environment Variables</a></h3>
 <div class="paragraph">
 <p>Below you can find a table with all environment variables</p>
 </div>
@@ -1589,7 +1584,7 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </div>
 </div>
 <div class="sect1">
-<h2 id="jenkins-pipeline-cf">4. Jenkins Pipeline (Cloud Foundry)</h2>
+<h2 id="jenkins-pipeline-cf"><a class="link" href="#jenkins-pipeline-cf">4. Jenkins Pipeline (Cloud Foundry)</a></h2>
 <div class="sectionbody">
 <div class="admonitionblock important">
 <table>
@@ -1628,7 +1623,7 @@ similar tasks with another language.
 </ul>
 </div>
 <div class="sect2">
-<h3 id="step-by-step-cf">4.1. Step-by-step</h3>
+<h3 id="step-by-step-cf"><a class="link" href="#step-by-step-cf">4.1. Step-by-step</a></h3>
 <div class="paragraph">
 <p>This is a guide for the Jenkins Job DSL based pipeline.</p>
 </div>
@@ -1658,7 +1653,7 @@ similar tasks with another language.
 </ol>
 </div>
 <div class="sect3">
-<h4 id="fork-repos-cf">4.1.1. Fork Repositories</h4>
+<h4 id="fork-repos-cf"><a class="link" href="#fork-repos-cf">4.1.1. Fork Repositories</a></h4>
 <div id="jenkins-fork-cf" class="paragraph">
 <p>Four applications compose the pipeline:</p>
 </div>
@@ -1693,7 +1688,7 @@ similar tasks with another language.
 </div>
 </div>
 <div class="sect3">
-<h4 id="start-jenkins-cf">4.1.2. Start Jenkins and Artifactory</h4>
+<h4 id="start-jenkins-cf"><a class="link" href="#start-jenkins-cf">4.1.2. Start Jenkins and Artifactory</a></h4>
 <div id="jenkins-start-cf" class="paragraph">
 <p>Jenkins + Artifactory can be ran locally. To do so, run the
 <code>start.sh</code> script from this repository. The following listing shows the script:</p>
@@ -1722,7 +1717,7 @@ contains your GitHub org (in which you have the forked repos).</p>
 (if you prefer to use key-based authentication with your Git repositories).</p>
 </div>
 <div class="sect4">
-<h5 id="deploy-infra-cf">Deploy the Infra JARs to Artifactory</h5>
+<h5 id="deploy-infra-cf"><a class="link" href="#deploy-infra-cf">Deploy the Infra JARs to Artifactory</a></h5>
 <div id="jenkins-deploy-cf" class="paragraph">
 <p>When Artifactory is running, run the <code>tools/deploy-infra.sh</code> script from this repo. The following listing shows the script:</p>
 </div>
@@ -1744,7 +1739,7 @@ and uploaded to Artifactory.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="start-pcf-dev-cf">4.1.3. Start PCF Dev</h4>
+<h4 id="start-pcf-dev-cf"><a class="link" href="#start-pcf-dev-cf">4.1.3. Start PCF Dev</a></h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1827,7 +1822,7 @@ cf set-space-role user pcfdev-org pcfdev-prod SpaceDeveloper</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-seed-cf">4.1.4. Run the Seed Job</h4>
+<h4 id="jenkins-seed-cf"><a class="link" href="#jenkins-seed-cf">4.1.4. Run the Seed Job</a></h4>
 <div class="paragraph">
 <p>We created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default we create a seed that
@@ -1884,7 +1879,7 @@ list of the URLs of the two aforementioned forks (<code>github-webhook</code> an
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-run-pipeline-cf">4.1.5. Run the <code>github-webhook</code> Pipeline</h4>
+<h4 id="jenkins-run-pipeline-cf"><a class="link" href="#jenkins-run-pipeline-cf">4.1.5. Run the <code>github-webhook</code> Pipeline</a></h4>
 <div class="paragraph">
 <p>We already created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default, we create a seed that
@@ -1982,7 +1977,7 @@ For that reason, we suggest killing all applications on test. See the <a href="#
 </div>
 </div>
 <div class="sect2">
-<h3 id="declarative-pipeline-cf">4.2. Declarative Pipeline &amp; Blue Ocean</h3>
+<h3 id="declarative-pipeline-cf"><a class="link" href="#declarative-pipeline-cf">4.2. Declarative Pipeline &amp; Blue Ocean</a></h3>
 <div class="paragraph">
 <p>You can also use the <a href="https://jenkins.io/doc/book/pipeline/syntax/">declarative pipeline</a> approach with the
 <a href="https://jenkins.io/projects/blueocean/">Blue Ocean UI</a>.</p>
@@ -2098,7 +2093,7 @@ for more information.
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-steps-cf">4.3. Jenkins Cloud Foundry Customization</h3>
+<h3 id="optional-steps-cf"><a class="link" href="#optional-steps-cf">4.3. Jenkins Cloud Foundry Customization</a></h3>
 <div class="paragraph">
 <p>You can customize Jenkins for Cloud Foundry by setting a variety of environment variables.</p>
 </div>
@@ -2116,7 +2111,7 @@ when you want to make custom changes.
 </table>
 </div>
 <div class="sect3">
-<h4 id="all-env-vars-cf">4.3.1. Environment Variable Summary</h4>
+<h4 id="all-env-vars-cf"><a class="link" href="#all-env-vars-cf">4.3.1. Environment Variable Summary</a></h4>
 <div class="paragraph">
 <p>The environment variables that are used in all of the jobs are as follows:</p>
 </div>
@@ -2255,7 +2250,7 @@ when you want to make custom changes.
 </table>
 </div>
 <div class="sect3">
-<h4 id="jenkins-credentials-cf">4.3.2. Jenkins Credentials</h4>
+<h4 id="jenkins-credentials-cf"><a class="link" href="#jenkins-credentials-cf">4.3.2. Jenkins Credentials</a></h4>
 <div class="paragraph">
 <p>Our scripts reference the credentials by IDs. The following table describes the defaults for the credentials:</p>
 </div>
@@ -2333,7 +2328,7 @@ See the <code>cf-helper</code> script for all the configuration options.
 </div>
 </div>
 <div class="sect1">
-<h2 id="jenkins-pipeline-k8s">5. Jenkins Pipeline (Kubernetes)</h2>
+<h2 id="jenkins-pipeline-k8s"><a class="link" href="#jenkins-pipeline-k8s">5. Jenkins Pipeline (Kubernetes)</a></h2>
 <div class="sectionbody">
 <div class="admonitionblock important">
 <table>
@@ -2371,7 +2366,7 @@ to Kubernetes PaaS.
 </ul>
 </div>
 <div class="sect2">
-<h3 id="step-by-step-k8s">5.1. Step-by-step</h3>
+<h3 id="step-by-step-k8s"><a class="link" href="#step-by-step-k8s">5.1. Step-by-step</a></h3>
 <div class="paragraph">
 <p>This is a guide for a Jenkins Job DSL based pipeline.</p>
 </div>
@@ -2401,7 +2396,7 @@ to Kubernetes PaaS.
 </ol>
 </div>
 <div class="sect3">
-<h4 id="fork-repos-k8s">5.1.1. Fork Repositories</h4>
+<h4 id="fork-repos-k8s"><a class="link" href="#fork-repos-k8s">5.1.1. Fork Repositories</a></h4>
 <div id="jenkins-fork-k8s" class="paragraph">
 <p>Four applications compose the pipeline</p>
 </div>
@@ -2436,7 +2431,7 @@ to Kubernetes PaaS.
 </div>
 </div>
 <div class="sect3">
-<h4 id="start-jenkins-k8s">5.1.2. Start Jenkins and Artifactory</h4>
+<h4 id="start-jenkins-k8s"><a class="link" href="#start-jenkins-k8s">5.1.2. Start Jenkins and Artifactory</a></h4>
 <div id="jenkins-start-k8s" class="paragraph">
 <p>Jenkins and Artifactory can be ran locally. To do so, run the
 <code>start.sh</code> script from this repo. The following listing shows the script:</p>
@@ -2470,7 +2465,7 @@ search for the Docker images at Docker Hub) so that the pipeline can
 push images to your org.</p>
 </div>
 <div class="sect4">
-<h5 id="deploy-infra-k8s">Deploy the Infra JARs to Artifactory</h5>
+<h5 id="deploy-infra-k8s"><a class="link" href="#deploy-infra-k8s">Deploy the Infra JARs to Artifactory</a></h5>
 <div id="jenkins-deploy-k8s" class="paragraph">
 <p>When Artifactory is running, run the <code>tools/deploy-infra.sh</code> script from this repo.
 The following listing shows the script:</p>
@@ -2509,7 +2504,7 @@ Docker images to Docker Hub too.
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-seed-k8s">5.1.3. Run the seed job</h4>
+<h4 id="jenkins-seed-k8s"><a class="link" href="#jenkins-seed-k8s">5.1.3. Run the seed job</a></h4>
 <div class="paragraph">
 <p>We created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default we create a seed that
@@ -2566,7 +2561,7 @@ list of the URLs of the two aforementioned forks (<code>github-webhook</code> an
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-run-pipeline-k8s">5.1.4. Run the <code>github-webhook</code> pipeline</h4>
+<h4 id="jenkins-run-pipeline-k8s"><a class="link" href="#jenkins-run-pipeline-k8s">5.1.4. Run the <code>github-webhook</code> pipeline</a></h4>
 <div class="paragraph">
 <p>We already created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default, we create a seed that
@@ -2664,7 +2659,7 @@ For that reason, we suggest killing all applications on test. See the <a href="#
 </div>
 </div>
 <div class="sect2">
-<h3 id="declarative-pipeline-k8s">5.2. Declarative pipeline &amp; Blue Ocean</h3>
+<h3 id="declarative-pipeline-k8s"><a class="link" href="#declarative-pipeline-k8s">5.2. Declarative pipeline &amp; Blue Ocean</a></h3>
 <div class="paragraph">
 <p>You can also use the <a href="https://jenkins.io/doc/book/pipeline/syntax/">declarative pipeline</a> approach with the
 <a href="https://jenkins.io/projects/blueocean/">Blue Ocean UI</a>.</p>
@@ -2780,7 +2775,7 @@ for more information.
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-steps-k8s">5.3. Jenkins Kubernetes customization</h3>
+<h3 id="optional-steps-k8s"><a class="link" href="#optional-steps-k8s">5.3. Jenkins Kubernetes customization</a></h3>
 <div class="paragraph">
 <p>You can customize Jenkins for Cloud Foundry by setting a variety of environment variables.</p>
 </div>
@@ -2798,7 +2793,7 @@ when you want to make custom changes.
 </table>
 </div>
 <div class="sect3">
-<h4 id="all-env-vars-k8s">5.3.1. All env vars</h4>
+<h4 id="all-env-vars-k8s"><a class="link" href="#all-env-vars-k8s">5.3.1. All env vars</a></h4>
 <div class="paragraph">
 <p>The environment variables that are used in all of the jobs are as follows:</p>
 </div>
@@ -3073,7 +3068,7 @@ when you want to make custom changes.
 </div>
 </div>
 <div class="sect2">
-<h3 id="preparing-to-connect-to-gce">5.4. Preparing to Connect to GCE</h3>
+<h3 id="preparing-to-connect-to-gce"><a class="link" href="#preparing-to-connect-to-gce">5.4. Preparing to Connect to GCE</a></h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -3146,7 +3141,7 @@ the instructions at <a href="https://cloud.google.com/compute/docs/disks/add-per
 </div>
 </div>
 <div class="sect2">
-<h3 id="connecting-to-a-kubo-or-gce-cluster">5.5. Connecting to a Kubo or GCE Cluster</h3>
+<h3 id="connecting-to-a-kubo-or-gce-cluster"><a class="link" href="#connecting-to-a-kubo-or-gce-cluster">5.5. Connecting to a Kubo or GCE Cluster</a></h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -3363,7 +3358,7 @@ $ kubectl port-forward --namespace=${NAMESPACE} ${JENKINS_POD} ${LOCAL_PORT}:${C
 </div>
 </div>
 <div class="sect1">
-<h2 id="setup-examples">6. Setup examples</h2>
+<h2 id="setup-examples"><a class="link" href="#setup-examples">6. Setup examples</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can go to <a href="SETUP.html">setup subpage</a> to read more
@@ -3372,7 +3367,7 @@ about different setup scenarios.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="building-the-project">7. Building the Project</h2>
+<h2 id="building-the-project"><a class="link" href="#building-the-project">7. Building the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers how to build the project. It covers:</p>
@@ -3403,11 +3398,11 @@ about different setup scenarios.</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="building-project-setup">7.1. Project Setup</h3>
+<h3 id="building-project-setup"><a class="link" href="#building-project-setup">7.1. Project Setup</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="building-prerequisites">7.2. Prerequisites</h3>
+<h3 id="building-prerequisites"><a class="link" href="#building-prerequisites">7.2. Prerequisites</a></h3>
 <div class="paragraph">
 <p>As prerequisites, you need to have <a href="http://www.shellcheck.net/">shellcheck</a>,
 <a href="https://github.com/sstephenson/bats">bats</a>, <a href="https://stedolan.github.io/jq/">jq</a>
@@ -3443,7 +3438,7 @@ $ brew install shellcheck</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="building-bats-submodules">7.3. Bats Submodules</h3>
+<h3 id="building-bats-submodules"><a class="link" href="#building-bats-submodules">7.3. Bats Submodules</a></h3>
 <div class="paragraph">
 <p>To make <code>bats</code> work properly, we needed to attach Git submodules. To have them
 initialized, either clone the project or (if you have already cloned the project)
@@ -3476,7 +3471,7 @@ $ git submodule update</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="building-build-and-test">7.4. Build and test</h3>
+<h3 id="building-build-and-test"><a class="link" href="#building-build-and-test">7.4. Build and test</a></h3>
 <div class="paragraph">
 <p>Once you have installed all the prerequisites, you can run the following command to build and test the project:</p>
 </div>
@@ -3491,7 +3486,7 @@ $ git submodule update</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="building-generate-documentation">7.5. Generate Documentation</h3>
+<h3 id="building-generate-documentation"><a class="link" href="#building-generate-documentation">7.5. Generate Documentation</a></h3>
 <div class="paragraph">
 <p>To generate the documentation, run the following command:</p>
 </div>
@@ -3508,13 +3503,13 @@ $ git submodule update</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="building-making-a-release">8. Releasing the Project</h2>
+<h2 id="building-making-a-release"><a class="link" href="#building-making-a-release">8. Releasing the Project</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section covers how to release the project by publishing a Docker image.</p>
 </div>
 <div class="sect2">
-<h3 id="publishing-a-docker-image">8.1. Publishing A Docker Image</h3>
+<h3 id="publishing-a-docker-image"><a class="link" href="#publishing-a-docker-image">8.1. Publishing A Docker Image</a></h3>
 <div class="paragraph">
 <p>When doing a release, you also need to push a Docker image to Dockerhub.
 From the project root, run the following commands, replacing <code>&lt;version&gt;</code> with the
@@ -3535,7 +3530,7 @@ $ docker push cloudpipelines/cloud-pipelines-jenkins:&lt;version&gt;</code></pre
 </div>
 </div>
 <div class="sect1">
-<h2 id="building-ci-worker-prerequisites">9. CI Server Worker Prerequisites</h2>
+<h2 id="building-ci-worker-prerequisites"><a class="link" href="#building-ci-worker-prerequisites">9. CI Server Worker Prerequisites</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Cloud Pipelines uses Bash scripts extensively. The following list shows the software
@@ -3575,7 +3570,7 @@ In the demo setup all of these libraries are already installed.
 </div>
 </div>
 <div class="sect1">
-<h2 id="jenkins_faq">10. Jenkins FAQ</h2>
+<h2 id="jenkins_faq"><a class="link" href="#jenkins_faq">10. Jenkins FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section provides answers to the most frequently asked questions about using Jenkins with Cloud Pipelines.</p>
@@ -3953,11 +3948,6 @@ to the space and organization you are logged into.</p>
 </dl>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-08-14 07:38:42 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

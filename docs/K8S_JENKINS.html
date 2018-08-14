@@ -465,7 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="jenkins-pipeline-k8s">1. Jenkins Pipeline (Kubernetes)</h2>
+<h2 id="jenkins-pipeline-k8s"><a class="link" href="#jenkins-pipeline-k8s">1. Jenkins Pipeline (Kubernetes)</a></h2>
 <div class="sectionbody">
 <div class="admonitionblock important">
 <table>
@@ -503,7 +503,7 @@ to Kubernetes PaaS.
 </ul>
 </div>
 <div class="sect2">
-<h3 id="step-by-step-k8s">1.1. Step-by-step</h3>
+<h3 id="step-by-step-k8s"><a class="link" href="#step-by-step-k8s">1.1. Step-by-step</a></h3>
 <div class="paragraph">
 <p>This is a guide for a Jenkins Job DSL based pipeline.</p>
 </div>
@@ -533,7 +533,7 @@ to Kubernetes PaaS.
 </ol>
 </div>
 <div class="sect3">
-<h4 id="fork-repos-k8s">1.1.1. Fork Repositories</h4>
+<h4 id="fork-repos-k8s"><a class="link" href="#fork-repos-k8s">1.1.1. Fork Repositories</a></h4>
 <div id="jenkins-fork-k8s" class="paragraph">
 <p>Four applications compose the pipeline</p>
 </div>
@@ -568,7 +568,7 @@ to Kubernetes PaaS.
 </div>
 </div>
 <div class="sect3">
-<h4 id="start-jenkins-k8s">1.1.2. Start Jenkins and Artifactory</h4>
+<h4 id="start-jenkins-k8s"><a class="link" href="#start-jenkins-k8s">1.1.2. Start Jenkins and Artifactory</a></h4>
 <div id="jenkins-start-k8s" class="paragraph">
 <p>Jenkins and Artifactory can be ran locally. To do so, run the
 <code>start.sh</code> script from this repo. The following listing shows the script:</p>
@@ -602,7 +602,7 @@ search for the Docker images at Docker Hub) so that the pipeline can
 push images to your org.</p>
 </div>
 <div class="sect4">
-<h5 id="deploy-infra-k8s">Deploy the Infra JARs to Artifactory</h5>
+<h5 id="deploy-infra-k8s"><a class="link" href="#deploy-infra-k8s">Deploy the Infra JARs to Artifactory</a></h5>
 <div id="jenkins-deploy-k8s" class="paragraph">
 <p>When Artifactory is running, run the <code>tools/deploy-infra.sh</code> script from this repo.
 The following listing shows the script:</p>
@@ -641,7 +641,7 @@ Docker images to Docker Hub too.
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-seed-k8s">1.1.3. Run the seed job</h4>
+<h4 id="jenkins-seed-k8s"><a class="link" href="#jenkins-seed-k8s">1.1.3. Run the seed job</a></h4>
 <div class="paragraph">
 <p>We created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default we create a seed that
@@ -698,7 +698,7 @@ list of the URLs of the two aforementioned forks (<code>github-webhook</code> an
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-run-pipeline-k8s">1.1.4. Run the <code>github-webhook</code> pipeline</h4>
+<h4 id="jenkins-run-pipeline-k8s"><a class="link" href="#jenkins-run-pipeline-k8s">1.1.4. Run the <code>github-webhook</code> pipeline</a></h4>
 <div class="paragraph">
 <p>We already created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default, we create a seed that
@@ -796,7 +796,7 @@ For that reason, we suggest killing all applications on test. See the <a href="#
 </div>
 </div>
 <div class="sect2">
-<h3 id="declarative-pipeline-k8s">1.2. Declarative pipeline &amp; Blue Ocean</h3>
+<h3 id="declarative-pipeline-k8s"><a class="link" href="#declarative-pipeline-k8s">1.2. Declarative pipeline &amp; Blue Ocean</a></h3>
 <div class="paragraph">
 <p>You can also use the <a href="https://jenkins.io/doc/book/pipeline/syntax/">declarative pipeline</a> approach with the
 <a href="https://jenkins.io/projects/blueocean/">Blue Ocean UI</a>.</p>
@@ -912,7 +912,7 @@ for more information.
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-steps-k8s">1.3. Jenkins Kubernetes customization</h3>
+<h3 id="optional-steps-k8s"><a class="link" href="#optional-steps-k8s">1.3. Jenkins Kubernetes customization</a></h3>
 <div class="paragraph">
 <p>You can customize Jenkins for Cloud Foundry by setting a variety of environment variables.</p>
 </div>
@@ -930,7 +930,7 @@ when you want to make custom changes.
 </table>
 </div>
 <div class="sect3">
-<h4 id="all-env-vars-k8s">1.3.1. All env vars</h4>
+<h4 id="all-env-vars-k8s"><a class="link" href="#all-env-vars-k8s">1.3.1. All env vars</a></h4>
 <div class="paragraph">
 <p>The environment variables that are used in all of the jobs are as follows:</p>
 </div>
@@ -1205,7 +1205,7 @@ when you want to make custom changes.
 </div>
 </div>
 <div class="sect2">
-<h3 id="preparing-to-connect-to-gce">1.4. Preparing to Connect to GCE</h3>
+<h3 id="preparing-to-connect-to-gce"><a class="link" href="#preparing-to-connect-to-gce">1.4. Preparing to Connect to GCE</a></h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1278,7 +1278,7 @@ the instructions at <a href="https://cloud.google.com/compute/docs/disks/add-per
 </div>
 </div>
 <div class="sect2">
-<h3 id="connecting-to-a-kubo-or-gce-cluster">1.5. Connecting to a Kubo or GCE Cluster</h3>
+<h3 id="connecting-to-a-kubo-or-gce-cluster"><a class="link" href="#connecting-to-a-kubo-or-gce-cluster">1.5. Connecting to a Kubo or GCE Cluster</a></h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1493,11 +1493,6 @@ $ kubectl port-forward --namespace=${NAMESPACE} ${JENKINS_POD} ${LOCAL_PORT}:${C
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-08-14 07:50:06 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

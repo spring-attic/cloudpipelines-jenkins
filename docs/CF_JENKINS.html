@@ -465,7 +465,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="jenkins-pipeline-cf">1. Jenkins Pipeline (Cloud Foundry)</h2>
+<h2 id="jenkins-pipeline-cf"><a class="link" href="#jenkins-pipeline-cf">1. Jenkins Pipeline (Cloud Foundry)</a></h2>
 <div class="sectionbody">
 <div class="admonitionblock important">
 <table>
@@ -504,7 +504,7 @@ similar tasks with another language.
 </ul>
 </div>
 <div class="sect2">
-<h3 id="step-by-step-cf">1.1. Step-by-step</h3>
+<h3 id="step-by-step-cf"><a class="link" href="#step-by-step-cf">1.1. Step-by-step</a></h3>
 <div class="paragraph">
 <p>This is a guide for the Jenkins Job DSL based pipeline.</p>
 </div>
@@ -534,7 +534,7 @@ similar tasks with another language.
 </ol>
 </div>
 <div class="sect3">
-<h4 id="fork-repos-cf">1.1.1. Fork Repositories</h4>
+<h4 id="fork-repos-cf"><a class="link" href="#fork-repos-cf">1.1.1. Fork Repositories</a></h4>
 <div id="jenkins-fork-cf" class="paragraph">
 <p>Four applications compose the pipeline:</p>
 </div>
@@ -569,7 +569,7 @@ similar tasks with another language.
 </div>
 </div>
 <div class="sect3">
-<h4 id="start-jenkins-cf">1.1.2. Start Jenkins and Artifactory</h4>
+<h4 id="start-jenkins-cf"><a class="link" href="#start-jenkins-cf">1.1.2. Start Jenkins and Artifactory</a></h4>
 <div id="jenkins-start-cf" class="paragraph">
 <p>Jenkins + Artifactory can be ran locally. To do so, run the
 <code>start.sh</code> script from this repository. The following listing shows the script:</p>
@@ -598,7 +598,7 @@ contains your GitHub org (in which you have the forked repos).</p>
 (if you prefer to use key-based authentication with your Git repositories).</p>
 </div>
 <div class="sect4">
-<h5 id="deploy-infra-cf">Deploy the Infra JARs to Artifactory</h5>
+<h5 id="deploy-infra-cf"><a class="link" href="#deploy-infra-cf">Deploy the Infra JARs to Artifactory</a></h5>
 <div id="jenkins-deploy-cf" class="paragraph">
 <p>When Artifactory is running, run the <code>tools/deploy-infra.sh</code> script from this repo. The following listing shows the script:</p>
 </div>
@@ -620,7 +620,7 @@ and uploaded to Artifactory.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="start-pcf-dev-cf">1.1.3. Start PCF Dev</h4>
+<h4 id="start-pcf-dev-cf"><a class="link" href="#start-pcf-dev-cf">1.1.3. Start PCF Dev</a></h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -703,7 +703,7 @@ cf set-space-role user pcfdev-org pcfdev-prod SpaceDeveloper</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-seed-cf">1.1.4. Run the Seed Job</h4>
+<h4 id="jenkins-seed-cf"><a class="link" href="#jenkins-seed-cf">1.1.4. Run the Seed Job</a></h4>
 <div class="paragraph">
 <p>We created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default we create a seed that
@@ -760,7 +760,7 @@ list of the URLs of the two aforementioned forks (<code>github-webhook</code> an
 </div>
 </div>
 <div class="sect3">
-<h4 id="jenkins-run-pipeline-cf">1.1.5. Run the <code>github-webhook</code> Pipeline</h4>
+<h4 id="jenkins-run-pipeline-cf"><a class="link" href="#jenkins-run-pipeline-cf">1.1.5. Run the <code>github-webhook</code> Pipeline</a></h4>
 <div class="paragraph">
 <p>We already created the seed job for you, but you have to run it. When you do
 run it, you have to provide some properties. By default, we create a seed that
@@ -858,7 +858,7 @@ For that reason, we suggest killing all applications on test. See the <a href="#
 </div>
 </div>
 <div class="sect2">
-<h3 id="declarative-pipeline-cf">1.2. Declarative Pipeline &amp; Blue Ocean</h3>
+<h3 id="declarative-pipeline-cf"><a class="link" href="#declarative-pipeline-cf">1.2. Declarative Pipeline &amp; Blue Ocean</a></h3>
 <div class="paragraph">
 <p>You can also use the <a href="https://jenkins.io/doc/book/pipeline/syntax/">declarative pipeline</a> approach with the
 <a href="https://jenkins.io/projects/blueocean/">Blue Ocean UI</a>.</p>
@@ -974,7 +974,7 @@ for more information.
 </div>
 </div>
 <div class="sect2">
-<h3 id="optional-steps-cf">1.3. Jenkins Cloud Foundry Customization</h3>
+<h3 id="optional-steps-cf"><a class="link" href="#optional-steps-cf">1.3. Jenkins Cloud Foundry Customization</a></h3>
 <div class="paragraph">
 <p>You can customize Jenkins for Cloud Foundry by setting a variety of environment variables.</p>
 </div>
@@ -992,7 +992,7 @@ when you want to make custom changes.
 </table>
 </div>
 <div class="sect3">
-<h4 id="all-env-vars-cf">1.3.1. Environment Variable Summary</h4>
+<h4 id="all-env-vars-cf"><a class="link" href="#all-env-vars-cf">1.3.1. Environment Variable Summary</a></h4>
 <div class="paragraph">
 <p>The environment variables that are used in all of the jobs are as follows:</p>
 </div>
@@ -1131,7 +1131,7 @@ when you want to make custom changes.
 </table>
 </div>
 <div class="sect3">
-<h4 id="jenkins-credentials-cf">1.3.2. Jenkins Credentials</h4>
+<h4 id="jenkins-credentials-cf"><a class="link" href="#jenkins-credentials-cf">1.3.2. Jenkins Credentials</a></h4>
 <div class="paragraph">
 <p>Our scripts reference the credentials by IDs. The following table describes the defaults for the credentials:</p>
 </div>
@@ -1207,11 +1207,6 @@ See the <code>cf-helper</code> script for all the configuration options.
 </div>
 </div>
 </div>
-</div>
-</div>
-<div id="footer">
-<div id="footer-text">
-Last updated 2018-08-13 14:53:07 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
