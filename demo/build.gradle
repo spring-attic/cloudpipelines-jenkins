@@ -87,6 +87,7 @@ task pushImages {
 task removeImage(type: DockerRemoveImage) {
 	dependsOn([tagImage, pushImages])
 	targetImageId { buildImage.getImageId() }
+	force(true)
 }
 
 build.dependsOn("tagImage")
