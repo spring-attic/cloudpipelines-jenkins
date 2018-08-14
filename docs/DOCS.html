@@ -3398,7 +3398,24 @@ about different setup scenarios.</p>
 </div>
 <div class="sect2">
 <h3 id="building-project-setup"><a class="link" href="#building-project-setup">7.1. Project Setup</a></h3>
-
+<div class="paragraph">
+<p>The <code>declarative-pipeline</code> folder contains all logic related to the Declarative Pipeline based
+approach of deploying software.</p>
+</div>
+<div class="paragraph">
+<p>Under <code>demo</code> folder you can find the setup prepared to start a demo instance of Jenkins and Artifactory.</p>
+</div>
+<div class="paragraph">
+<p>In <code>docs</code> you can find HTML documentation built from contents of <code>docs-sources</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>job-dsl</code> folder contains all logic related to the Jenkins Job DSL based
+approach of deploying software.</p>
+</div>
+<div class="paragraph">
+<p>The <code>tools</code> folder contains tools required for building and that ease the work
+with demo setup.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="building-prerequisites"><a class="link" href="#building-prerequisites">7.2. Prerequisites</a></h3>
@@ -3510,20 +3527,36 @@ $ git submodule update</code></pre>
 <div class="sect2">
 <h3 id="publishing-a-docker-image"><a class="link" href="#publishing-a-docker-image">8.1. Publishing A Docker Image</a></h3>
 <div class="paragraph">
-<p>When doing a release, you also need to push a Docker image to Dockerhub.
-From the project root, run the following commands, replacing <code>&lt;version&gt;</code> with the
-version of the release:</p>
+<p>Gradle is fully setup to build and release the project. Just pass the <code>-PreleaseDocker</code>
+property to the build to also upload the Docker images.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ docker login
-$ docker build -t cloudpipelines/cloud-pipelines-jenkins:&lt;version&gt; ./jenkins
-$ docker push cloudpipelines/cloud-pipelines-jenkins:&lt;version&gt;</code></pre>
+<pre class="prettyprint highlight"><code class="language-bash" data-lang="bash">$ ./gradlew clean build -PreleaseDocker</code></pre>
 </div>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>You need to setup the environment variables / system properties / build properties</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DOCKER_REGISTRY_URL</code> - defaults to <code><a href="https://index.docker.io/v1/" class="bare">index.docker.io/v1/</a></code></p>
+</li>
+<li>
+<p><code>DOCKER_HUB_USERNAME</code> - defaults to <code>changeme</code></p>
+</li>
+<li>
+<p><code>DOCKER_HUB_PASSWORD</code> - defaults to <code>changeme</code></p>
+</li>
+<li>
+<p><code>DOCKER_HUB_EMAIL</code> - defaults to <code>change@me.com</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>

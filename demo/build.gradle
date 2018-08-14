@@ -8,7 +8,6 @@ sourceSets {
 	}
 }
 
-
 repositories {
 	jcenter()
 	mavenCentral()
@@ -34,4 +33,67 @@ dependencies {
 	testCompile('org.spockframework:spock-core:1.0-groovy-2.4') {
 		exclude module: 'groovy-all'
 	}
+}
+
+// docker
+
+ext {
+	dockerImagePrefix = "cloudpipelines"
+	dockerImageName = "${dockerImagePrefix}/${project.rootProject.name}"
+}
+
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+import com.bmuschko.gradle.docker.tasks.image.*
+
+docker {
+	registryCredentials {
+		url = getProp('DOCKER_REGISTRY_URL') ?: 'https://index.docker.io/v1/'
+		username = getProp('DOCKER_HUB_USERNAME') ?: "changeme"
+		password = getProp('DOCKER_HUB_PASSWORD') ?: "changeme"
+		email = getProp('DOCKER_HUB_EMAIL') ?: "change@me.com"
+	}
+}
+
+task buildImage(type: DockerBuildImage) {
+	inputDir = project.projectDir
+	tags = ["${dockerImageName}".toString()] as Set<String>
+}
+
+task tagImage(type: DockerTagImage) {
+	dependsOn([buildImage])
+	targetImageId { buildImage.getImageId() }
+	repository = "${dockerImageName}"
+	tag = project.version
+}
+
+task pushLatestImage(type: DockerPushImage) {
+	dependsOn([tagImage])
+	imageName = "${dockerImageName}"
+	tag = "latest"
+}
+
+task pushConcreteImage(type: DockerPushImage) {
+	dependsOn([tagImage])
+	imageName = "${dockerImageName}"
+	tag = project.version
+}
+
+task pushImages {
+	enabled = project.hasProperty("releaseDocker")
+	dependsOn([pushLatestImage, pushConcreteImage])
+}
+
+task removeImage(type: DockerRemoveImage) {
+	dependsOn([tagImage, pushImages])
+	targetImageId { buildImage.getImageId() }
+}
+
+build.dependsOn("tagImage")
+if (project.hasProperty("releaseDocker")) build.dependsOn("removeImage")
+
+String getProp(String propName) {
+	return hasProperty(propName) ?
+		(getProperty(propName) ?: System.properties[propName]) : System.properties[propName] ?:
+		System.getenv(propName)
 }

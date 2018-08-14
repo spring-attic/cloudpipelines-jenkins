@@ -4,18 +4,22 @@ buildscript {
 	dependencies {
 		classpath "com.github.jruby-gradle:jruby-gradle-plugin:${jrubyVersion}"
 		classpath "org.asciidoctor:asciidoctor-gradle-plugin:${asciidoctorGradleVersion}"
+		classpath "com.bmuschko:gradle-docker-plugin:${gradleDockerPluginVersion}"
 	}
 }
 
 apply plugin: "java"
 apply plugin: 'maven-publish'
-apply from: 'gradle/docs.gradle'
 
 repositories {
 	jcenter()
 }
 
-version = project.findProperty("newVersion") ?: project.findProperty("defaultVersion")
+allprojects {
+	version = project.findProperty("newVersion") ?: project.findProperty("defaultVersion")
+}
+
+apply from: 'gradle/docs.gradle'
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '4.9'
