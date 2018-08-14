@@ -1347,8 +1347,12 @@ $ kubectl port-forward --namespace=${NAMESPACE} ${JENKINS_POD} ${LOCAL_PORT}:${C
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Go to <code>Credentials</code>, click <code>System</code> and <code>Global credentials</code>, as the following image shows:
-image::https://raw.githubusercontent.com/CloudPipelines/jenkins/master/docs/images/jenkins/kubo_credentials.png[caption="Click `Global credentials`"]</p>
+<p>Go to <code>Credentials</code>, click <code>System</code> and <code>Global credentials</code>, as the following image shows:</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/CloudPipelines/jenkins/master/docs/images/jenkins/kubo_credentials.png" alt="kubo credentials">
+</div>
+</div>
 </li>
 <li>
 <p>Update <code>git</code>, <code>repo-with-binaries</code> and <code>docker-registry</code> credentials</p>
@@ -1475,8 +1479,12 @@ image::https://raw.githubusercontent.com/CloudPipelines/jenkins/master/docs/imag
 <p>Update the <code>DOCKER_REGISTRY_ORGANIZATION</code> with your Docker organization name.</p>
 </li>
 <li>
-<p>If you do not want to upload the images to DockerHub, update <code>DOCKER_REGISTRY_URL</code>.
-image::https://raw.githubusercontent.com/CloudPipelines/jenkins/master/docs/images/jenkins/pks_seed.png[caption="Example of a filled out seed job"]</p>
+<p>If you do not want to upload the images to DockerHub, update <code>DOCKER_REGISTRY_URL</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/CloudPipelines/jenkins/master/docs/images/jenkins/pks_seed.png" alt="pks seed">
+</div>
+</div>
 </li>
 <li>
 <p>Run the pipeline</p>
@@ -1489,7 +1497,7 @@ image::https://raw.githubusercontent.com/CloudPipelines/jenkins/master/docs/imag
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-13 14:53:07 CEST
+Last updated 2018-08-14 07:50:06 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">

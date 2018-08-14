@@ -7,3 +7,8 @@ include::CF_JENKINS.adoc[]
 // remove::start[K8S]
 include::K8S_JENKINS.adoc[]
 // remove::end[K8S]
+
+== Setup examples
+
+You can go to link:SETUP.html[setup subpage] to read more
+about different setup scenarios.

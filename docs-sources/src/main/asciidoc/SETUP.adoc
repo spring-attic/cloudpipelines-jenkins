@@ -1,0 +1,16 @@
+= Sample setups
+
+In these sections you will see examples of setups
+for different platforms.
+
+// remove::start[K8S]
+include::K8S_SETUP.adoc[]
+// remove::end[K8S]
+
+// remove::start[CF]
+include::CF_DEMO.adoc[]
+// remove::end[CF]
+
+// remove::start[K8S]
+include::K8S_DEMO.adoc[]
+// remove::end[K8S]

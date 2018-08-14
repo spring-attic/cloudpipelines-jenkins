@@ -255,6 +255,7 @@ $ kubectl port-forward --namespace=${NAMESPACE} ${JENKINS_POD} ${LOCAL_PORT}:${C
 ----
 ====
 . Go to `Credentials`, click `System` and `Global credentials`, as the following image shows:
++
 image::{jenkins-root-docs}/kubo_credentials.png[caption="Click `Global credentials`"]
 . Update `git`, `repo-with-binaries` and `docker-registry` credentials
 . Run the `jenkins-pipeline-k8s-seed` seed job and fill it out with the following data
@@ -289,5 +290,6 @@ image::{jenkins-root-docs}/kubo_credentials.png[caption="Click `Global credentia
 . Update the `DOCKER_EMAIL` property with your email address.
 . Update the `DOCKER_REGISTRY_ORGANIZATION` with your Docker organization name.
 . If you do not want to upload the images to DockerHub, update `DOCKER_REGISTRY_URL`.
++
 image::{jenkins-root-docs}/pks_seed.png[caption="Example of a filled out seed job"]
 . Run the pipeline
