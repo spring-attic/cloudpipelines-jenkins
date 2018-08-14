@@ -623,8 +623,7 @@ pipeline and the runtime to execute pipeline steps.</p>
 <div class="title">Figure 1. How Cloud Pipelines works</div>
 </div>
 <div class="paragraph">
-<p>Once a pipeline is created (for example, by using the Jenkins Job DSL or from a Concourse
-templated pipeline), when the jobs are ran, they clone or download Cloud Pipelines
+<p>Once a pipeline is created (for example, by using Jenkins Job DSL), when the jobs are ran, they clone or download Cloud Pipelines
 code to run each step. Those steps run functions that are
 defined in the <code>commons</code> module of Cloud Pipelines.</p>
 </div>
@@ -675,7 +674,7 @@ stored at Github, Gitlab, and Bitbucket. You can also register your own implemen
 <h3 id="how-do-the-scripts-work-with-spinanker"><a class="link" href="#how-do-the-scripts-work-with-spinanker">1.4. How Scripts Work with Spinnaker</a></h3>
 <div class="paragraph">
 <p>With Spinnaker, the deployment pipeline is inside of Spinnaker. No longer do we treat
-Jenkins or Concourse as a tool that does deployments. In Jenkins, we create only
+Jenkins as a tool that does deployments. In Jenkins, we create only
 the CI jobs (that is, build and test) and prepare the JSON definitions of Spinnaker pipelines.</p>
 </div>
 <div class="paragraph">
@@ -3891,7 +3890,7 @@ deployed to PCF Dev.</p>
 </dd>
 <dt class="hdlist1">The route is already in use (Cloud Foundry).</dt>
 <dd>
-<p>If you play around with Jenkins and Concourse, you can end up with routes that are
+<p>If you play around with Jenkins, you can end up with routes that are
 already occupied, as identified by errors similar to the following:</p>
 <div class="exampleblock">
 <div class="content">

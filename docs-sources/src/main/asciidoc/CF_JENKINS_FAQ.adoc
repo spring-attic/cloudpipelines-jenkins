@@ -34,7 +34,7 @@ You receive an exception similar to the following:
 It means that you forgot to <<jenkins_pcfdev,create the spaces>> in your PCF Dev installation.
 
 The route is already in use (Cloud Foundry).::
-If you play around with Jenkins and Concourse, you can end up with routes that are
+If you play around with Jenkins, you can end up with routes that are
 already occupied, as identified by errors similar to the following:
 +
 ====
