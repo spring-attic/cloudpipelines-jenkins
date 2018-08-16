@@ -90,7 +90,7 @@ task removeImage(type: DockerRemoveImage) {
 	force(true)
 }
 
-build.dependsOn("tagImage")
+test.dependsOn("tagImage")
 if (project.hasProperty("releaseDocker")) build.dependsOn("removeImage")
 
 String getProp(String propName) {
