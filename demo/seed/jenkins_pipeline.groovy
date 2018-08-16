@@ -65,11 +65,11 @@ factory.job('pipelines-ci') {
 		}
 	}
 	steps {
-		gradle("clean build -x test")
+		gradle("clean build")
 	}
 	wrappers {
 		parameters {
-			stringParam('SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
+			stringParam('JENKINS_SCRIPTS_BRANCH', 'master', "The branch with pipeline functions")
 		}
 	}
 }
