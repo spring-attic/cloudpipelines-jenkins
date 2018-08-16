@@ -135,12 +135,10 @@ parsedRepos.each {
 	envs['GIT_REPOSITORY'] = fullGitRepo
 	envs['GIT_BRANCH_NAME'] = branchName
 
+	println "For project [${projectName}] setting repo [${fullGitRepo}] and branch [${branchName}]"
+
 	dsl.pipelineJob(projectName) {
-		wrappers {
-			environmentVariables {
-				environmentVariables(envs)
-			}
-		}
+		environmentVariables(envs)
 		definition {
 			cps {
 				script("""${dsl.readFileFromWorkspace(jenkinsfileDir + '/Jenkinsfile-sample')}""")
