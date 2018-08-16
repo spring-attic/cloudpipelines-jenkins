@@ -35,6 +35,7 @@ envs["PAAS_TYPE"] = binding.variables["PAAS_TYPE"] ?: "cf"
 envs['SCRIPTS_URL'] = binding.variables["SCRIPTS_URL"] ?: 'https://github.com/CloudPipelines/scripts'
 envs["SCRIPTS_BRANCH"] = binding.variables["SCRIPTS_BRANCH"] ?: "master"
 envs["M2_SETTINGS_REPO_ID"] = binding.variables["M2_SETTINGS_REPO_ID"] ?: "artifactory-local"
+envs["REPO_WITH_BINARIES"] = binding.variables["REPO_WITH_BINARIES"] ?: "http://artifactory:8081/artifactory/libs-release-local"
 envs["REPO_WITH_BINARIES_FOR_UPLOAD"] = binding.variables["REPO_WITH_BINARIES_FOR_UPLOAD"] ?: "http://artifactory:8081/artifactory/libs-release-local"
 envs['REPO_WITH_BINARIES_CREDENTIAL_ID'] = binding.variables['REPO_WITH_BINARIES_CREDENTIAL_ID'] ?: ''
 envs["AUTO_DEPLOY_TO_STAGE"] = binding.variables["AUTO_DEPLOY_TO_STAGE"] ?: false
