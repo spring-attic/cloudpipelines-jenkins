@@ -2,7 +2,16 @@
 
 Cloud Pipelines offers a way to override the way pipelines are built
 
+* <<customization-overriding-project-setup>>
 * <<customization-overriding-pipelines>>
+
+[[customization-overriding-project-setup]]
+=== Overriding Project Setup
+
+If you want to customize the Cloud Pipelines build, you can update the contents
+of the `gradle/custom.gradle` build script. That way your customizations will not
+interfere with the changes in the main part of the code, thus there should be
+no merge conflicts when pulling the changes from Cloud Pipeline repositories.
 
 [[customization-overriding-pipelines]]
 === Overriding Pipelines

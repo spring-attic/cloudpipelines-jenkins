@@ -438,9 +438,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#customizing-the-project">1. Customizing the Project</a>
 <ul class="sectlevel2">
-<li><a href="#customization-overriding-pipelines">1.1. Overriding Pipelines</a>
+<li><a href="#customization-overriding-project-setup">1.1. Overriding Project Setup</a></li>
+<li><a href="#customization-overriding-pipelines">1.2. Overriding Pipelines</a>
 <ul class="sectlevel3">
-<li><a href="#overriding-jenkins-job-dsl-pipelines">1.1.1. Overriding Jenkins Job DSL pipelines</a></li>
+<li><a href="#overriding-jenkins-job-dsl-pipelines">1.2.1. Overriding Jenkins Job DSL pipelines</a></li>
 </ul>
 </li>
 </ul>
@@ -458,18 +459,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
+<p><a href="#customization-overriding-project-setup">Overriding Project Setup</a></p>
+</li>
+<li>
 <p><a href="#customization-overriding-pipelines">Overriding Pipelines</a></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="customization-overriding-pipelines"><a class="link" href="#customization-overriding-pipelines">1.1. Overriding Pipelines</a></h3>
+<h3 id="customization-overriding-project-setup"><a class="link" href="#customization-overriding-project-setup">1.1. Overriding Project Setup</a></h3>
+<div class="paragraph">
+<p>If you want to customize the Cloud Pipelines build, you can update the contents
+of the <code>gradle/custom.gradle</code> build script. That way your customizations will not
+interfere with the changes in the main part of the code, thus there should be
+no merge conflicts when pulling the changes from Cloud Pipeline repositories.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customization-overriding-pipelines"><a class="link" href="#customization-overriding-pipelines">1.2. Overriding Pipelines</a></h3>
 <div class="paragraph">
 <p>Currently, the best way to extend Jenkins Jenkinsfile pipelines is to make
 a copy of the Jenkins seed and pipeline jobs.</p>
 </div>
 <div class="sect3">
-<h4 id="overriding-jenkins-job-dsl-pipelines"><a class="link" href="#overriding-jenkins-job-dsl-pipelines">1.1.1. Overriding Jenkins Job DSL pipelines</a></h4>
+<h4 id="overriding-jenkins-job-dsl-pipelines"><a class="link" href="#overriding-jenkins-job-dsl-pipelines">1.2.1. Overriding Jenkins Job DSL pipelines</a></h4>
 <div class="paragraph">
 <p>We provide an interface (called <code>io.cloudpipelines.common.JobCustomizer</code>)
 that lets you provide customization for:</p>
