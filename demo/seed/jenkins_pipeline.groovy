@@ -65,7 +65,7 @@ factory.job('pipelines-ci') {
 		}
 	}
 	steps {
-		gradle("clean build")
+		gradle("clean build -x test")
 	}
 	wrappers {
 		parameters {
@@ -416,6 +416,9 @@ factory.job('jenkins-pipeline-cf-declarative-seed') {
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
+			additionalClasspath([
+				'declarative-pipeline/src/main/resources', 'declarative-pipeline/build/lib/*.*'
+			].join("\n"))
 		}
 	}
 }
@@ -606,6 +609,9 @@ factory.job('jenkins-pipeline-k8s-declarative-seed') {
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
+			additionalClasspath([
+				'declarative-pipeline/src/main/resources', 'declarative-pipeline/build/lib/*.*'
+			].join("\n"))
 		}
 	}
 }
@@ -659,7 +665,7 @@ factory.job('jenkins-pipeline-ansible-seed') {
 		}
 	}
 	steps {
-		gradle("clean build")
+		gradle("clean build -x test")
 		dsl {
 			external('job-dsl/jobs/jenkins_pipeline_sample*.groovy')
 			removeAction('DISABLE')
@@ -726,13 +732,16 @@ factory.job('jenkins-pipeline-ansible-declarative-seed') {
 		}
 	}
 	steps {
-		gradle("clean build")
+		gradle("clean build -x test")
 		dsl {
 			external('job-dsl/jobs/jenkins_pipeline_jenkinsfile_sample.groovy')
 			removeAction('DISABLE')
 			removeViewAction('DELETE')
 			ignoreExisting(false)
 			lookupStrategy('SEED_JOB')
+			additionalClasspath([
+				'declarative-pipeline/src/main/resources', 'declarative-pipeline/build/lib/*.*'
+			].join("\n"))
 		}
 		['TEST', 'STAGE', 'PROD'].each {
 			shell("""
