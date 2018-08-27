@@ -162,6 +162,7 @@ case $1 in
 		;;
 
 	setup-namespaces)
+		fetchAndSourceScripts
 		mkdir -p build
 		createNamespace "cloudpipelines-test"
 		createNamespace "cloudpipelines-stage"
