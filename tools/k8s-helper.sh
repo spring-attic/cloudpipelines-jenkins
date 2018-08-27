@@ -83,35 +83,30 @@ export PAAS_TYPE="k8s"
 
 export TOOLS_REPO="${TOOLS_REPO:-https://github.com/CloudPipelines/scripts}"
 export SCRIPTS
-tmpDir="$(mktemp -d)"
-SCRIPTS="${tmpDir}"
-trap "{ rm -rf ${tmpDir}; }" EXIT
-git clone "${TOOLS_REPO}" "${tmpDir}"
 
-# shellcheck source=/dev/null
-source "${SCRIPTS}"/src/main/bash/pipeline.sh
+function fetchAndSourceScripts() {
+	tmpDir="$(mktemp -d)"
+	SCRIPTS="${tmpDir}"
+	trap "{ rm -rf ${tmpDir}; }" EXIT
+	git clone "${TOOLS_REPO}" "${tmpDir}"
 
-# Overridden functions
+	pushd "${ROOT_FOLDER}tools/k8s"
 
-function outputFolder() {
-	echo "${SCRIPTS}/build"
+		# shellcheck source=/dev/null
+		source "${SCRIPTS}"/src/main/bash/pipeline.sh
+
+		# Overridden functions
+		function mySqlDatabase() {
+			echo "github"
+		}
+		export -f mySqlDatabase
+
+		function waitForAppToStart() {
+			echo "not waiting for the app to start"
+		}
+		export -f waitForAppToStart
+	popd
 }
-export -f outputFolder
-
-function retrieveAppName() {
-	echo "github-analytics"
-}
-export -f retrieveAppName
-
-function mySqlDatabase() {
-	echo "github"
-}
-export -f mySqlDatabase
-
-function waitForAppToStart() {
-	echo "not waiting for the app to start"
-}
-export -f waitForAppToStart
 
 case $1 in
 	download-kubectl)
@@ -174,6 +169,7 @@ case $1 in
 		;;
 
 	setup-prod-infra)
+		fetchAndSourceScripts
 		copyK8sYamls
 		deployService "github-rabbitmq" "rabbitmq" "cloudpipelines/github-analytics-stub-runner-boot-classpath-stubs:latest"
 		deployService "github-eureka" "eureka" "cloudpipelines/github-eureka:latest"
