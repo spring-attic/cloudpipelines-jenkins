@@ -80,7 +80,8 @@ export PAAS_NAMESPACE="cloudpipelines-prod"
 export PAAS_PROD_API_URL="192.168.99.100:8443"
 export ENVIRONMENT="PROD"
 export PAAS_TYPE="k8s"
-
+export LANGUAGE_TYPE="jvm"
+export PROJECT_TYPE="gradle"
 export TOOLS_REPO="${TOOLS_REPO:-https://github.com/CloudPipelines/scripts}"
 export SCRIPTS
 
@@ -93,7 +94,7 @@ function fetchAndSourceScripts() {
 	pushd "${ROOT_FOLDER}tools/k8s"
 
 		# shellcheck source=/dev/null
-		source "${SCRIPTS}"/src/main/bash/pipeline.sh
+		source "${SCRIPTS}"/src/main/bash/pipeline-k8s.sh
 
 		# Overridden functions
 		function mySqlDatabase() {
