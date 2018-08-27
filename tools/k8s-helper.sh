@@ -87,7 +87,7 @@ export SCRIPTS
 function fetchAndSourceScripts() {
 	tmpDir="$(mktemp -d)"
 	SCRIPTS="${tmpDir}"
-	trap "{ rm -rf ${tmpDir}; }" EXIT
+	trap '{ rm -rf ${tmpDir}; }' EXIT
 	git clone "${TOOLS_REPO}" "${tmpDir}"
 
 	pushd "${ROOT_FOLDER}tools/k8s"
