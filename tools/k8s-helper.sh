@@ -97,6 +97,11 @@ function fetchAndSourceScripts() {
 		source "${SCRIPTS}"/src/main/bash/pipeline-k8s.sh
 
 		# Overridden functions
+		function outputFolder() {
+			echo "${FOLDER}build"
+		}
+		export -f outputFolder			
+		
 		function mySqlDatabase() {
 			echo "github"
 		}
