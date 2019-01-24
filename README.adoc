@@ -5,4 +5,4 @@ via Jenkins Job DSL or Jenkinsfile for your projects. The pipelines and
 jobs use the scripts defined in
 https://github.com/CloudPipelines/scripts[Cloud Pipelines Scripts] repo.
 
-You can check out the `docs` folder for the documentation.
+You can check out the `docs` folder for the documentation. The deployed docs are available https://cloudpipelines.github.io/jenkins/[here]
