@@ -19,7 +19,7 @@ class SingleScriptPipelineSpec extends Specification {
 			jm.parameters << [
 				SCRIPTS_DIR: 'foo',
 				JENKINSFILE_DIR: 'foo',
-				REPOS: 'http://foo/bar'
+				REPOS: 'https://foo/bar'
 			]
 			DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -32,7 +32,7 @@ class SingleScriptPipelineSpec extends Specification {
 
 		and:
 			jm.savedConfigs.find { it.key == "bar-pipeline-build" }.with {
-				assert it.value.contains("<url>http://foo/bar</url>")
+				assert it.value.contains("<url>https://foo/bar</url>")
 				assert it.value.contains("<name>master</name>")
 				return it
 			}
@@ -71,7 +71,7 @@ class SingleScriptPipelineSpec extends Specification {
 			jm.parameters << [
 				SCRIPTS_DIR: 'foo',
 				JENKINSFILE_DIR: 'foo',
-				REPOS: 'http://foo/bar$custom'
+				REPOS: 'https://foo/bar$custom'
 			]
 			DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -84,7 +84,7 @@ class SingleScriptPipelineSpec extends Specification {
 
 		and:
 			jm.savedConfigs.find { it.key == "custom-pipeline-build" }.with {
-				assert it.value.contains("<url>http://foo/bar</url>")
+				assert it.value.contains("<url>https://foo/bar</url>")
 				assert it.value.contains("<name>master</name>")
 				return it
 			}
@@ -97,7 +97,7 @@ class SingleScriptPipelineSpec extends Specification {
 			jm.parameters << [
 				SCRIPTS_DIR: 'foo',
 				JENKINSFILE_DIR: 'foo',
-				REPOS: 'http://foo/bar#custom'
+				REPOS: 'https://foo/bar#custom'
 			]
 			DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -110,7 +110,7 @@ class SingleScriptPipelineSpec extends Specification {
 
 		and:
 			jm.savedConfigs.find { it.key == "bar-pipeline-build" }.with {
-				assert it.value.contains("<url>http://foo/bar</url>")
+				assert it.value.contains("<url>https://foo/bar</url>")
 				assert it.value.contains("<name>custom</name>")
 				return it
 			}
@@ -123,7 +123,7 @@ class SingleScriptPipelineSpec extends Specification {
 			jm.parameters << [
 				SCRIPTS_DIR: 'foo',
 				JENKINSFILE_DIR: 'foo',
-				REPOS: 'http://foo/bar#customBranch$customName'
+				REPOS: 'https://foo/bar#customBranch$customName'
 			]
 			DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -136,7 +136,7 @@ class SingleScriptPipelineSpec extends Specification {
 
 		and:
 			jm.savedConfigs.find { it.key == "customName-pipeline-build" }.with {
-				assert it.value.contains("<url>http://foo/bar</url>")
+				assert it.value.contains("<url>https://foo/bar</url>")
 				assert it.value.contains("<name>customBranch</name>")
 				return it
 			}
@@ -149,7 +149,7 @@ class SingleScriptPipelineSpec extends Specification {
 			jm.parameters << [
 				SCRIPTS_DIR: 'foo',
 				JENKINSFILE_DIR: 'foo',
-				REPOS: 'http://foo/bar$customName#customBranch'
+				REPOS: 'https://foo/bar$customName#customBranch'
 			]
 			DslScriptLoader loader = new DslScriptLoader(jm)
 
@@ -162,7 +162,7 @@ class SingleScriptPipelineSpec extends Specification {
 
 		and:
 			jm.savedConfigs.find { it.key == "customName-pipeline-build" }.with {
-				assert it.value.contains("<url>http://foo/bar</url>")
+				assert it.value.contains("<url>https://foo/bar</url>")
 				assert it.value.contains("<name>customBranch</name>")
 				return it
 			}
