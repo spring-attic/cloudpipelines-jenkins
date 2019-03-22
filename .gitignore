@@ -37,3 +37,8 @@ credentials-cf.yml
 credentials-k8s.yml
 pom.xml.versionsBackup
 .asciidoctor
+bin/
+out/
+.classpath
+.project
+.settings/
