@@ -20,9 +20,4 @@ allprojects {
 }
 
 apply from: 'gradle/docs.gradle'
-
-task wrapper(type: Wrapper) {
-	gradleVersion = '4.9'
-}
-
 apply from: 'gradle/custom.gradle'
