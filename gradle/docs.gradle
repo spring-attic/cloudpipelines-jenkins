@@ -90,10 +90,11 @@ asciidoctor {
 	outputDir = file('docs')
 	separateOutputDirs = false
 	requires = ['asciidoctor-diagram']
+	backends = ["html5"]
 	attributes  'icons': 'font',
 		'idprefix': '',
 		'idseparator': '-',
-		'source-highlighter': 'coderay@', // TODO switch to 'rouge' once supported by the html5 backend
+		'source-highlighter': 'highlight.js', // TODO switch to 'rouge' once supported by the html5 backend
 		stylesdir: 'css/',
 		stylesheet: 'spring.css',
 		'allow-uri-read': true,
