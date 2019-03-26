@@ -8,7 +8,6 @@
 <title>Jenkins Pipeline (Kubernetes)</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -141,7 +140,7 @@ to Kubernetes PaaS.
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/demo
 ./start.sh yourGitUsername yourGitPassword yourForkedGithubOrg yourDockerRegistryOrganization yourDockerRegistryUsername yourDockerRegistryPassword yourDockerRegistryEmail</code></pre>
 </div>
@@ -175,7 +174,7 @@ The following listing shows the script:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins
 ./tools/deploy-infra-k8s.sh</code></pre>
 </div>
@@ -791,7 +790,7 @@ downloaded and an installer started:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./tools/k8s-helper.sh download-gcloud</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./tools/k8s-helper.sh download-gcloud</code></pre>
 </div>
 </div>
 </div>
@@ -811,7 +810,7 @@ proper Google account and log in.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ CLUSTER_NAME=...
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ CLUSTER_NAME=...
 $ ZONE=us-east1-b
 $ PROJECT_NAME=...
 $ gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE} --project ${PROJECT_NAME}
@@ -830,7 +829,7 @@ $ kubectl proxy</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ZONE=us-east1-b
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ZONE=us-east1-b
 $ gcloud compute disks create --size=200GB --zone=${ZONE} cloudpipelines-jenkins-disk</code></pre>
 </div>
 </div>
@@ -898,7 +897,7 @@ To see the dashboard, run <code>kubectl proxy</code> and access <code>localhost:
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ NAMESPACE=default
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ NAMESPACE=default
 $ JENKINS_POD=jenkins-1430785859-nfhx4
 $ LOCAL_PORT=32044
 $ CONTAINER_PORT=8080
@@ -1059,5 +1058,8 @@ $ kubectl port-forward --namespace=${NAMESPACE} ${JENKINS_POD} ${LOCAL_PORT}:${C
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

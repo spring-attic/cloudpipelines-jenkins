@@ -8,7 +8,6 @@
 <title>Jenkins Pipeline (Cloud Foundry)</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -140,7 +139,7 @@ similar tasks with another language.
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/demo
 ./start.sh yourGitUsername yourGitPassword yourForkedGithubOrg</code></pre>
 </div>
@@ -168,7 +167,7 @@ contains your GitHub org (in which you have the forked repos).</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/
 ./tools/deploy-infra.sh</code></pre>
 </div>
@@ -219,7 +218,7 @@ If that happens <a href="#jenkins-cf-resources">clear some apps from PCF Dev and
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">username: user
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">username: user
 password: pass
 email: user
 org: pcfdev-org
@@ -236,7 +235,7 @@ api: api.local.pcfdev.io</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">cf dev start</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cf dev start</code></pre>
 </div>
 </div>
 </div>
@@ -248,7 +247,7 @@ api: api.local.pcfdev.io</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">cf login -a https://api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o pcfdev-org
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cf login -a https://api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o pcfdev-org
 
 cf create-space pcfdev-test
 cf set-space-role user pcfdev-org pcfdev-test SpaceDeveloper
@@ -771,5 +770,8 @@ See the <code>cf-helper</code> script for all the configuration options.
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

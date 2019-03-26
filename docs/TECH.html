@@ -8,7 +8,6 @@
 <title>Building the Project</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -101,7 +100,7 @@ machine, <code>bats</code> and <code>shellcheck</code> are installed for you.</p
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo apt-get install -y ruby jq</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo apt-get install -y ruby jq</code></pre>
 </div>
 </div>
 </div>
@@ -113,7 +112,7 @@ machine, <code>bats</code> and <code>shellcheck</code> are installed for you.</p
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ brew install jq
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ brew install jq
 $ brew install ruby
 $ brew install bats
 $ brew install shellcheck</code></pre>
@@ -133,7 +132,7 @@ pull to update it. The following command clones the project:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ git clone --recursive https://github.com/CloudPipelines/jenkins.git</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ git clone --recursive https://github.com/CloudPipelines/jenkins.git</code></pre>
 </div>
 </div>
 </div>
@@ -145,7 +144,7 @@ pull to update it. The following command clones the project:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ git submodule init
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ git submodule init
 $ git submodule update</code></pre>
 </div>
 </div>
@@ -164,7 +163,7 @@ $ git submodule update</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew clean build</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./gradlew clean build</code></pre>
 </div>
 </div>
 </div>
@@ -179,7 +178,7 @@ $ git submodule update</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew generateDocs</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./gradlew generateDocs</code></pre>
 </div>
 </div>
 </div>
@@ -203,7 +202,7 @@ property to the build to also upload the Docker images.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew clean build -PreleaseDocker</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./gradlew clean build -PreleaseDocker</code></pre>
 </div>
 </div>
 </div>
@@ -241,7 +240,7 @@ that needs to be installed on a CI server worker for the build to pass:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"> apt-get -y install \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"> apt-get -y install \
     bash \
     git \
     tar \
@@ -271,5 +270,8 @@ In the demo setup all of these libraries are already installed.
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

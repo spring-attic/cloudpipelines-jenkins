@@ -8,7 +8,6 @@
 <title>Jenkins Pipeline (Common)</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -85,24 +84,24 @@ already copying the missing <code>settings.xml</code> file for you. It looks mor
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="tag">&lt;settings&gt;</span>
-        <span class="tag">&lt;servers&gt;</span>
-                <span class="tag">&lt;server&gt;</span>
-                        <span class="tag">&lt;id&gt;</span>${M2_SETTINGS_REPO_ID}<span class="tag">&lt;/id&gt;</span>
-                        <span class="tag">&lt;username&gt;</span>${M2_SETTINGS_REPO_USERNAME}<span class="tag">&lt;/username&gt;</span>
-                        <span class="tag">&lt;password&gt;</span>${M2_SETTINGS_REPO_PASSWORD}<span class="tag">&lt;/password&gt;</span>
-                <span class="tag">&lt;/server&gt;</span>
-                <span class="tag">&lt;server&gt;</span>
-                        <span class="tag">&lt;id&gt;</span>${DOCKER_SERVER_ID}<span class="tag">&lt;/id&gt;</span>
-                        <span class="tag">&lt;username&gt;</span>${DOCKER_USERNAME}<span class="tag">&lt;/username&gt;</span>
-                        <span class="tag">&lt;password&gt;</span>${DOCKER_PASSWORD}<span class="tag">&lt;/password&gt;</span>
-                        <span class="tag">&lt;configuration&gt;</span>
-                                <span class="tag">&lt;email&gt;</span>${DOCKER_EMAIL}<span class="tag">&lt;/email&gt;</span>
-                        <span class="tag">&lt;/configuration&gt;</span>
-                <span class="tag">&lt;/server&gt;</span>
-        <span class="tag">&lt;/servers&gt;</span>
-<span class="tag">&lt;/settings&gt;</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings&gt;
+	&lt;servers&gt;
+		&lt;server&gt;
+			&lt;id&gt;${M2_SETTINGS_REPO_ID}&lt;/id&gt;
+			&lt;username&gt;${M2_SETTINGS_REPO_USERNAME}&lt;/username&gt;
+			&lt;password&gt;${M2_SETTINGS_REPO_PASSWORD}&lt;/password&gt;
+		&lt;/server&gt;
+		&lt;server&gt;
+			&lt;id&gt;${DOCKER_SERVER_ID}&lt;/id&gt;
+			&lt;username&gt;${DOCKER_USERNAME}&lt;/username&gt;
+			&lt;password&gt;${DOCKER_PASSWORD}&lt;/password&gt;
+			&lt;configuration&gt;
+				&lt;email&gt;${DOCKER_EMAIL}&lt;/email&gt;
+			&lt;/configuration&gt;
+		&lt;/server&gt;
+	&lt;/servers&gt;
+&lt;/settings&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -843,5 +842,8 @@ security. <strong>YOU SHOULD NOT USE IT ON PRODUCTION UNLESS YOU KNOW WHAT YOU&#
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

@@ -8,7 +8,6 @@
 <title>Customizing the Project</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -97,10 +96,10 @@ put it on the build classpath, as the following example shows:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    <span class="comment">// ...</span>
-    libs <span class="string"><span class="delimiter">&quot;</span><span class="content">com.example:my-customizer:1.0.0</span><span class="delimiter">&quot;</span></span>
-    <span class="comment">// ...</span>
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
+    // ...
+    libs "com.example:my-customizer:1.0.0"
+    // ...
 }</code></pre>
 </div>
 </div>
@@ -119,5 +118,8 @@ or any other customizations of your choosing.</p>
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

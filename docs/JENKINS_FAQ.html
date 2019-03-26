@@ -8,7 +8,6 @@
 <title>Jenkins FAQ</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -35,11 +34,11 @@
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
-        Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
-        to be injected as environment variables or
-        `-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
-        to whitelist specific parameter names, even though it represents a security breach</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
+	Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
+	to be injected as environment variables or
+	`-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
+	to whitelist specific parameter names, even though it represents a security breach</code></pre>
 </div>
 </div>
 </div>
@@ -60,11 +59,11 @@ the <code>echo "${PIPELINE_VERSION}"</code> does not print anything.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
-        Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
-        to be injected as environment variables or
-        `-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
-        to whitelist specific parameter names, even though it represents a security breach</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
+	Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
+	to be injected as environment variables or
+	`-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
+	to whitelist specific parameter names, even though it represents a security breach</code></pre>
 </div>
 </div>
 </div>
@@ -119,7 +118,7 @@ contained them. To fix this, remove the tags by using the following command:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ git tag -l | xargs -n 1 git push --delete origin</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ git tag -l | xargs -n 1 git push --delete origin</code></pre>
 </div>
 </div>
 </div>
@@ -236,23 +235,23 @@ job&#8217;s properties, too).</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">19:01:44 stderr: remote: Invalid username or password.
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">19:01:44 stderr: remote: Invalid username or password.
 19:01:44 fatal: Authentication failed for 'https://github.com/marcingrzejszczak/github-webhook/'
 19:01:44
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandIn(CliGitAPIImpl.java:1740)
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandWithCredentials(CliGitAPIImpl.java:1476)
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.access$300(CliGitAPIImpl.java:63)
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl$8.execute(CliGitAPIImpl.java:1816)
-19:01:44         at hudson.plugins.git.GitPublisher.perform(GitPublisher.java:295)
-19:01:44         at hudson.tasks.BuildStepMonitor$3.perform(BuildStepMonitor.java:45)
-19:01:44         at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:779)
-19:01:44         at hudson.model.AbstractBuild$AbstractBuildExecution.performAllBuildSteps(AbstractBuild.java:720)
-19:01:44         at hudson.model.Build$BuildExecution.post2(Build.java:185)
-19:01:44         at hudson.model.AbstractBuild$AbstractBuildExecution.post(AbstractBuild.java:665)
-19:01:44         at hudson.model.Run.execute(Run.java:1745)
-19:01:44         at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
-19:01:44         at hudson.model.ResourceController.execute(ResourceController.java:98)
-19:01:44         at hudson.model.Executor.run(Executor.java:404)</code></pre>
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandIn(CliGitAPIImpl.java:1740)
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandWithCredentials(CliGitAPIImpl.java:1476)
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.access$300(CliGitAPIImpl.java:63)
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl$8.execute(CliGitAPIImpl.java:1816)
+19:01:44 	at hudson.plugins.git.GitPublisher.perform(GitPublisher.java:295)
+19:01:44 	at hudson.tasks.BuildStepMonitor$3.perform(BuildStepMonitor.java:45)
+19:01:44 	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:779)
+19:01:44 	at hudson.model.AbstractBuild$AbstractBuildExecution.performAllBuildSteps(AbstractBuild.java:720)
+19:01:44 	at hudson.model.Build$BuildExecution.post2(Build.java:185)
+19:01:44 	at hudson.model.AbstractBuild$AbstractBuildExecution.post(AbstractBuild.java:665)
+19:01:44 	at hudson.model.Run.execute(Run.java:1745)
+19:01:44 	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
+19:01:44 	at hudson.model.ResourceController.execute(ResourceController.java:98)
+19:01:44 	at hudson.model.Executor.run(Executor.java:404)</code></pre>
 </div>
 </div>
 </div>
@@ -302,5 +301,8 @@ Cloud Pipelines redeploy the service and the underlying pods.</p>
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

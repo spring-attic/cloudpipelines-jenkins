@@ -8,7 +8,6 @@
 <title>The demo setup (Kubernetes)</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -92,7 +91,7 @@ you deploy to production, you can provision the <code>cloudpipelines-prod</code>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./k8s-helper.sh setup-prod-infra</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./k8s-helper.sh setup-prod-infra</code></pre>
 </div>
 </div>
 </div>
@@ -112,571 +111,571 @@ deployed to our cluster.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">rbac</span>:
-  <span class="key">create</span>: <span class="string"><span class="content">false</span></span>
+<pre class="highlightjs highlight"><code class="language-yml hljs" data-lang="yml">rbac:
+  create: false
 
-<span class="key">alertmanager</span>:
-  <span class="comment">## If false, alertmanager will not be installed</span>
-  <span class="comment">##</span>
-  <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+alertmanager:
+  ## If false, alertmanager will not be installed
+  ##
+  enabled: true
 
-  <span class="comment"># Defines the serviceAccountName to use when `rbac.create=false`</span>
-  <span class="key">serviceAccountName</span>: <span class="string"><span class="content">default</span></span>
+  # Defines the serviceAccountName to use when `rbac.create=false`
+  serviceAccountName: default
 
-  <span class="comment">## alertmanager container name</span>
-  <span class="comment">##</span>
-  <span class="key">name</span>: <span class="string"><span class="content">alertmanager</span></span>
+  ## alertmanager container name
+  ##
+  name: alertmanager
 
-  <span class="comment">## alertmanager container image</span>
-  <span class="comment">##</span>
-  <span class="key">image</span>:
-    <span class="key">repository</span>: <span class="string"><span class="content">prom/alertmanager</span></span>
-    <span class="key">tag</span>: <span class="string"><span class="content">v0.9.1</span></span>
-    <span class="key">pullPolicy</span>: <span class="string"><span class="content">IfNotPresent</span></span>
+  ## alertmanager container image
+  ##
+  image:
+    repository: prom/alertmanager
+    tag: v0.9.1
+    pullPolicy: IfNotPresent
 
-  <span class="comment">## Additional alertmanager container arguments</span>
-  <span class="comment">##</span>
-  <span class="key">extraArgs</span>: <span class="string"><span class="content">{}</span></span>
+  ## Additional alertmanager container arguments
+  ##
+  extraArgs: {}
 
-  <span class="comment">## The URL prefix at which the container can be accessed. Useful in the case the '-web.external-url' includes a slug</span>
-  <span class="comment">## so that the various internal URLs are still able to access as they are in the default case.</span>
-  <span class="comment">## (Optional)</span>
-  <span class="key">baseURL</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  ## The URL prefix at which the container can be accessed. Useful in the case the '-web.external-url' includes a slug
+  ## so that the various internal URLs are still able to access as they are in the default case.
+  ## (Optional)
+  baseURL: ""
 
-  <span class="comment">## Additional alertmanager container environment variable</span>
-  <span class="comment">## For instance to add a http_proxy</span>
-  <span class="comment">##</span>
-  <span class="key">extraEnv</span>: <span class="string"><span class="content">{}</span></span>
+  ## Additional alertmanager container environment variable
+  ## For instance to add a http_proxy
+  ##
+  extraEnv: {}
 
-  <span class="comment">## ConfigMap override where fullname is {{.Release.Name}}-{{.Values.alertmanager.configMapOverrideName}}</span>
-  <span class="comment">## Defining configMapOverrideName will cause templates/alertmanager-configmap.yaml</span>
-  <span class="comment">## to NOT generate a ConfigMap resource</span>
-  <span class="comment">##</span>
-  <span class="key">configMapOverrideName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  ## ConfigMap override where fullname is {{.Release.Name}}-{{.Values.alertmanager.configMapOverrideName}}
+  ## Defining configMapOverrideName will cause templates/alertmanager-configmap.yaml
+  ## to NOT generate a ConfigMap resource
+  ##
+  configMapOverrideName: ""
 
-  <span class="key">ingress</span>:
-    <span class="comment">## If true, alertmanager Ingress will be created</span>
-    <span class="comment">##</span>
-    <span class="key">enabled</span>: <span class="string"><span class="content">false</span></span>
+  ingress:
+    ## If true, alertmanager Ingress will be created
+    ##
+    enabled: false
 
-    <span class="comment">## alertmanager Ingress annotations</span>
-    <span class="comment">##</span>
-    <span class="key">annotations</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="comment">#   kubernetes.io/ingress.class: nginx</span>
-    <span class="comment">#   kubernetes.io/tls-acme: 'true'</span>
+    ## alertmanager Ingress annotations
+    ##
+    annotations: {}
+    #   kubernetes.io/ingress.class: nginx
+    #   kubernetes.io/tls-acme: 'true'
 
-    <span class="comment">## alertmanager Ingress hostnames</span>
-    <span class="comment">## Must be provided if Ingress is enabled</span>
-    <span class="comment">##</span>
-    <span class="key">hosts</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="comment">#   - alertmanager.domain.com</span>
+    ## alertmanager Ingress hostnames
+    ## Must be provided if Ingress is enabled
+    ##
+    hosts: []
+    #   - alertmanager.domain.com
 
-    <span class="comment">## alertmanager Ingress TLS configuration</span>
-    <span class="comment">## Secrets must be manually created in the namespace</span>
-    <span class="comment">##</span>
-    <span class="key">tls</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="comment">#   - secretName: prometheus-alerts-tls</span>
-    <span class="comment">#     hosts:</span>
-    <span class="comment">#       - alertmanager.domain.com</span>
+    ## alertmanager Ingress TLS configuration
+    ## Secrets must be manually created in the namespace
+    ##
+    tls: []
+    #   - secretName: prometheus-alerts-tls
+    #     hosts:
+    #       - alertmanager.domain.com
 
-  <span class="comment">## Alertmanager Deployment Strategy type</span>
-  <span class="comment"># strategy:</span>
-  <span class="comment">#   type: Recreate</span>
+  ## Alertmanager Deployment Strategy type
+  # strategy:
+  #   type: Recreate
 
-  <span class="comment">## Node labels for alertmanager pod assignment</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/node-selection/</span>
-  <span class="comment">##</span>
-  <span class="key">nodeSelector</span>: <span class="string"><span class="content">{}</span></span>
+  ## Node labels for alertmanager pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
 
-  <span class="key">persistentVolume</span>:
-    <span class="comment">## If true, alertmanager will create/use a Persistent Volume Claim</span>
-    <span class="comment">## If false, use emptyDir</span>
-    <span class="comment">##</span>
-    <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+  persistentVolume:
+    ## If true, alertmanager will create/use a Persistent Volume Claim
+    ## If false, use emptyDir
+    ##
+    enabled: true
 
-    <span class="comment">## alertmanager data Persistent Volume access modes</span>
-    <span class="comment">## Must match those of existing PV or dynamic provisioner</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes/</span>
-    <span class="comment">##</span>
-    <span class="key">accessModes</span>:
-      - <span class="string"><span class="content">ReadWriteOnce</span></span>
+    ## alertmanager data Persistent Volume access modes
+    ## Must match those of existing PV or dynamic provisioner
+    ## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes/
+    ##
+    accessModes:
+      - ReadWriteOnce
 
-    <span class="comment">## alertmanager data Persistent Volume Claim annotations</span>
-    <span class="comment">##</span>
-    <span class="key">annotations</span>: <span class="string"><span class="content">{}</span></span>
+    ## alertmanager data Persistent Volume Claim annotations
+    ##
+    annotations: {}
 
-    <span class="comment">## alertmanager data Persistent Volume existing claim name</span>
-    <span class="comment">## Requires alertmanager.persistentVolume.enabled: true</span>
-    <span class="comment">## If defined, PVC must be created manually before volume will be bound</span>
-    <span class="key">existingClaim</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+    ## alertmanager data Persistent Volume existing claim name
+    ## Requires alertmanager.persistentVolume.enabled: true
+    ## If defined, PVC must be created manually before volume will be bound
+    existingClaim: ""
 
-    <span class="comment">## alertmanager data Persistent Volume mount root path</span>
-    <span class="comment">##</span>
-    <span class="key">mountPath</span>: <span class="string"><span class="content">/data</span></span>
+    ## alertmanager data Persistent Volume mount root path
+    ##
+    mountPath: /data
 
-    <span class="comment">## alertmanager data Persistent Volume size</span>
-    <span class="comment">##</span>
-    <span class="key">size</span>: <span class="string"><span class="content">2Gi</span></span>
+    ## alertmanager data Persistent Volume size
+    ##
+    size: 2Gi
 
-    <span class="comment">## alertmanager data Persistent Volume Storage Class</span>
-    <span class="comment">## If defined, storageClassName: &lt;storageClass&gt;</span>
-    <span class="comment">## If set to &quot;-&quot;, storageClassName: &quot;&quot;, which disables dynamic provisioning</span>
-    <span class="comment">## If undefined (the default) or set to null, no storageClassName spec is</span>
-    <span class="comment">##   set, choosing the default provisioner.  (gp2 on AWS, standard on</span>
-    <span class="comment">##   GKE, AWS &amp; OpenStack)</span>
-    <span class="comment">##</span>
-    <span class="comment"># storageClass: &quot;-&quot;</span>
+    ## alertmanager data Persistent Volume Storage Class
+    ## If defined, storageClassName: &lt;storageClass&gt;
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS &amp; OpenStack)
+    ##
+    # storageClass: "-"
 
-    <span class="comment">## Subdirectory of alertmanager data Persistent Volume to mount</span>
-    <span class="comment">## Useful if the volume's root directory is not empty</span>
-    <span class="comment">##</span>
-    <span class="key">subPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+    ## Subdirectory of alertmanager data Persistent Volume to mount
+    ## Useful if the volume's root directory is not empty
+    ##
+    subPath: ""
 
-  <span class="comment">## Annotations to be added to alertmanager pods</span>
-  <span class="comment">##</span>
-  <span class="key">podAnnotations</span>: <span class="string"><span class="content">{}</span></span>
+  ## Annotations to be added to alertmanager pods
+  ##
+  podAnnotations: {}
 
-  <span class="key">replicaCount</span>: <span class="string"><span class="content">1</span></span>
+  replicaCount: 1
 
-  <span class="comment">## alertmanager resource requests and limits</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/compute-resources/</span>
-  <span class="comment">##</span>
-  <span class="key">resources</span>: <span class="string"><span class="content">{}</span><span class="content">
+  ## alertmanager resource requests and limits
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
     # limits:
     #   cpu: 10m
     #   memory: 32Mi
     # requests:
     #   cpu: 10m
-    #   memory: 32Mi</span></span>
+    #   memory: 32Mi
 
-  <span class="key">service</span>:
-    <span class="key">annotations</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="key">labels</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="key">clusterIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  service:
+    annotations: {}
+    labels: {}
+    clusterIP: ""
 
-    <span class="comment">## List of IP addresses at which the alertmanager service is available</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips</span>
-    <span class="comment">##</span>
-    <span class="key">externalIPs</span>: <span class="string"><span class="content">[]</span></span>
+    ## List of IP addresses at which the alertmanager service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
 
-    <span class="key">loadBalancerIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
-    <span class="key">loadBalancerSourceRanges</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="key">servicePort</span>: <span class="string"><span class="content">80</span></span>
-    <span class="comment"># nodePort: 30000</span>
-    <span class="key">type</span>: <span class="string"><span class="content">ClusterIP</span></span>
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 80
+    # nodePort: 30000
+    type: ClusterIP
 
-<span class="comment">## Monitors ConfigMap changes and POSTs to a URL</span>
-<span class="comment">## Ref: https://github.com/jimmidyson/configmap-reload</span>
-<span class="comment">##</span>
-<span class="key">configmapReload</span>:
-  <span class="comment">## configmap-reload container name</span>
-  <span class="comment">##</span>
-  <span class="key">name</span>: <span class="string"><span class="content">configmap-reload</span></span>
+## Monitors ConfigMap changes and POSTs to a URL
+## Ref: https://github.com/jimmidyson/configmap-reload
+##
+configmapReload:
+  ## configmap-reload container name
+  ##
+  name: configmap-reload
 
-  <span class="comment">## configmap-reload container image</span>
-  <span class="comment">##</span>
-  <span class="key">image</span>:
-    <span class="key">repository</span>: <span class="string"><span class="content">jimmidyson/configmap-reload</span></span>
-    <span class="key">tag</span>: <span class="string"><span class="content">v0.1</span></span>
-    <span class="key">pullPolicy</span>: <span class="string"><span class="content">IfNotPresent</span></span>
+  ## configmap-reload container image
+  ##
+  image:
+    repository: jimmidyson/configmap-reload
+    tag: v0.1
+    pullPolicy: IfNotPresent
 
-  <span class="comment">## configmap-reload resource requests and limits</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/compute-resources/</span>
-  <span class="comment">##</span>
-  <span class="key">resources</span>: <span class="string"><span class="content">{}</span></span>
+  ## configmap-reload resource requests and limits
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
 
-<span class="key">kubeStateMetrics</span>:
-  <span class="comment">## If false, kube-state-metrics will not be installed</span>
-  <span class="comment">##</span>
-  <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+kubeStateMetrics:
+  ## If false, kube-state-metrics will not be installed
+  ##
+  enabled: true
 
-  <span class="comment"># Defines the serviceAccountName to use when `rbac.create=false`</span>
-  <span class="key">serviceAccountName</span>: <span class="string"><span class="content">default</span></span>
+  # Defines the serviceAccountName to use when `rbac.create=false`
+  serviceAccountName: default
 
-  <span class="comment">## kube-state-metrics container name</span>
-  <span class="comment">##</span>
-  <span class="key">name</span>: <span class="string"><span class="content">kube-state-metrics</span></span>
+  ## kube-state-metrics container name
+  ##
+  name: kube-state-metrics
 
-  <span class="comment">## kube-state-metrics container image</span>
-  <span class="comment">##</span>
-  <span class="key">image</span>:
-    <span class="key">repository</span>: <span class="string"><span class="content">gcr.io/google_containers/kube-state-metrics</span></span>
-    <span class="key">tag</span>: <span class="string"><span class="content">v1.1.0-rc.0</span></span>
-    <span class="key">pullPolicy</span>: <span class="string"><span class="content">IfNotPresent</span></span>
+  ## kube-state-metrics container image
+  ##
+  image:
+    repository: gcr.io/google_containers/kube-state-metrics
+    tag: v1.1.0-rc.0
+    pullPolicy: IfNotPresent
 
-  <span class="comment">## Node labels for kube-state-metrics pod assignment</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/node-selection/</span>
-  <span class="comment">##</span>
-  <span class="key">nodeSelector</span>: <span class="string"><span class="content">{}</span></span>
+  ## Node labels for kube-state-metrics pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
 
-  <span class="comment">## Annotations to be added to kube-state-metrics pods</span>
-  <span class="comment">##</span>
-  <span class="key">podAnnotations</span>: <span class="string"><span class="content">{}</span></span>
+  ## Annotations to be added to kube-state-metrics pods
+  ##
+  podAnnotations: {}
 
-  <span class="key">replicaCount</span>: <span class="string"><span class="content">1</span></span>
+  replicaCount: 1
 
-  <span class="comment">## kube-state-metrics resource requests and limits</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/compute-resources/</span>
-  <span class="comment">##</span>
-  <span class="key">resources</span>: <span class="string"><span class="content">{}</span><span class="content">
+  ## kube-state-metrics resource requests and limits
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
     # limits:
     #   cpu: 10m
     #   memory: 16Mi
     # requests:
     #   cpu: 10m
-    #   memory: 16Mi</span></span>
+    #   memory: 16Mi
 
-  <span class="key">service</span>:
-    <span class="key">annotations</span>:
-      <span class="key">prometheus.io/scrape</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
-    <span class="key">labels</span>: <span class="string"><span class="content">{}</span></span>
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+    labels: {}
 
-    <span class="key">clusterIP</span>: <span class="string"><span class="content">None</span></span>
+    clusterIP: None
 
-    <span class="comment">## List of IP addresses at which the kube-state-metrics service is available</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips</span>
-    <span class="comment">##</span>
-    <span class="key">externalIPs</span>: <span class="string"><span class="content">[]</span></span>
+    ## List of IP addresses at which the kube-state-metrics service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
 
-    <span class="key">loadBalancerIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
-    <span class="key">loadBalancerSourceRanges</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="key">servicePort</span>: <span class="string"><span class="content">80</span></span>
-    <span class="key">type</span>: <span class="string"><span class="content">ClusterIP</span></span>
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 80
+    type: ClusterIP
 
-<span class="key">nodeExporter</span>:
-  <span class="comment">## If false, node-exporter will not be installed</span>
-  <span class="comment">##</span>
-  <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+nodeExporter:
+  ## If false, node-exporter will not be installed
+  ##
+  enabled: true
 
-  <span class="comment"># Defines the serviceAccountName to use when `rbac.create=false`</span>
-  <span class="key">serviceAccountName</span>: <span class="string"><span class="content">default</span></span>
+  # Defines the serviceAccountName to use when `rbac.create=false`
+  serviceAccountName: default
 
-  <span class="comment">## node-exporter container name</span>
-  <span class="comment">##</span>
-  <span class="key">name</span>: <span class="string"><span class="content">node-exporter</span></span>
+  ## node-exporter container name
+  ##
+  name: node-exporter
 
-  <span class="comment">## node-exporter container image</span>
-  <span class="comment">##</span>
-  <span class="key">image</span>:
-    <span class="key">repository</span>: <span class="string"><span class="content">prom/node-exporter</span></span>
-    <span class="key">tag</span>: <span class="string"><span class="content">v0.15.0</span></span>
-    <span class="key">pullPolicy</span>: <span class="string"><span class="content">IfNotPresent</span></span>
+  ## node-exporter container image
+  ##
+  image:
+    repository: prom/node-exporter
+    tag: v0.15.0
+    pullPolicy: IfNotPresent
 
-  <span class="comment">## Additional node-exporter container arguments</span>
-  <span class="comment">##</span>
-  <span class="key">extraArgs</span>: <span class="string"><span class="content">{}</span></span>
+  ## Additional node-exporter container arguments
+  ##
+  extraArgs: {}
 
-  <span class="comment">## Additional node-exporter hostPath mounts</span>
-  <span class="comment">##</span>
-  <span class="key">extraHostPathMounts</span>: <span class="string"><span class="content">[]</span><span class="content">
+  ## Additional node-exporter hostPath mounts
+  ##
+  extraHostPathMounts: []
     # - name: textfile-dir
     #   mountPath: /srv/txt_collector
     #   hostPath: /var/lib/node-exporter
-    #   readOnly: true</span></span>
+    #   readOnly: true
 
-  <span class="comment">## Node tolerations for node-exporter scheduling to nodes with taints</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</span>
-  <span class="comment">##</span>
-  <span class="key">tolerations</span>: <span class="string"><span class="content">[]</span><span class="content">
-    # - key: &quot;key&quot;
-    #   operator: &quot;Equal|Exists&quot;
-    #   value: &quot;value&quot;
-    #   effect: &quot;NoSchedule|PreferNoSchedule|NoExecute(1.6 only)&quot;</span></span>
+  ## Node tolerations for node-exporter scheduling to nodes with taints
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+  ##
+  tolerations: []
+    # - key: "key"
+    #   operator: "Equal|Exists"
+    #   value: "value"
+    #   effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
 
-  <span class="comment">## Node labels for node-exporter pod assignment</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/node-selection/</span>
-  <span class="comment">##</span>
-  <span class="key">nodeSelector</span>: <span class="string"><span class="content">{}</span></span>
+  ## Node labels for node-exporter pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
 
-  <span class="comment">## Annotations to be added to node-exporter pods</span>
-  <span class="comment">##</span>
-  <span class="key">podAnnotations</span>: <span class="string"><span class="content">{}</span></span>
+  ## Annotations to be added to node-exporter pods
+  ##
+  podAnnotations: {}
 
-  <span class="comment">## node-exporter resource limits &amp; requests</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/compute-resources/</span>
-  <span class="comment">##</span>
-  <span class="key">resources</span>: <span class="string"><span class="content">{}</span><span class="content">
+  ## node-exporter resource limits &amp; requests
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
     # limits:
     #   cpu: 200m
     #   memory: 50Mi
     # requests:
     #   cpu: 100m
-    #   memory: 30Mi</span></span>
+    #   memory: 30Mi
 
-  <span class="key">service</span>:
-    <span class="key">annotations</span>:
-      <span class="key">prometheus.io/scrape</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
-    <span class="key">labels</span>: <span class="string"><span class="content">{}</span></span>
+  service:
+    annotations:
+      prometheus.io/scrape: "true"
+    labels: {}
 
-    <span class="key">clusterIP</span>: <span class="string"><span class="content">None</span></span>
+    clusterIP: None
 
-    <span class="comment">## List of IP addresses at which the node-exporter service is available</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips</span>
-    <span class="comment">##</span>
-    <span class="key">externalIPs</span>: <span class="string"><span class="content">[]</span></span>
+    ## List of IP addresses at which the node-exporter service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
 
-    <span class="key">hostPort</span>: <span class="string"><span class="content">9100</span></span>
-    <span class="key">loadBalancerIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
-    <span class="key">loadBalancerSourceRanges</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="key">servicePort</span>: <span class="string"><span class="content">9100</span></span>
-    <span class="key">type</span>: <span class="string"><span class="content">ClusterIP</span></span>
+    hostPort: 9100
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 9100
+    type: ClusterIP
 
-<span class="key">server</span>:
-  <span class="comment">## Prometheus server container name</span>
-  <span class="comment">##</span>
-  <span class="key">name</span>: <span class="string"><span class="content">server</span></span>
+server:
+  ## Prometheus server container name
+  ##
+  name: server
 
-  <span class="comment"># Defines the serviceAccountName to use when `rbac.create=false`</span>
-  <span class="key">serviceAccountName</span>: <span class="string"><span class="content">default</span></span>
+  # Defines the serviceAccountName to use when `rbac.create=false`
+  serviceAccountName: default
 
-  <span class="comment">## Prometheus server container image</span>
-  <span class="comment">##</span>
-  <span class="key">image</span>:
-    <span class="key">repository</span>: <span class="string"><span class="content">prom/prometheus</span></span>
-    <span class="key">tag</span>: <span class="string"><span class="content">v1.8.0</span></span>
-    <span class="key">pullPolicy</span>: <span class="string"><span class="content">IfNotPresent</span></span>
+  ## Prometheus server container image
+  ##
+  image:
+    repository: prom/prometheus
+    tag: v1.8.0
+    pullPolicy: IfNotPresent
 
-  <span class="comment">## (optional) alertmanager URL</span>
-  <span class="comment">## only used if alertmanager.enabled = false</span>
-  <span class="key">alertmanagerURL</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  ## (optional) alertmanager URL
+  ## only used if alertmanager.enabled = false
+  alertmanagerURL: ""
 
-  <span class="comment">## The URL prefix at which the container can be accessed. Useful in the case the '-web.external-url' includes a slug</span>
-  <span class="comment">## so that the various internal URLs are still able to access as they are in the default case.</span>
-  <span class="comment">## (Optional)</span>
-  <span class="key">baseURL</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  ## The URL prefix at which the container can be accessed. Useful in the case the '-web.external-url' includes a slug
+  ## so that the various internal URLs are still able to access as they are in the default case.
+  ## (Optional)
+  baseURL: ""
 
-  <span class="comment">## Additional Prometheus server container arguments</span>
-  <span class="comment">##</span>
-  <span class="key">extraArgs</span>: <span class="string"><span class="content">{}</span></span>
+  ## Additional Prometheus server container arguments
+  ##
+  extraArgs: {}
 
-  <span class="comment">## Additional Prometheus server hostPath mounts</span>
-  <span class="comment">##</span>
-  <span class="key">extraHostPathMounts</span>: <span class="string"><span class="content">[]</span><span class="content">
+  ## Additional Prometheus server hostPath mounts
+  ##
+  extraHostPathMounts: []
     # - name: certs-dir
     #   mountPath: /etc/kubernetes/certs
     #   hostPath: /etc/kubernetes/certs
-    #   readOnly: true</span></span>
+    #   readOnly: true
 
-  <span class="comment">## ConfigMap override where fullname is {{.Release.Name}}-{{.Values.server.configMapOverrideName}}</span>
-  <span class="comment">## Defining configMapOverrideName will cause templates/server-configmap.yaml</span>
-  <span class="comment">## to NOT generate a ConfigMap resource</span>
-  <span class="comment">##</span>
-  <span class="key">configMapOverrideName</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  ## ConfigMap override where fullname is {{.Release.Name}}-{{.Values.server.configMapOverrideName}}
+  ## Defining configMapOverrideName will cause templates/server-configmap.yaml
+  ## to NOT generate a ConfigMap resource
+  ##
+  configMapOverrideName: ""
 
-  <span class="key">ingress</span>:
-    <span class="comment">## If true, Prometheus server Ingress will be created</span>
-    <span class="comment">##</span>
-    <span class="key">enabled</span>: <span class="string"><span class="content">false</span></span>
+  ingress:
+    ## If true, Prometheus server Ingress will be created
+    ##
+    enabled: false
 
-    <span class="comment">## Prometheus server Ingress annotations</span>
-    <span class="comment">##</span>
-    <span class="key">annotations</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="comment">#   kubernetes.io/ingress.class: nginx</span>
-    <span class="comment">#   kubernetes.io/tls-acme: 'true'</span>
+    ## Prometheus server Ingress annotations
+    ##
+    annotations: {}
+    #   kubernetes.io/ingress.class: nginx
+    #   kubernetes.io/tls-acme: 'true'
 
-    <span class="comment">## Prometheus server Ingress hostnames</span>
-    <span class="comment">## Must be provided if Ingress is enabled</span>
-    <span class="comment">##</span>
-    <span class="key">hosts</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="comment">#   - prometheus.domain.com</span>
+    ## Prometheus server Ingress hostnames
+    ## Must be provided if Ingress is enabled
+    ##
+    hosts: []
+    #   - prometheus.domain.com
 
-    <span class="comment">## Prometheus server Ingress TLS configuration</span>
-    <span class="comment">## Secrets must be manually created in the namespace</span>
-    <span class="comment">##</span>
-    <span class="key">tls</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="comment">#   - secretName: prometheus-server-tls</span>
-    <span class="comment">#     hosts:</span>
-    <span class="comment">#       - prometheus.domain.com</span>
+    ## Prometheus server Ingress TLS configuration
+    ## Secrets must be manually created in the namespace
+    ##
+    tls: []
+    #   - secretName: prometheus-server-tls
+    #     hosts:
+    #       - prometheus.domain.com
 
-  <span class="comment">## Server Deployment Strategy type</span>
-  <span class="comment"># strategy:</span>
-  <span class="comment">#   type: Recreate</span>
+  ## Server Deployment Strategy type
+  # strategy:
+  #   type: Recreate
 
-  <span class="comment">## Node tolerations for server scheduling to nodes with taints</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/</span>
-  <span class="comment">##</span>
-  <span class="key">tolerations</span>: <span class="string"><span class="content">[]</span><span class="content">
-    # - key: &quot;key&quot;
-    #   operator: &quot;Equal|Exists&quot;
-    #   value: &quot;value&quot;
-    #   effect: &quot;NoSchedule|PreferNoSchedule|NoExecute(1.6 only)&quot;</span></span>
+  ## Node tolerations for server scheduling to nodes with taints
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+  ##
+  tolerations: []
+    # - key: "key"
+    #   operator: "Equal|Exists"
+    #   value: "value"
+    #   effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
 
-  <span class="comment">## Node labels for Prometheus server pod assignment</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/node-selection/</span>
-  <span class="key">nodeSelector</span>: <span class="string"><span class="content">{}</span></span>
+  ## Node labels for Prometheus server pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  nodeSelector: {}
 
-  <span class="key">persistentVolume</span>:
-    <span class="comment">## If true, Prometheus server will create/use a Persistent Volume Claim</span>
-    <span class="comment">## If false, use emptyDir</span>
-    <span class="comment">##</span>
-    <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+  persistentVolume:
+    ## If true, Prometheus server will create/use a Persistent Volume Claim
+    ## If false, use emptyDir
+    ##
+    enabled: true
 
-    <span class="comment">## Prometheus server data Persistent Volume access modes</span>
-    <span class="comment">## Must match those of existing PV or dynamic provisioner</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes/</span>
-    <span class="comment">##</span>
-    <span class="key">accessModes</span>:
-      - <span class="string"><span class="content">ReadWriteOnce</span></span>
+    ## Prometheus server data Persistent Volume access modes
+    ## Must match those of existing PV or dynamic provisioner
+    ## Ref: https://kubernetes.io/docs/user-guide/persistent-volumes/
+    ##
+    accessModes:
+      - ReadWriteOnce
 
-    <span class="comment">## Prometheus server data Persistent Volume annotations</span>
-    <span class="comment">##</span>
-    <span class="key">annotations</span>: <span class="string"><span class="content">{}</span></span>
+    ## Prometheus server data Persistent Volume annotations
+    ##
+    annotations: {}
 
-    <span class="comment">## Prometheus server data Persistent Volume existing claim name</span>
-    <span class="comment">## Requires server.persistentVolume.enabled: true</span>
-    <span class="comment">## If defined, PVC must be created manually before volume will be bound</span>
-    <span class="key">existingClaim</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+    ## Prometheus server data Persistent Volume existing claim name
+    ## Requires server.persistentVolume.enabled: true
+    ## If defined, PVC must be created manually before volume will be bound
+    existingClaim: ""
 
-    <span class="comment">## Prometheus server data Persistent Volume mount root path</span>
-    <span class="comment">##</span>
-    <span class="key">mountPath</span>: <span class="string"><span class="content">/data</span></span>
+    ## Prometheus server data Persistent Volume mount root path
+    ##
+    mountPath: /data
 
-    <span class="comment">## Prometheus server data Persistent Volume size</span>
-    <span class="comment">##</span>
-    <span class="key">size</span>: <span class="string"><span class="content">8Gi</span></span>
+    ## Prometheus server data Persistent Volume size
+    ##
+    size: 8Gi
 
-    <span class="comment">## Prometheus server data Persistent Volume Storage Class</span>
-    <span class="comment">## If defined, storageClassName: &lt;storageClass&gt;</span>
-    <span class="comment">## If set to &quot;-&quot;, storageClassName: &quot;&quot;, which disables dynamic provisioning</span>
-    <span class="comment">## If undefined (the default) or set to null, no storageClassName spec is</span>
-    <span class="comment">##   set, choosing the default provisioner.  (gp2 on AWS, standard on</span>
-    <span class="comment">##   GKE, AWS &amp; OpenStack)</span>
-    <span class="comment">##</span>
-    <span class="comment"># storageClass: &quot;-&quot;</span>
+    ## Prometheus server data Persistent Volume Storage Class
+    ## If defined, storageClassName: &lt;storageClass&gt;
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS &amp; OpenStack)
+    ##
+    # storageClass: "-"
 
-    <span class="comment">## Subdirectory of Prometheus server data Persistent Volume to mount</span>
-    <span class="comment">## Useful if the volume's root directory is not empty</span>
-    <span class="comment">##</span>
-    <span class="key">subPath</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+    ## Subdirectory of Prometheus server data Persistent Volume to mount
+    ## Useful if the volume's root directory is not empty
+    ##
+    subPath: ""
 
-  <span class="comment">## Annotations to be added to Prometheus server pods</span>
-  <span class="comment">##</span>
-  <span class="key">podAnnotations</span>: <span class="string"><span class="content">{}</span><span class="content">
-    # iam.amazonaws.com/role: prometheus</span></span>
+  ## Annotations to be added to Prometheus server pods
+  ##
+  podAnnotations: {}
+    # iam.amazonaws.com/role: prometheus
 
-  <span class="key">replicaCount</span>: <span class="string"><span class="content">1</span></span>
+  replicaCount: 1
 
-  <span class="comment">## Prometheus server resource requests and limits</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/compute-resources/</span>
-  <span class="comment">##</span>
-  <span class="key">resources</span>: <span class="string"><span class="content">{}</span><span class="content">
+  ## Prometheus server resource requests and limits
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
     # limits:
     #   cpu: 500m
     #   memory: 512Mi
     # requests:
     #   cpu: 500m
-    #   memory: 512Mi</span></span>
+    #   memory: 512Mi
 
-  <span class="key">service</span>:
-    <span class="key">annotations</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="key">labels</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="key">clusterIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  service:
+    annotations: {}
+    labels: {}
+    clusterIP: ""
 
-    <span class="comment">## List of IP addresses at which the Prometheus server service is available</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips</span>
-    <span class="comment">##</span>
-    <span class="key">externalIPs</span>: <span class="string"><span class="content">[]</span></span>
+    ## List of IP addresses at which the Prometheus server service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
 
-    <span class="key">loadBalancerIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
-    <span class="key">loadBalancerSourceRanges</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="key">servicePort</span>: <span class="string"><span class="content">80</span></span>
-    <span class="key">type</span>: <span class="string"><span class="content">ClusterIP</span></span>
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 80
+    type: ClusterIP
 
-  <span class="comment">## Prometheus server pod termination grace period</span>
-  <span class="comment">##</span>
-  <span class="key">terminationGracePeriodSeconds</span>: <span class="string"><span class="content">300</span></span>
+  ## Prometheus server pod termination grace period
+  ##
+  terminationGracePeriodSeconds: 300
 
-  <span class="comment">## Prometheus data retention period (i.e 360h)</span>
-  <span class="comment">##</span>
-  <span class="key">retention</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  ## Prometheus data retention period (i.e 360h)
+  ##
+  retention: ""
 
-<span class="key">pushgateway</span>:
-  <span class="comment">## If false, pushgateway will not be installed</span>
-  <span class="comment">##</span>
-  <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+pushgateway:
+  ## If false, pushgateway will not be installed
+  ##
+  enabled: true
 
-  <span class="comment">## pushgateway container name</span>
-  <span class="comment">##</span>
-  <span class="key">name</span>: <span class="string"><span class="content">pushgateway</span></span>
+  ## pushgateway container name
+  ##
+  name: pushgateway
 
-  <span class="comment">## pushgateway container image</span>
-  <span class="comment">##</span>
-  <span class="key">image</span>:
-    <span class="key">repository</span>: <span class="string"><span class="content">prom/pushgateway</span></span>
-    <span class="key">tag</span>: <span class="string"><span class="content">v0.4.0</span></span>
-    <span class="key">pullPolicy</span>: <span class="string"><span class="content">IfNotPresent</span></span>
+  ## pushgateway container image
+  ##
+  image:
+    repository: prom/pushgateway
+    tag: v0.4.0
+    pullPolicy: IfNotPresent
 
-  <span class="comment">## Additional pushgateway container arguments</span>
-  <span class="comment">##</span>
-  <span class="key">extraArgs</span>: <span class="string"><span class="content">{}</span></span>
+  ## Additional pushgateway container arguments
+  ##
+  extraArgs: {}
 
-  <span class="key">ingress</span>:
-    <span class="comment">## If true, pushgateway Ingress will be created</span>
-    <span class="comment">##</span>
-    <span class="key">enabled</span>: <span class="string"><span class="content">false</span></span>
+  ingress:
+    ## If true, pushgateway Ingress will be created
+    ##
+    enabled: false
 
-    <span class="comment">## pushgateway Ingress annotations</span>
-    <span class="comment">##</span>
-    <span class="key">annotations</span>:
-    <span class="comment">#   kubernetes.io/ingress.class: nginx</span>
-    <span class="comment">#   kubernetes.io/tls-acme: 'true'</span>
+    ## pushgateway Ingress annotations
+    ##
+    annotations:
+    #   kubernetes.io/ingress.class: nginx
+    #   kubernetes.io/tls-acme: 'true'
 
-    <span class="comment">## pushgateway Ingress hostnames</span>
-    <span class="comment">## Must be provided if Ingress is enabled</span>
-    <span class="comment">##</span>
-    <span class="key">hosts</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="comment">#   - pushgateway.domain.com</span>
+    ## pushgateway Ingress hostnames
+    ## Must be provided if Ingress is enabled
+    ##
+    hosts: []
+    #   - pushgateway.domain.com
 
-    <span class="comment">## pushgateway Ingress TLS configuration</span>
-    <span class="comment">## Secrets must be manually created in the namespace</span>
-    <span class="comment">##</span>
-    <span class="key">tls</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="comment">#   - secretName: prometheus-alerts-tls</span>
-    <span class="comment">#     hosts:</span>
-    <span class="comment">#       - pushgateway.domain.com</span>
+    ## pushgateway Ingress TLS configuration
+    ## Secrets must be manually created in the namespace
+    ##
+    tls: []
+    #   - secretName: prometheus-alerts-tls
+    #     hosts:
+    #       - pushgateway.domain.com
 
-  <span class="comment">## Node labels for pushgateway pod assignment</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/node-selection/</span>
-  <span class="comment">##</span>
-  <span class="key">nodeSelector</span>: <span class="string"><span class="content">{}</span></span>
+  ## Node labels for pushgateway pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
 
-  <span class="comment">## Annotations to be added to pushgateway pods</span>
-  <span class="comment">##</span>
-  <span class="key">podAnnotations</span>: <span class="string"><span class="content">{}</span></span>
+  ## Annotations to be added to pushgateway pods
+  ##
+  podAnnotations: {}
 
-  <span class="key">replicaCount</span>: <span class="string"><span class="content">1</span></span>
+  replicaCount: 1
 
-  <span class="comment">## pushgateway resource requests and limits</span>
-  <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/compute-resources/</span>
-  <span class="comment">##</span>
-  <span class="key">resources</span>: <span class="string"><span class="content">{}</span><span class="content">
+  ## pushgateway resource requests and limits
+  ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources: {}
     # limits:
     #   cpu: 10m
     #   memory: 32Mi
     # requests:
     #   cpu: 10m
-    #   memory: 32Mi</span></span>
+    #   memory: 32Mi
 
-  <span class="key">service</span>:
-    <span class="key">annotations</span>:
-      <span class="key">prometheus.io/probe</span>: <span class="string"><span class="content">pushgateway</span></span>
-    <span class="key">labels</span>: <span class="string"><span class="content">{}</span></span>
-    <span class="key">clusterIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  service:
+    annotations:
+      prometheus.io/probe: pushgateway
+    labels: {}
+    clusterIP: ""
 
-    <span class="comment">## List of IP addresses at which the pushgateway service is available</span>
-    <span class="comment">## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips</span>
-    <span class="comment">##</span>
-    <span class="key">externalIPs</span>: <span class="string"><span class="content">[]</span></span>
+    ## List of IP addresses at which the pushgateway service is available
+    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
+    ##
+    externalIPs: []
 
-    <span class="key">loadBalancerIP</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
-    <span class="key">loadBalancerSourceRanges</span>: <span class="string"><span class="content">[]</span></span>
-    <span class="key">servicePort</span>: <span class="string"><span class="content">9091</span></span>
-    <span class="key">type</span>: <span class="string"><span class="content">ClusterIP</span></span>
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    servicePort: 9091
+    type: ClusterIP
 
-<span class="comment">## alertmanager ConfigMap entries</span>
-<span class="comment">##</span>
-<span class="key">alertmanagerFiles</span>:
-  <span class="key">alertmanager.yml</span>: <span class="string"><span class="delimiter">|-</span><span class="content">
+## alertmanager ConfigMap entries
+##
+alertmanagerFiles:
+  alertmanager.yml: |-
     global:
       # slack_api_url: ''
     receivers:
@@ -688,14 +687,14 @@ deployed to our cluster.</p>
       group_wait: 10s
       group_interval: 5m
       receiver: default-receiver
-      repeat_interval: 3h</span></span>
-<span class="comment">## Prometheus server ConfigMap entries</span>
-<span class="comment">##</span>
-<span class="key">serverFiles</span>:
-  <span class="key">alerts</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
-  <span class="key">rules</span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+      repeat_interval: 3h
+## Prometheus server ConfigMap entries
+##
+serverFiles:
+  alerts: ""
+  rules: ""
 
-  <span class="key">prometheus.yml</span>: <span class="string"><span class="delimiter">|-</span><span class="content">
+  prometheus.yml: |-
     rule_files:
       - /etc/config/rules
       - /etc/config/alerts
@@ -889,11 +888,11 @@ deployed to our cluster.</p>
             target_label: kubernetes_namespace
           - source_labels: [__meta_kubernetes_pod_name]
             action: replace
-            target_label: kubernetes_pod_name</span></span>
-<span class="key">networkPolicy</span>:
-  <span class="comment">## Enable creation of NetworkPolicy resources.</span>
-  <span class="comment">##</span>
-  <span class="key">enabled</span>: <span class="string"><span class="content">false</span></span></code></pre>
+            target_label: kubernetes_pod_name
+networkPolicy:
+  ## Enable creation of NetworkPolicy resources.
+  ##
+  enabled: false</code></pre>
 </div>
 </div>
 </div>
@@ -905,7 +904,7 @@ deployed to our cluster.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ helm install --name cloudpipelines-prometheus stable/prometheus -f values.yaml</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ helm install --name cloudpipelines-prometheus stable/prometheus -f values.yaml</code></pre>
 </div>
 </div>
 </div>
@@ -917,13 +916,13 @@ deployed to our cluster.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">NOTES:
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NOTES:
 The Prometheus server can be accessed via port 80 on the following DNS name from within your cluster:
 cloudpipelines-prometheus-prometheus-server.default.svc.cluster.local
 
 
 Get the Prometheus server URL by running these commands in the same shell:
-  export POD_NAME=$(kubectl get pods --namespace default -l &quot;app=prometheus,component=server&quot; -o jsonpath=&quot;{.items[0].metadata.name}&quot;)
+  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
   kubectl --namespace default port-forward $POD_NAME 9090
 
 
@@ -932,7 +931,7 @@ cloudpipelines-prometheus-prometheus-alertmanager.default.svc.cluster.local
 
 
 Get the Alertmanager URL by running these commands in the same shell:
-  export POD_NAME=$(kubectl get pods --namespace default -l &quot;app=prometheus,component=alertmanager&quot; -o jsonpath=&quot;{.items[0].metadata.name}&quot;)
+  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=alertmanager" -o jsonpath="{.items[0].metadata.name}")
   kubectl --namespace default port-forward $POD_NAME 9093
 
 
@@ -941,7 +940,7 @@ cloudpipelines-prometheus-prometheus-pushgateway.default.svc.cluster.local
 
 
 Get the PushGateway URL by running these commands in the same shell:
-  export POD_NAME=$(kubectl get pods --namespace default -l &quot;app=prometheus,component=pushgateway&quot; -o jsonpath=&quot;{.items[0].metadata.name}&quot;)
+  export POD_NAME=$(kubectl get pods --namespace default -l "app=prometheus,component=pushgateway" -o jsonpath="{.items[0].metadata.name}")
   kubectl --namespace default port-forward $POD_NAME 9093
 
 For more information on running Prometheus, visit:
@@ -960,7 +959,7 @@ https://prometheus.io/</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ helm install --name cloudpipelines-grafana stable/grafana</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ helm install --name cloudpipelines-grafana stable/grafana</code></pre>
 </div>
 </div>
 </div>
@@ -972,10 +971,10 @@ https://prometheus.io/</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">NOTES:
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NOTES:
 1. Get your 'admin' user password by running:
 
-   kubectl get secret --namespace default cloudpipelines-grafana-grafana -o jsonpath=&quot;{.data.grafana-admin-password}&quot; | base64 --decode ; echo
+   kubectl get secret --namespace default cloudpipelines-grafana-grafana -o jsonpath="{.data.grafana-admin-password}" | base64 --decode ; echo
 
 2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
 
@@ -983,7 +982,7 @@ https://prometheus.io/</code></pre>
 
    Get the Grafana URL to visit by running these commands in the same shell:
 
-     export POD_NAME=$(kubectl get pods --namespace default -l &quot;app=cloudpipelines-grafana-grafana,component=grafana&quot; -o jsonpath=&quot;{.items[0].metadata.name}&quot;)
+     export POD_NAME=$(kubectl get pods --namespace default -l "app=cloudpipelines-grafana-grafana,component=grafana" -o jsonpath="{.items[0].metadata.name}")
      kubectl --namespace default port-forward $POD_NAME 3000
 
 3. Login with the password from step 1 and the username: admin</code></pre>
@@ -1010,7 +1009,7 @@ locally to a port <code>9876</code>, as follows:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ kubectl port-forward --namespace=cloudpipelines-prod $( kubectl get pods --namespace=cloudpipelines-prod | grep github-webhook | head -1 | awk '{print $1}' ) 9876:8080</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ kubectl port-forward --namespace=cloudpipelines-prod $( kubectl get pods --namespace=cloudpipelines-prod | grep github-webhook | head -1 | awk '{print $1}' ) 9876:8080</code></pre>
 </div>
 </div>
 </div>
@@ -1022,8 +1021,8 @@ locally to a port <code>9876</code>, as follows:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ curl -X POST http://localhost:9876/ -d @path/to/issue-created.json \
---header &quot;Content-Type: application/json&quot;</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ curl -X POST http://localhost:9876/ -d @path/to/issue-created.json \
+--header "Content-Type: application/json"</code></pre>
 </div>
 </div>
 </div>
@@ -1035,5 +1034,8 @@ locally to a port <code>9876</code>, as follows:</p>
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

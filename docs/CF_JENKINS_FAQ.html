@@ -8,7 +8,6 @@
 <title>Untitled</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
@@ -24,7 +23,7 @@ solve it is to kill some applications from the test and stage environments. To d
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ cf target -o pcfdev-org -s pcfdev-test
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cf target -o pcfdev-org -s pcfdev-test
 $ cf stop github-webhook
 $ cf stop github-eureka
 $ cf stop stubrunner</code></pre>
@@ -44,7 +43,7 @@ deployed to PCF Dev.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">20:26:18 API endpoint:   https://api.local.pcfdev.io (API version: 2.58.0)
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">20:26:18 API endpoint:   https://api.local.pcfdev.io (API version: 2.58.0)
 20:26:18 User:           user
 20:26:18 Org:            pcfdev-org
 20:26:18 Space:          No space targeted, use 'cf target -s SPACE'
@@ -67,7 +66,7 @@ already occupied, as identified by errors similar to the following:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">Using route github-webhook-test.local.pcfdev.io
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Using route github-webhook-test.local.pcfdev.io
 Binding github-webhook-test.local.pcfdev.io to github-webhook...
 FAILED
 The route github-webhook-test.local.pcfdev.io is already in use.</code></pre>
@@ -82,7 +81,7 @@ The route github-webhook-test.local.pcfdev.io is already in use.</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ yes | cf delete-route local.pcfdev.io -n github-webhook-test
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ yes | cf delete-route local.pcfdev.io -n github-webhook-test
 $ yes | cf delete-route local.pcfdev.io -n github-eureka-test
 $ yes | cf delete-route local.pcfdev.io -n stubrunner-test
 $ yes | cf delete-route local.pcfdev.io -n github-webhook-stage
@@ -105,7 +104,7 @@ helper script with the <code>REUSE_CF_LOGIN=true</code> env variable, as shown i
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">REUSE_CF_LOGIN=true ./tools/cf-helper.sh setup-prod-infra</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">REUSE_CF_LOGIN=true ./tools/cf-helper.sh setup-prod-infra</code></pre>
 </div>
 </div>
 </div>
@@ -118,5 +117,8 @@ to the space and organization you are logged into.</p>
 </dl>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

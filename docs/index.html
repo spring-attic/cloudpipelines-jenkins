@@ -8,7 +8,6 @@
 <title>Cloud Pipelines Jenkins</title>
 <link rel="stylesheet" href="css/spring.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -284,10 +283,10 @@ put it on the build classpath, as the following example shows:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    <span class="comment">// ...</span>
-    libs <span class="string"><span class="delimiter">&quot;</span><span class="content">com.example:my-customizer:1.0.0</span><span class="delimiter">&quot;</span></span>
-    <span class="comment">// ...</span>
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
+    // ...
+    libs "com.example:my-customizer:1.0.0"
+    // ...
 }</code></pre>
 </div>
 </div>
@@ -361,24 +360,24 @@ already copying the missing <code>settings.xml</code> file for you. It looks mor
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="tag">&lt;settings&gt;</span>
-        <span class="tag">&lt;servers&gt;</span>
-                <span class="tag">&lt;server&gt;</span>
-                        <span class="tag">&lt;id&gt;</span>${M2_SETTINGS_REPO_ID}<span class="tag">&lt;/id&gt;</span>
-                        <span class="tag">&lt;username&gt;</span>${M2_SETTINGS_REPO_USERNAME}<span class="tag">&lt;/username&gt;</span>
-                        <span class="tag">&lt;password&gt;</span>${M2_SETTINGS_REPO_PASSWORD}<span class="tag">&lt;/password&gt;</span>
-                <span class="tag">&lt;/server&gt;</span>
-                <span class="tag">&lt;server&gt;</span>
-                        <span class="tag">&lt;id&gt;</span>${DOCKER_SERVER_ID}<span class="tag">&lt;/id&gt;</span>
-                        <span class="tag">&lt;username&gt;</span>${DOCKER_USERNAME}<span class="tag">&lt;/username&gt;</span>
-                        <span class="tag">&lt;password&gt;</span>${DOCKER_PASSWORD}<span class="tag">&lt;/password&gt;</span>
-                        <span class="tag">&lt;configuration&gt;</span>
-                                <span class="tag">&lt;email&gt;</span>${DOCKER_EMAIL}<span class="tag">&lt;/email&gt;</span>
-                        <span class="tag">&lt;/configuration&gt;</span>
-                <span class="tag">&lt;/server&gt;</span>
-        <span class="tag">&lt;/servers&gt;</span>
-<span class="tag">&lt;/settings&gt;</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;settings&gt;
+	&lt;servers&gt;
+		&lt;server&gt;
+			&lt;id&gt;${M2_SETTINGS_REPO_ID}&lt;/id&gt;
+			&lt;username&gt;${M2_SETTINGS_REPO_USERNAME}&lt;/username&gt;
+			&lt;password&gt;${M2_SETTINGS_REPO_PASSWORD}&lt;/password&gt;
+		&lt;/server&gt;
+		&lt;server&gt;
+			&lt;id&gt;${DOCKER_SERVER_ID}&lt;/id&gt;
+			&lt;username&gt;${DOCKER_USERNAME}&lt;/username&gt;
+			&lt;password&gt;${DOCKER_PASSWORD}&lt;/password&gt;
+			&lt;configuration&gt;
+				&lt;email&gt;${DOCKER_EMAIL}&lt;/email&gt;
+			&lt;/configuration&gt;
+		&lt;/server&gt;
+	&lt;/servers&gt;
+&lt;/settings&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -1232,7 +1231,7 @@ similar tasks with another language.
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/demo
 ./start.sh yourGitUsername yourGitPassword yourForkedGithubOrg</code></pre>
 </div>
@@ -1260,7 +1259,7 @@ contains your GitHub org (in which you have the forked repos).</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/
 ./tools/deploy-infra.sh</code></pre>
 </div>
@@ -1311,7 +1310,7 @@ If that happens <a href="#jenkins-cf-resources">clear some apps from PCF Dev and
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">username: user
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">username: user
 password: pass
 email: user
 org: pcfdev-org
@@ -1328,7 +1327,7 @@ api: api.local.pcfdev.io</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">cf dev start</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cf dev start</code></pre>
 </div>
 </div>
 </div>
@@ -1340,7 +1339,7 @@ api: api.local.pcfdev.io</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">cf login -a https://api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o pcfdev-org
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cf login -a https://api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o pcfdev-org
 
 cf create-space pcfdev-test
 cf set-space-role user pcfdev-org pcfdev-test SpaceDeveloper
@@ -1975,7 +1974,7 @@ to Kubernetes PaaS.
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins/demo
 ./start.sh yourGitUsername yourGitPassword yourForkedGithubOrg yourDockerRegistryOrganization yourDockerRegistryUsername yourDockerRegistryPassword yourDockerRegistryEmail</code></pre>
 </div>
@@ -2009,7 +2008,7 @@ The following listing shows the script:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone https://github.com/CloudPipelines/jenkins
 cd jenkins
 ./tools/deploy-infra-k8s.sh</code></pre>
 </div>
@@ -2625,7 +2624,7 @@ downloaded and an installer started:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./tools/k8s-helper.sh download-gcloud</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./tools/k8s-helper.sh download-gcloud</code></pre>
 </div>
 </div>
 </div>
@@ -2645,7 +2644,7 @@ proper Google account and log in.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ CLUSTER_NAME=...
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ CLUSTER_NAME=...
 $ ZONE=us-east1-b
 $ PROJECT_NAME=...
 $ gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE} --project ${PROJECT_NAME}
@@ -2664,7 +2663,7 @@ $ kubectl proxy</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ZONE=us-east1-b
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ZONE=us-east1-b
 $ gcloud compute disks create --size=200GB --zone=${ZONE} cloudpipelines-jenkins-disk</code></pre>
 </div>
 </div>
@@ -2732,7 +2731,7 @@ To see the dashboard, run <code>kubectl proxy</code> and access <code>localhost:
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ NAMESPACE=default
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ NAMESPACE=default
 $ JENKINS_POD=jenkins-1430785859-nfhx4
 $ LOCAL_PORT=32044
 $ CONTAINER_PORT=8080
@@ -2968,7 +2967,7 @@ machine, <code>bats</code> and <code>shellcheck</code> are installed for you.</p
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ sudo apt-get install -y ruby jq</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ sudo apt-get install -y ruby jq</code></pre>
 </div>
 </div>
 </div>
@@ -2980,7 +2979,7 @@ machine, <code>bats</code> and <code>shellcheck</code> are installed for you.</p
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ brew install jq
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ brew install jq
 $ brew install ruby
 $ brew install bats
 $ brew install shellcheck</code></pre>
@@ -3000,7 +2999,7 @@ pull to update it. The following command clones the project:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ git clone --recursive https://github.com/CloudPipelines/jenkins.git</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ git clone --recursive https://github.com/CloudPipelines/jenkins.git</code></pre>
 </div>
 </div>
 </div>
@@ -3012,7 +3011,7 @@ pull to update it. The following command clones the project:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ git submodule init
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ git submodule init
 $ git submodule update</code></pre>
 </div>
 </div>
@@ -3031,7 +3030,7 @@ $ git submodule update</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew clean build</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./gradlew clean build</code></pre>
 </div>
 </div>
 </div>
@@ -3046,7 +3045,7 @@ $ git submodule update</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew generateDocs</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./gradlew generateDocs</code></pre>
 </div>
 </div>
 </div>
@@ -3070,7 +3069,7 @@ property to the build to also upload the Docker images.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew clean build -PreleaseDocker</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ ./gradlew clean build -PreleaseDocker</code></pre>
 </div>
 </div>
 </div>
@@ -3108,7 +3107,7 @@ that needs to be installed on a CI server worker for the build to pass:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash"> apt-get -y install \
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"> apt-get -y install \
     bash \
     git \
     tar \
@@ -3152,11 +3151,11 @@ In the demo setup all of these libraries are already installed.
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
-        Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
-        to be injected as environment variables or
-        `-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
-        to whitelist specific parameter names, even though it represents a security breach</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
+	Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
+	to be injected as environment variables or
+	`-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
+	to whitelist specific parameter names, even though it represents a security breach</code></pre>
 </div>
 </div>
 </div>
@@ -3177,11 +3176,11 @@ the <code>echo "${PIPELINE_VERSION}"</code> does not print anything.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
-        Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
-        to be injected as environment variables or
-        `-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
-        to whitelist specific parameter names, even though it represents a security breach</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">WARNING: Skipped parameter `PIPELINE_VERSION` as it is undefined on `jenkins-pipeline-sample-build`.
+	Set `-Dhudson.model.ParametersAction.keepUndefinedParameters`=true to allow undefined parameters
+	to be injected as environment variables or
+	`-Dhudson.model.ParametersAction.safeParameters=[comma-separated list]`
+	to whitelist specific parameter names, even though it represents a security breach</code></pre>
 </div>
 </div>
 </div>
@@ -3236,7 +3235,7 @@ contained them. To fix this, remove the tags by using the following command:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ git tag -l | xargs -n 1 git push --delete origin</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ git tag -l | xargs -n 1 git push --delete origin</code></pre>
 </div>
 </div>
 </div>
@@ -3353,23 +3352,23 @@ job&#8217;s properties, too).</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">19:01:44 stderr: remote: Invalid username or password.
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">19:01:44 stderr: remote: Invalid username or password.
 19:01:44 fatal: Authentication failed for 'https://github.com/marcingrzejszczak/github-webhook/'
 19:01:44
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandIn(CliGitAPIImpl.java:1740)
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandWithCredentials(CliGitAPIImpl.java:1476)
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.access$300(CliGitAPIImpl.java:63)
-19:01:44         at org.jenkinsci.plugins.gitclient.CliGitAPIImpl$8.execute(CliGitAPIImpl.java:1816)
-19:01:44         at hudson.plugins.git.GitPublisher.perform(GitPublisher.java:295)
-19:01:44         at hudson.tasks.BuildStepMonitor$3.perform(BuildStepMonitor.java:45)
-19:01:44         at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:779)
-19:01:44         at hudson.model.AbstractBuild$AbstractBuildExecution.performAllBuildSteps(AbstractBuild.java:720)
-19:01:44         at hudson.model.Build$BuildExecution.post2(Build.java:185)
-19:01:44         at hudson.model.AbstractBuild$AbstractBuildExecution.post(AbstractBuild.java:665)
-19:01:44         at hudson.model.Run.execute(Run.java:1745)
-19:01:44         at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
-19:01:44         at hudson.model.ResourceController.execute(ResourceController.java:98)
-19:01:44         at hudson.model.Executor.run(Executor.java:404)</code></pre>
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandIn(CliGitAPIImpl.java:1740)
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.launchCommandWithCredentials(CliGitAPIImpl.java:1476)
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl.access$300(CliGitAPIImpl.java:63)
+19:01:44 	at org.jenkinsci.plugins.gitclient.CliGitAPIImpl$8.execute(CliGitAPIImpl.java:1816)
+19:01:44 	at hudson.plugins.git.GitPublisher.perform(GitPublisher.java:295)
+19:01:44 	at hudson.tasks.BuildStepMonitor$3.perform(BuildStepMonitor.java:45)
+19:01:44 	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:779)
+19:01:44 	at hudson.model.AbstractBuild$AbstractBuildExecution.performAllBuildSteps(AbstractBuild.java:720)
+19:01:44 	at hudson.model.Build$BuildExecution.post2(Build.java:185)
+19:01:44 	at hudson.model.AbstractBuild$AbstractBuildExecution.post(AbstractBuild.java:665)
+19:01:44 	at hudson.model.Run.execute(Run.java:1745)
+19:01:44 	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
+19:01:44 	at hudson.model.ResourceController.execute(ResourceController.java:98)
+19:01:44 	at hudson.model.Executor.run(Executor.java:404)</code></pre>
 </div>
 </div>
 </div>
@@ -3422,7 +3421,7 @@ solve it is to kill some applications from the test and stage environments. To d
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ cf target -o pcfdev-org -s pcfdev-test
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ cf target -o pcfdev-org -s pcfdev-test
 $ cf stop github-webhook
 $ cf stop github-eureka
 $ cf stop stubrunner</code></pre>
@@ -3442,7 +3441,7 @@ deployed to PCF Dev.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">20:26:18 API endpoint:   https://api.local.pcfdev.io (API version: 2.58.0)
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">20:26:18 API endpoint:   https://api.local.pcfdev.io (API version: 2.58.0)
 20:26:18 User:           user
 20:26:18 Org:            pcfdev-org
 20:26:18 Space:          No space targeted, use 'cf target -s SPACE'
@@ -3465,7 +3464,7 @@ already occupied, as identified by errors similar to the following:</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">Using route github-webhook-test.local.pcfdev.io
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">Using route github-webhook-test.local.pcfdev.io
 Binding github-webhook-test.local.pcfdev.io to github-webhook...
 FAILED
 The route github-webhook-test.local.pcfdev.io is already in use.</code></pre>
@@ -3480,7 +3479,7 @@ The route github-webhook-test.local.pcfdev.io is already in use.</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">$ yes | cf delete-route local.pcfdev.io -n github-webhook-test
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ yes | cf delete-route local.pcfdev.io -n github-webhook-test
 $ yes | cf delete-route local.pcfdev.io -n github-eureka-test
 $ yes | cf delete-route local.pcfdev.io -n stubrunner-test
 $ yes | cf delete-route local.pcfdev.io -n github-webhook-stage
@@ -3503,7 +3502,7 @@ helper script with the <code>REUSE_CF_LOGIN=true</code> env variable, as shown i
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">REUSE_CF_LOGIN=true ./tools/cf-helper.sh setup-prod-infra</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">REUSE_CF_LOGIN=true ./tools/cf-helper.sh setup-prod-infra</code></pre>
 </div>
 </div>
 </div>
@@ -3518,5 +3517,8 @@ to the space and organization you are logged into.</p>
 </div>
 </div>
 </div>
+<link rel="stylesheet" href="js/highlight/styles/atom-one-dark-reasonable.min.css">
+<script src="js/highlight/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>
