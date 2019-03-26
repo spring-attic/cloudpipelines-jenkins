@@ -11,6 +11,7 @@ jobs:
       ignore:
         - gh-pages # list of branches to ignore
     steps:
+      - setup_remote_docker
       - checkout
       - run:
           name: "Running build"
