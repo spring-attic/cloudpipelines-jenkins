@@ -92,4 +92,5 @@ RUN echo "deb https://apt.dockerproject.org/repo debian-jessie main" | tee /etc/
 #  $ curl -sSL "${JENKINS_URL}/pluginManager/api/json?depth=1" | \
 #    jq -r '.plugins[] | .shortName +":"+ .version' | sort > plugins.txt
 #
-RUN install-plugins.sh $( paste -sd' ' /usr/share/jenkins/plugins.txt )
+# You have to install the plugins manually
+# RUN install-plugins.sh $( paste -sd' ' /usr/share/jenkins/plugins.txt )
