@@ -12,9 +12,9 @@ repositories {
 	jcenter()
 	mavenCentral()
 	maven { url 'https://repo.jenkins-ci.org/releases/' }
-	maven { url "https://repo.spring.io/libs-snapshot-local" }
-	maven { url "https://repo.spring.io/libs-milestone-local" }
-	maven { url "https://repo.spring.io/libs-release-local" }
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+	maven { url "https://repo.spring.io/release" }
 }
 
 dependencies {
@@ -37,7 +37,7 @@ dependencies {
 
 // docker
 
-ext {
+/* ext {
 	dockerImagePrefix = "cloudpipelines"
 	dockerImageName = "${dockerImagePrefix}/${project.rootProject.name}"
 }
@@ -97,4 +97,4 @@ String getProp(String propName) {
 	return hasProperty(propName) ?
 		(getProperty(propName) ?: System.properties[propName]) : System.properties[propName] ?:
 		System.getenv(propName)
-}
+} */
