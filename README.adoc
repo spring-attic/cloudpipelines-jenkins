@@ -1,3 +1,5 @@
+# cloudpipelines-jenkins is no longer actively maintained by VMware, Inc.
+
 = Cloud Pipelines Jenkins
 
 This project contains setup for Jenkins that creates jobs and pipelines
